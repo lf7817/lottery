@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "preinstall": "node scripts/preinstall.mjs",
     "clean": "turbo run clean && rimraf node_modules pnpm-lock.yaml package-lock.json .turbo",
