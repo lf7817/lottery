@@ -1,5 +1,5 @@
 {
-  "name": "@sinoso-lottery/sign",
+  "name": "@lottery/sign",
   "private": true,
   "version": "0.0.0",
   "type": "module",
