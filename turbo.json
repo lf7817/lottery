@@ -11,6 +11,10 @@
       "cache": false,
       "persistent": true
     },
+    "start:dev": {
+      "cache": false,
+      "persistent": true 
+    },
     "clean": {
       "cache": false
     }

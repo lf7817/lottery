@@ -16,5 +16,6 @@ export default await antfu({
     'ts/ban-ts-comment': 'off',
     '@ts-expect-error': 'off',
     'no-inline-styles': 'off',
+    'ts/consistent-type-imports': 'off',
   },
 })

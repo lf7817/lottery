@@ -8,7 +8,10 @@
     "preinstall": "node scripts/preinstall.mjs",
     "clean": "turbo run clean && rimraf node_modules pnpm-lock.yaml package-lock.json .turbo",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "dev:screen": "turbo run dev --filter=@lottery/screen",
+    "dev:sign": "turbo run dev --filter=@lottery/sign",
+    "dev:server": "turbo run start:dev --filter=@lottery/server"
   },
   "keywords": [],
   "author": "",
