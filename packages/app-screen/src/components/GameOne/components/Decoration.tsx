@@ -38,6 +38,29 @@ export default function Decoration() {
         />
       </group>
 
+      <group name="long">
+        <SpriteAnimator
+          scale={[14, 14, 14]}
+          position={[31, 0.11, 12]}
+          startFrame={0}
+          autoPlay={true}
+          loop={true}
+          alphaTest={0.01}
+          textureImageURL={AssetPaths.long1}
+          textureDataURL={AssetPaths.longdata1}
+        />
+        <SpriteAnimator
+          scale={[14, 14, 14]}
+          position={[-30.2, 0.11, 12]}
+          startFrame={0}
+          autoPlay={true}
+          loop={true}
+          alphaTest={0.01}
+          textureImageURL={AssetPaths.long2}
+          textureDataURL={AssetPaths.longdata2}
+        />
+      </group>
+
       <group name="plum">
         <MeshPlaneHeightFit
           position={[-27, 0.1, -17]}
@@ -100,7 +123,7 @@ export default function Decoration() {
         />
         <MeshPlaneHeightFit
           offsetX={-0.0005}
-          position={[0, 0.11, 19.1]}
+          position={[0, 0.12, 19.1]}
           height={3.2}
           textureUrl={AssetPaths.xiangyun2}
           repeat={3}
