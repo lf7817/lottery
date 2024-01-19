@@ -12,8 +12,13 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "axios": "^1.6.2",
+    "lodash.debounce": "^4.0.8",
+    "mitt": "^3.0.1",
     "react": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "vite": "^5.0.10"
+  },
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.9"
   }
 }

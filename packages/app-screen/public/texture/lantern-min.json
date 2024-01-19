@@ -1,0 +1,620 @@
+{"frames": [
+
+{
+	"filename": "三个循环 通道00.png",
+	"frame": {"x":0,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道01.png",
+	"frame": {"x":227,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道02.png",
+	"frame": {"x":454,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道03.png",
+	"frame": {"x":681,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道04.png",
+	"frame": {"x":908,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道05.png",
+	"frame": {"x":1135,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道06.png",
+	"frame": {"x":1362,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道07.png",
+	"frame": {"x":1589,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道08.png",
+	"frame": {"x":1816,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道09.png",
+	"frame": {"x":2043,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道10.png",
+	"frame": {"x":2270,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道11.png",
+	"frame": {"x":2497,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道12.png",
+	"frame": {"x":2724,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道13.png",
+	"frame": {"x":2951,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道14.png",
+	"frame": {"x":3178,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道15.png",
+	"frame": {"x":3405,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道16.png",
+	"frame": {"x":3632,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道17.png",
+	"frame": {"x":3859,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道18.png",
+	"frame": {"x":4086,"y":0,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道19.png",
+	"frame": {"x":0,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道20.png",
+	"frame": {"x":227,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道21.png",
+	"frame": {"x":454,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道22.png",
+	"frame": {"x":681,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道23.png",
+	"frame": {"x":908,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道24.png",
+	"frame": {"x":1135,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道25.png",
+	"frame": {"x":1362,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道26.png",
+	"frame": {"x":1589,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道27.png",
+	"frame": {"x":1816,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道28.png",
+	"frame": {"x":2043,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道29.png",
+	"frame": {"x":2270,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道30.png",
+	"frame": {"x":2497,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道31.png",
+	"frame": {"x":2724,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道32.png",
+	"frame": {"x":2951,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道33.png",
+	"frame": {"x":3178,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道34.png",
+	"frame": {"x":3405,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道35.png",
+	"frame": {"x":3632,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道36.png",
+	"frame": {"x":3859,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道37.png",
+	"frame": {"x":4086,"y":400,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道38.png",
+	"frame": {"x":0,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道39.png",
+	"frame": {"x":227,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道40.png",
+	"frame": {"x":454,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道41.png",
+	"frame": {"x":681,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道42.png",
+	"frame": {"x":908,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道43.png",
+	"frame": {"x":1135,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道44.png",
+	"frame": {"x":1362,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道45.png",
+	"frame": {"x":1589,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道46.png",
+	"frame": {"x":1816,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道47.png",
+	"frame": {"x":2043,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道48.png",
+	"frame": {"x":2270,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道49.png",
+	"frame": {"x":2497,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道50.png",
+	"frame": {"x":2724,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道51.png",
+	"frame": {"x":2951,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道52.png",
+	"frame": {"x":3178,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道53.png",
+	"frame": {"x":3405,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道54.png",
+	"frame": {"x":3632,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道55.png",
+	"frame": {"x":3859,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道56.png",
+	"frame": {"x":4086,"y":800,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道57.png",
+	"frame": {"x":0,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道58.png",
+	"frame": {"x":227,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道59.png",
+	"frame": {"x":454,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道60.png",
+	"frame": {"x":681,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道61.png",
+	"frame": {"x":908,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道62.png",
+	"frame": {"x":1135,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道63.png",
+	"frame": {"x":1362,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道64.png",
+	"frame": {"x":1589,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道65.png",
+	"frame": {"x":1816,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道66.png",
+	"frame": {"x":2043,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道67.png",
+	"frame": {"x":2270,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道68.png",
+	"frame": {"x":2497,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道69.png",
+	"frame": {"x":2724,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道70.png",
+	"frame": {"x":2951,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道71.png",
+	"frame": {"x":3178,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道72.png",
+	"frame": {"x":3405,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道73.png",
+	"frame": {"x":3632,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道74.png",
+	"frame": {"x":3859,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+},
+{
+	"filename": "三个循环 通道75.png",
+	"frame": {"x":4086,"y":1200,"w":227,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":227,"h":400},
+	"sourceSize": {"w":227,"h":400}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lantern.png",
+	"format": "RGBA8888",
+	"size": {"w":4313,"h":1600},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d65e4b6b90b4c39ae8ca09eb5df7290a:3e2a893c82147f430d6ef7508d0a7333:4bac2c51790357b16a93f1022f7f7243$"
+}
+}

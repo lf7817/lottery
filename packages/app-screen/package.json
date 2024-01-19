@@ -12,10 +12,16 @@
   },
   "dependencies": {
     "@lottery/shared": "workspace:^",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.94.1",
+    "@react-three/fiber": "^8.15.14",
     "@stylexjs/stylex": "^0.4.1",
+    "@types/three": "^0.160.0",
+    "gsap": "^3.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
+    "three": "^0.160.0",
     "valtio": "^1.13.0"
   },
   "devDependencies": {

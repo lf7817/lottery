@@ -1,0 +1,10 @@
+import { useTexture } from '@react-three/drei'
+import { AssetPaths } from '@/components/GameOne/config.ts'
+
+useTexture.preload(AssetPaths.lanternImage)
+useTexture.preload(AssetPaths.plum)
+useTexture.preload(AssetPaths.papercut1)
+useTexture.preload(AssetPaths.papercut2)
+useTexture.preload(AssetPaths.bg)
+useTexture.preload(AssetPaths.xiangyun1)
+useTexture.preload(AssetPaths.xiangyun2)

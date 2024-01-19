@@ -17,5 +17,6 @@ export default await antfu({
     '@ts-expect-error': 'off',
     'no-inline-styles': 'off',
     'ts/consistent-type-imports': 'off',
+    'react/no-unknown-property': 'off',
   },
 })
