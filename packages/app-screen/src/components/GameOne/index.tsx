@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
+import { Stats } from '@react-three/drei'
 import Decoration from './components/Decoration'
 import './preload'
 
@@ -14,6 +15,8 @@ export default function GameOne() {
       <Suspense fallback={null}>
         <Decoration />
       </Suspense>
+
+      <Stats />
 
     </Canvas>
   )

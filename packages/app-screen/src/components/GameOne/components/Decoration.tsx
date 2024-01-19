@@ -1,12 +1,12 @@
 import { SpriteAnimator } from '@react-three/drei'
 import { AssetPaths } from '@/components/GameOne/config.ts'
-import PaperCut from '@/components/GameOne/components/PaperCut.tsx'
-import PlaneHeightFit from '@/components/Three/PlaneHeightFit.tsx'
+import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
+import MeshCircle from '@/components/Three/MeshCircle.tsx'
 
 export default function Decoration() {
   return (
     <group name="decoration">
-      <PlaneHeightFit
+      <MeshPlaneHeightFit
         position={[0, -1, 0]}
         height={53}
         textureUrl={AssetPaths.bg}
@@ -39,13 +39,13 @@ export default function Decoration() {
       </group>
 
       <group name="plum">
-        <PlaneHeightFit
+        <MeshPlaneHeightFit
           position={[-27, 0.1, -17]}
           height={15}
           textureUrl={AssetPaths.plum}
         />
 
-        <PlaneHeightFit
+        <MeshPlaneHeightFit
           position={[27, 0.1, -17]}
           height={15}
           textureUrl={AssetPaths.plum}
@@ -53,18 +53,53 @@ export default function Decoration() {
         />
       </group>
 
-      <PaperCut />
+      <group name="papercut" position-y={-0.2}>
+        <MeshCircle
+          textureUrl={AssetPaths.papercut1}
+          position={[0, 0, -28]}
+          radius={15}
+          spin={-0.001}
+        />
+
+        <MeshCircle
+          textureUrl={AssetPaths.papercut2}
+          position={[-16, 0.05, -30]}
+          radius={14}
+          spin={-0.001}
+        />
+
+        <MeshCircle
+          textureUrl={AssetPaths.papercut2}
+          position={[16, 0.05, -30]}
+          radius={14}
+          spin={-0.001}
+        />
+
+        <MeshCircle
+          textureUrl={AssetPaths.papercut1}
+          position={[-36, 0.11, -27]}
+          radius={16}
+          spin={-0.001}
+        />
+
+        <MeshCircle
+          textureUrl={AssetPaths.papercut1}
+          position={[36, 0.11, -27]}
+          radius={16}
+          spin={-0.001}
+        />
+      </group>
 
       <group name="xiangyun">
-        <PlaneHeightFit
-          offsetX={0.001}
+        <MeshPlaneHeightFit
+          offsetX={0.0005}
           position={[0, 0.1, 17.3]}
           height={7.5}
           textureUrl={AssetPaths.xiangyun1}
           repeat={2}
         />
-        <PlaneHeightFit
-          offsetX={-0.001}
+        <MeshPlaneHeightFit
+          offsetX={-0.0005}
           position={[0, 0.11, 19.1]}
           height={3.2}
           textureUrl={AssetPaths.xiangyun2}

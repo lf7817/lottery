@@ -15,7 +15,7 @@ interface PlaneHeightFitProps {
   name?: string
 }
 
-export default function PlaneHeightFit(props: PlaneHeightFitProps) {
+export default function MeshPlaneHeightFit(props: PlaneHeightFitProps) {
   const { repeat = 1, rotation = [-Math.PI / 2, 0, 0] } = props
   const texture = useTexture(props.textureUrl)
   const aspectRatio = texture.image.width / texture.image.height
