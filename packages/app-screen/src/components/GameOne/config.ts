@@ -9,8 +9,10 @@ export const AssetPaths = {
   bg: getAssetPath('texture/bg-min.png'),
   xiangyun1: getAssetPath('texture/xiangyun1-min.png'),
   xiangyun2: getAssetPath('texture/xiangyun2.png'),
-  long1: getAssetPath('texture/long1-min.png'),
+  long1: getAssetPath('texture/long1-min.webp'),
   longdata1: getAssetPath('texture/long1.json'),
-  long2: getAssetPath('texture/long2-min.png'),
+  long2: getAssetPath('texture/long2-min.webp'),
   longdata2: getAssetPath('texture/long2.json'),
+  start: getAssetPath('texture/start-min.webp'),
+  startdata: getAssetPath('texture/start.json'),
 }

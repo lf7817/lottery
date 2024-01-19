@@ -6,6 +6,17 @@ import MeshCircle from '@/components/Three/MeshCircle.tsx'
 export default function Decoration() {
   return (
     <group name="decoration">
+      <SpriteAnimator
+        scale={[71, 71, 71]}
+        position={[0, 2, 0]}
+        startFrame={0}
+        autoPlay={true}
+        loop={false}
+        alphaTest={0.01}
+        textureImageURL={AssetPaths.start}
+        textureDataURL={AssetPaths.startdata}
+      />
+
       <MeshPlaneHeightFit
         position={[0, -1, 0]}
         height={53}
@@ -40,8 +51,8 @@ export default function Decoration() {
 
       <group name="long">
         <SpriteAnimator
-          scale={[14, 14, 14]}
-          position={[31, 0.11, 12]}
+          scale={[12, 12, 12]}
+          position={[31, 0.11, 12.2]}
           startFrame={0}
           autoPlay={true}
           loop={true}
@@ -50,8 +61,8 @@ export default function Decoration() {
           textureDataURL={AssetPaths.longdata1}
         />
         <SpriteAnimator
-          scale={[14, 14, 14]}
-          position={[-30.2, 0.11, 12]}
+          scale={[12, 12, 12]}
+          position={[-30.2, 0.11, 12.2]}
           startFrame={0}
           autoPlay={true}
           loop={true}
