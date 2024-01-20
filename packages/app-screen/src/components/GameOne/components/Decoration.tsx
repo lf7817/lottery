@@ -3,20 +3,17 @@ import { AssetPaths } from '@/components/GameOne/config.ts'
 import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
 import MeshCircle from '@/components/Three/MeshCircle.tsx'
 
-export default function Decoration() {
-  return (
-    <group name="decoration">
-      <SpriteAnimator
-        scale={[71, 71, 71]}
-        position={[0, 2, 0]}
-        startFrame={0}
-        autoPlay={true}
-        loop={false}
-        alphaTest={0.01}
-        textureImageURL={AssetPaths.start}
-        textureDataURL={AssetPaths.startdata}
-      />
+interface DecorationProps {
+  visible: boolean
+}
 
+export default function Decoration(props: DecorationProps) {
+  return (
+    <group name="decoration" visible={props.visible}>
+      <mesh rotation-x={-Math.PI / 2} position-y={-10}>
+        <planeGeometry args={[100, 100]} />
+        <meshBasicMaterial color="#A60513" />
+      </mesh>
       <MeshPlaneHeightFit
         position={[0, -1, 0]}
         height={53}

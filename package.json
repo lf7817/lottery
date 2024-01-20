@@ -10,6 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "dev:screen": "turbo run dev --filter=@lottery/screen",
+    "build:screen": "turbo run build --filter=@lottery/screen",
+    "preview:screen": "turbo run preview --filter=@lottery/screen",
     "dev:sign": "turbo run dev --filter=@lottery/sign",
     "dev:server": "turbo run start:dev --filter=@lottery/server"
   },
