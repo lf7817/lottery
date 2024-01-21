@@ -14,7 +14,7 @@ interface MeshCircleProps {
 }
 
 export default function MeshCircle(props: MeshCircleProps) {
-  const { segments = 32, rotation = [-Math.PI / 2, 0, 0] } = props
+  const { segments = 32 } = props
   const ref = useRef<Mesh>(null)
   const texture = useTexture(props.textureUrl)
 
@@ -24,7 +24,7 @@ export default function MeshCircle(props: MeshCircleProps) {
   })
 
   return (
-    <mesh ref={ref} position={props.position} rotation={rotation}>
+    <mesh ref={ref} position={props.position} rotation={props.rotation}>
       <circleGeometry args={[props.radius, segments]} />
       <meshBasicMaterial map={texture} transparent color={props.color} />
     </mesh>

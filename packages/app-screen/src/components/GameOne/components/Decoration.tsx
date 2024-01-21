@@ -10,12 +10,13 @@ interface DecorationProps {
 export default function Decoration(props: DecorationProps) {
   return (
     <group name="decoration" visible={props.visible}>
-      <mesh rotation-x={-Math.PI / 2} position-y={-10}>
+      <mesh position-z={-10}>
         <planeGeometry args={[100, 100]} />
         <meshBasicMaterial color="#A60513" />
       </mesh>
+
       <MeshPlaneHeightFit
-        position={[0, -1, 0]}
+        position={[0, 0, -2]}
         height={53}
         textureUrl={AssetPaths.bg}
         color="#8A030E"
@@ -24,8 +25,8 @@ export default function Decoration(props: DecorationProps) {
 
       <group name="lantern">
         <SpriteAnimator
-          scale={[14, 14, 14]}
-          position={[-29.4, 0, -4.6]}
+          scale={[12, 12, 12]}
+          position={[-29.4, 6, 1]}
           startFrame={0}
           autoPlay={true}
           loop={true}
@@ -35,8 +36,8 @@ export default function Decoration(props: DecorationProps) {
         />
 
         <SpriteAnimator
-          scale={[14, 14, 14]}
-          position={[29.4, 0, -4.6]}
+          scale={[12, 12, 12]}
+          position={[29.4, 6, 1]}
           startFrame={0}
           autoPlay={true}
           loop={true}
@@ -49,7 +50,7 @@ export default function Decoration(props: DecorationProps) {
       <group name="long">
         <SpriteAnimator
           scale={[12, 12, 12]}
-          position={[31, 0.11, 12.2]}
+          position={[30.2, -10, 1.5]}
           startFrame={0}
           autoPlay={true}
           loop={true}
@@ -59,7 +60,7 @@ export default function Decoration(props: DecorationProps) {
         />
         <SpriteAnimator
           scale={[12, 12, 12]}
-          position={[-30.2, 0.11, 12.2]}
+          position={[-29.5, -10, 1.5]}
           startFrame={0}
           autoPlay={true}
           loop={true}
@@ -71,52 +72,52 @@ export default function Decoration(props: DecorationProps) {
 
       <group name="plum">
         <MeshPlaneHeightFit
-          position={[-27, 0.1, -17]}
-          height={15}
+          position={[-27.2, 16.5, 2]}
+          height={12.5}
           textureUrl={AssetPaths.plum}
         />
 
         <MeshPlaneHeightFit
-          position={[27, 0.1, -17]}
-          height={15}
-          textureUrl={AssetPaths.plum}
+          position={[27.2, 16.5, 2]}
           scale={[-1, 1, 1]}
+          height={12.5}
+          textureUrl={AssetPaths.plum}
         />
       </group>
 
       <group name="papercut" position-y={-0.2}>
         <MeshCircle
           textureUrl={AssetPaths.papercut1}
-          position={[0, 0, -28]}
+          position={[0, 29, 0]}
           radius={15}
           spin={-0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut2}
-          position={[-16, 0.05, -30]}
+          position={[-16, 30.5, 0.1]}
           radius={14}
           spin={-0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut2}
-          position={[16, 0.05, -30]}
+          position={[16, 30.5, 0.1]}
           radius={14}
           spin={-0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut1}
-          position={[-36, 0.11, -27]}
-          radius={16}
+          position={[-36, 26, 0.2]}
+          radius={14.4}
           spin={-0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut1}
-          position={[36, 0.11, -27]}
-          radius={16}
+          position={[36, 26, 0.2]}
+          radius={14.4}
           spin={-0.001}
         />
       </group>
@@ -124,15 +125,15 @@ export default function Decoration(props: DecorationProps) {
       <group name="xiangyun">
         <MeshPlaneHeightFit
           offsetX={0.0005}
-          position={[0, 0.1, 17.3]}
-          height={7.5}
+          position={[0, -17, 1]}
+          height={7}
           textureUrl={AssetPaths.xiangyun1}
           repeat={2}
         />
         <MeshPlaneHeightFit
           offsetX={-0.0005}
-          position={[0, 0.12, 19.1]}
-          height={3.2}
+          position={[0, -18.4, 1.6]}
+          height={3.5}
           textureUrl={AssetPaths.xiangyun2}
           repeat={3}
         />
