@@ -3,7 +3,8 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 
 interface PlaneHeightFitProps {
-  offsetX?: number
+  speed?: number
+  textureOffsetY?: number
   height: number
   textureUrl: string
   repeat?: number
@@ -23,10 +24,11 @@ export default function MeshPlaneHeightFit(props: PlaneHeightFitProps) {
   texture.wrapS = THREE.RepeatWrapping
   texture.wrapT = THREE.RepeatWrapping
   texture.repeat.set(repeat, 1)
+  texture.offset.y = props.textureOffsetY || 0
 
   useFrame(() => {
-    if (props.offsetX)
-      texture.offset.x += props.offsetX
+    if (props.speed)
+      texture.offset.x += props.speed
   })
 
   return (

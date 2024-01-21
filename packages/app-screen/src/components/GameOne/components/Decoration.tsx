@@ -124,14 +124,15 @@ export default function Decoration(props: DecorationProps) {
 
       <group name="xiangyun">
         <MeshPlaneHeightFit
-          offsetX={0.0005}
+          speed={0.0005}
           position={[0, -17, 1]}
           height={7}
+          textureOffsetY={-0.001}
           textureUrl={AssetPaths.xiangyun1}
           repeat={2}
         />
         <MeshPlaneHeightFit
-          offsetX={-0.0005}
+          speed={-0.0005}
           position={[0, -18.4, 1.6]}
           height={3.5}
           textureUrl={AssetPaths.xiangyun2}
