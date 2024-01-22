@@ -45,7 +45,7 @@ export default function Flowers() {
       {
         points.current.map(point => (
           <sprite key={point.id} name={point.id} position={point.position} scale={point.scale}>
-            <spriteMaterial map={texture} color="#fabe00" />
+            <spriteMaterial map={texture} color="yellow" />
           </sprite>
         ))
       }
