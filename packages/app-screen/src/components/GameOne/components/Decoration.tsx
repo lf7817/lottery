@@ -2,7 +2,8 @@ import { SpriteAnimator } from '@react-three/drei'
 import { AssetPaths } from '@/components/GameOne/config.ts'
 import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
 import MeshCircle from '@/components/Three/MeshCircle.tsx'
-import Flowers from '@/components/GameOne/components/Flowers.tsx'
+import Flower from '@/components/GameOne/components/Flower.tsx'
+import Firework from '@/components/GameOne/components/Firework.tsx'
 
 interface DecorationProps {
   visible: boolean
@@ -142,8 +143,9 @@ export default function Decoration(props: DecorationProps) {
         />
       </group>
 
-      <Flowers />
-      {/* <Stars /> */}
+      <Flower position={[0, -16, 1.2]} />
+      <Firework position={[-36, 0, 0]} />
+      <Firework position={[36, 0, 0]} />
     </group>
   )
 }

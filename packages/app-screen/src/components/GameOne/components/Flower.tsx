@@ -9,7 +9,11 @@ const height = 10
 const count = 20
 const opacityRange = [1, 3] as [number, number]
 
-export default function Flowers() {
+interface FlowerProps {
+  position: [number, number, number]
+}
+
+export default function Flower(props: FlowerProps) {
   const points = useRef(generatePoint(width, height, count, opacityRange))
   const texture = useTexture(AssetPaths.flower)
   const ref = useRef<Group>(null)
@@ -41,7 +45,7 @@ export default function Flowers() {
   })
 
   return (
-    <group ref={ref} position={[0, -16, 1.2]}>
+    <group ref={ref} name="flowers" position={props.position}>
       {
         points.current.map(point => (
           <sprite key={point.id} name={point.id} position={point.position} scale={point.scale}>
@@ -53,7 +57,7 @@ export default function Flowers() {
   )
 }
 
-function generatePoint(width: number, height: number, count: number, opacityRange: [number, number]) {
+function generatePoint(width: number, height: number, count: number, opacityRange: [number, number]): RandomPoint[] {
   return Array(count).fill(null).map((_, index) => ({
     id: `${width}_${height}_${index}`,
     ...generateRandomPoint({ width, height, opacityRange }),
@@ -68,6 +72,7 @@ interface GenerateRandomPointParams {
 }
 
 interface RandomPoint {
+  id: string
   position: [number, number, number]
   velocity: [number, number, number]
   scale: [number, number, number]
@@ -78,7 +83,7 @@ interface RandomPoint {
   }
 }
 
-function generateRandomPoint(params: GenerateRandomPointParams): RandomPoint {
+function generateRandomPoint(params: GenerateRandomPointParams): Omit<RandomPoint, 'id'> {
   const { width, opacityRange, height } = params
   const scale = (Math.random() * 0.35 + 0.65) * 1.7
   return {

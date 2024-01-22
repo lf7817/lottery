@@ -1,7 +1,7 @@
+import './preload'
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import { Loader, Preload, SpriteAnimator, Stats } from '@react-three/drei'
-import './preload'
 import Decoration from '@/components/GameOne/components/Decoration.tsx'
 import { AssetPaths } from '@/components/GameOne/config.ts'
 
