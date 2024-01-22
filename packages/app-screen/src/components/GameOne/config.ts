@@ -15,4 +15,5 @@ export const AssetPaths = {
   longdata2: getAssetPath('texture/long2.json'),
   start: getAssetPath('texture/start-min.webp'),
   startdata: getAssetPath('texture/start.json'),
+  flower: getAssetPath('texture/flower.png'),
 }

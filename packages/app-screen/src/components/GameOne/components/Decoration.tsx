@@ -2,6 +2,7 @@ import { SpriteAnimator } from '@react-three/drei'
 import { AssetPaths } from '@/components/GameOne/config.ts'
 import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
 import MeshCircle from '@/components/Three/MeshCircle.tsx'
+import Flowers from '@/components/GameOne/components/Flowers.tsx'
 
 interface DecorationProps {
   visible: boolean
@@ -132,6 +133,7 @@ export default function Decoration(props: DecorationProps) {
           repeat={2}
         />
         <MeshPlaneHeightFit
+          textureOffsetY={-0.004}
           speed={-0.0005}
           position={[0, -18.4, 1.6]}
           height={3.5}
@@ -139,6 +141,9 @@ export default function Decoration(props: DecorationProps) {
           repeat={3}
         />
       </group>
+
+      <Flowers />
+      {/* <Stars /> */}
     </group>
   )
 }

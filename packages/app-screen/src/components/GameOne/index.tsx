@@ -1,9 +1,9 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
-import { Loader, Preload, SpriteAnimator } from '@react-three/drei'
+import { Loader, Preload, SpriteAnimator, Stats } from '@react-three/drei'
 import './preload'
-import { AssetPaths } from '@/components/GameOne/config.ts'
 import Decoration from '@/components/GameOne/components/Decoration.tsx'
+import { AssetPaths } from '@/components/GameOne/config.ts'
 
 export default function GameOne() {
   const [visible, setVisible] = useState(false)
@@ -25,6 +25,7 @@ export default function GameOne() {
           <Decoration visible={visible} />
           <Preload all />
         </Suspense>
+        <Stats />
       </Canvas>
       <Loader />
     </>
