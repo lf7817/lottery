@@ -5,13 +5,9 @@ import MeshCircle from '@/components/Three/MeshCircle.tsx'
 import Flower from '@/components/GameOne/components/Flower.tsx'
 import Firework from '@/components/GameOne/components/Firework.tsx'
 
-interface DecorationProps {
-  visible: boolean
-}
-
-export default function Decoration(props: DecorationProps) {
+export default function Decoration() {
   return (
-    <group name="decoration" visible={props.visible}>
+    <group name="decoration">
       <mesh position-z={-10}>
         <planeGeometry args={[100, 100]} />
         <meshBasicMaterial color="#A60513" />

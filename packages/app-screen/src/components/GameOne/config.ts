@@ -17,4 +17,7 @@ export const AssetPaths = {
   startdata: getAssetPath('texture/start.json'),
   flower: getAssetPath('texture/flower.png'),
   firework: getAssetPath('texture/firework.png'),
+  greeting: getAssetPath('texture/greeting-min.png'),
+  particle: getAssetPath('texture/particle-min.webp'),
+  particledata: getAssetPath('texture/particle.json'),
 }

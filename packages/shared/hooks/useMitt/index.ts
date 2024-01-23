@@ -1,18 +1,15 @@
 import { useContext, useEffect, useRef } from 'react'
+import { Emitter, EventType, Handler } from 'mitt'
 import { MittContext } from './context.ts'
 
 export { MittProvider } from './MittProvider'
 
-interface Event {
-  key: string
-  e: (...args: any[]) => any
-}
+export default function useMitt<T = Record<EventType, unknown>>() {
+  // @ts-expect-error
+  const event: Emitter<T> = useContext(MittContext)
+  const eventRef = useRef<any[]>([])
 
-export default function useMitt() {
-  const event = useContext(MittContext)
-  const eventRef = useRef<Event[]>([])
-
-  const on = (key: string, e: (...args: any[]) => any) => {
+  function on<Key extends keyof T>(key: Key, e: Handler<T[Key]>) {
     eventRef.current.push({ key, e })
     event.on(key, e)
   }

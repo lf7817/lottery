@@ -50,7 +50,7 @@ export default function Firework(props: FireworkProps) {
       {
         points.current.map(point => (
           <sprite key={point.id} position={point.position} scale={[point.scale.initialValue, point.scale.initialValue, point.scale.initialValue]}>
-            <spriteMaterial map={texture} />
+            <spriteMaterial map={texture} transparent />
           </sprite>
         ))
       }
