@@ -1,9 +1,9 @@
 import { SpriteAnimator } from '@react-three/drei'
-import { AssetPaths } from '@/components/GameOne/config.ts'
+import { AssetPaths } from '@/pages/GameOne/config.ts'
 import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
 import MeshCircle from '@/components/Three/MeshCircle.tsx'
-import Flower from '@/components/GameOne/components/Flower.tsx'
-import Firework from '@/components/GameOne/components/Firework.tsx'
+import Flower from '@/pages/GameOne/components/Flower.tsx'
+import Firework from '@/pages/GameOne/components/Firework.tsx'
 
 export default function Decoration() {
   return (

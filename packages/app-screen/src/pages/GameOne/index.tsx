@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
-import styles from './styles'
-import GameOne from '@/components/GameOne'
+import styles from './styles.ts'
+import GameOne from './components/Scene.tsx'
+import './preload.ts'
 
 export default function Home() {
   return (

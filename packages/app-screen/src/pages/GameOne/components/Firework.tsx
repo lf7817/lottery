@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { Group, Sprite } from 'three'
-import { AssetPaths } from '@/components/GameOne/config.ts'
+import { AssetPaths } from '@/pages/GameOne/config.ts'
 
 const width = 10
 const height = 40

@@ -1,5 +1,5 @@
 import { useTexture } from '@react-three/drei'
-import { AssetPaths } from '@/components/GameOne/config.ts'
+import { AssetPaths } from '@/pages/GameOne/config.ts'
 
 useTexture.preload(AssetPaths.start)
 useTexture.preload(AssetPaths.lanternImage)
