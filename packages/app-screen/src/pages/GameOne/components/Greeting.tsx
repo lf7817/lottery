@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import * as stylex from '@stylexjs/stylex'
 import { AssetPaths } from '@/pages/GameOne/config.ts'
+import { gameStoreAction } from '@/store'
 
 const styles = stylex.create({
   btn: (flag: boolean) => ({
@@ -22,6 +23,7 @@ const styles = stylex.create({
     'transition': 'opacity 0.5s ease-in-out',
     'transform': 'translateY(300px)',
     'opacity': flag ? 1 : 0,
+    'borderRadius': 10,
     ':hover': {
       background: 'rgba(74,222,215, 0.8)',
     },
@@ -88,7 +90,7 @@ export default function Greeting() {
         textureDataURL={AssetPaths.particledata}
       />
       <Html>
-        <div {...stylex.props(styles.btn(animationState))}>点击开始</div>
+        <div {...stylex.props(styles.btn(animationState))} onClick={() => gameStoreAction.doSignIn()}>点击开始</div>
       </Html>
     </group>
   )

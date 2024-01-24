@@ -1,4 +1,4 @@
-export enum GameState {
+export enum GameStatus {
   GREETING,
   SIGN_IN,
 }

@@ -4,11 +4,11 @@ import { Loader, Preload, Stats } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
 import Decoration from '@/pages/GameOne/components/Decoration.tsx'
 import Greeting from '@/pages/GameOne/components/Greeting.tsx'
-import gameOneState from '@/pages/GameOne/store.ts'
-import { GameState } from '@/constants'
+import { GameStatus } from '@/constants'
+import { gameStoreState } from '@/store'
 
 export default function GameOne() {
-  const store = useSnapshot(gameOneState)
+  const store = useSnapshot(gameStoreState)
   const [sceneReady, setSceneReady] = useState(false)
 
   return (
@@ -20,7 +20,7 @@ export default function GameOne() {
       >
         <Suspense fallback={null}>
           <group visible={sceneReady}>
-            {store.state === GameState.GREETING && <Greeting />}
+            {store.status === GameStatus.GREETING && <Greeting />}
             <Decoration />
           </group>
           <Preload all />
