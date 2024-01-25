@@ -1,9 +1,10 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
-import { Loader, Preload, Stats } from '@react-three/drei'
+import { Loader, OrbitControls, Preload, Stats } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
-import Decoration from '@/pages/GameOne/components/Decoration.tsx'
-import Greeting from '@/pages/GameOne/components/Greeting.tsx'
+import PhotoWall from './PhotoWall'
+import Decoration from './Decoration.tsx'
+import Greeting from './Greeting.tsx'
 import { GameStatus } from '@/constants'
 import { gameStoreState } from '@/store'
 
@@ -15,12 +16,13 @@ export default function GameOne() {
     <>
       <Canvas
         resize={{ offsetSize: true }}
-        camera={{ position: [0, 0, 50], fov: 45, far: 1000, near: 0.1 }}
-        onCreated={() => setTimeout(() => setSceneReady(true), 500)}
+        camera={{ position: [0, 0, 50], fov: 45, far: 100000, near: 0.1 }}
+        onCreated={() => setTimeout(() => setSceneReady(true), 600)}
       >
+        <OrbitControls />
         <Suspense fallback={null}>
           <group visible={sceneReady}>
-            {store.status === GameStatus.GREETING && <Greeting />}
+            {store.status === GameStatus.GREETING ? <Greeting /> : <PhotoWall type="sphere" />}
             <Decoration />
           </group>
           <Preload all />

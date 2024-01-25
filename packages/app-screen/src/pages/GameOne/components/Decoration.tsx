@@ -8,17 +8,17 @@ import Firework from '@/pages/GameOne/components/Firework.tsx'
 export default function Decoration() {
   return (
     <group name="decoration">
-      <mesh position-z={-10}>
-        <planeGeometry args={[100, 100]} />
+      <mesh position-z={-1000}>
+        <planeGeometry args={[1920, 1080]} />
         <meshBasicMaterial color="#A60513" />
       </mesh>
 
       <MeshPlaneHeightFit
-        position={[0, 0, -2]}
-        height={53}
+        position={[0, 0, -999]}
+        height={1080}
         textureUrl={AssetPaths.bg}
         color="#8A030E"
-        opacity={0.44}
+        opacity={0.3}
       />
 
       <group name="lantern">

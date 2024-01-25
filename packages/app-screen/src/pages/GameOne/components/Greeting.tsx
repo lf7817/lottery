@@ -89,7 +89,7 @@ export default function Greeting() {
         textureImageURL={AssetPaths.particle}
         textureDataURL={AssetPaths.particledata}
       />
-      <Html>
+      <Html name="html1">
         <div {...stylex.props(styles.btn(animationState))} onClick={() => gameStoreAction.doSignIn()}>点击开始</div>
       </Html>
     </group>
