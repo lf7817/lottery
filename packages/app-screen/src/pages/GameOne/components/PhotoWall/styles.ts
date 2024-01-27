@@ -5,7 +5,7 @@ export default stylex.create({
     'width': 140 / 4 * 3,
     'height': 140,
     'color': highlight ? '#C40E17' : '#E6B175',
-    'backgroundColor': highlight ? '#E6B175' : 'rgba(0, 0, 0, 0.3)',
+    'backgroundColor': highlight ? '#E6B175' : 'rgba(0,0,0, 0.3)',
     'overflow': 'hidden',
     'borderRadius': 6,
     'userSelect': 'none',

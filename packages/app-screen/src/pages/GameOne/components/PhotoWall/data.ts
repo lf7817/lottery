@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+import { Object3D } from 'three'
+import Mock from 'mockjs'
 
 /**
  * 2024矩阵
@@ -13,16 +15,11 @@ export const tableMatrix: number[][] = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]
 
-interface ObjectPoint {
-  name: string
-  position: [number, number, number]
-  highlight: boolean
-}
-
 function parseMatrix() {
-  const objects: ObjectPoint[] = []
-  const table: ObjectPoint[] = []
-  const sphere: THREE.Object3D<THREE.Object3DEventMap>[] = []
+  const objects: THREE.Object3D[] = []
+  const table: THREE.Object3D[] = []
+  const sphere: THREE.Object3D[] = []
+  const helix: THREE.Object3D[] = []
 
   // table
   for (let row = 0; row < tableMatrix.length; row++) {
@@ -30,25 +27,23 @@ function parseMatrix() {
       const name = `${row}-${col}`
       const highlight = !!tableMatrix[row][col]
 
-      objects.push({
-        name,
-        highlight,
-        position: [
-          (Math.random() - 0.5) * 64,
-          (Math.random() - 0.5) * 36,
-          (Math.random() - 0.5) * 20,
-        ],
-      })
+      const object = new Object3D()
+      object.name = name
+      object.position.x = (Math.random() - 0.5) * 64
+      object.position.y = (Math.random() - 0.5) * 64
+      object.position.z = (Math.random() - 0.5) * 64
+      object.userData.highlight = highlight
 
-      table.push({
-        name,
-        highlight,
-        position: [
-          3 * (col - Math.floor(tableMatrix[row].length / 2)) * 0.95,
-          -4 * (row - Math.floor(tableMatrix.length / 2)) * 0.95,
-          0,
-        ],
-      })
+      objects.push(object)
+
+      const t = new Object3D()
+      t.name = name
+      t.position.x = 3 * (col - Math.floor(tableMatrix[row].length / 2)) * 0.95
+      t.position.y = -4 * (row - Math.floor(tableMatrix.length / 2)) * 0.931
+      t.position.z = 0
+      t.userData.highlight = highlight
+
+      table.push(t)
     }
   }
 
@@ -68,11 +63,36 @@ function parseMatrix() {
     sphere.push(object)
   }
 
+  // helix
+  for (let i = 0, l = objects.length; i < l; i++) {
+    const theta = i * 0.175 + Math.PI
+    const y = -(i * 0.2) + 12
+
+    const object = new THREE.Object3D()
+    object.name = objects[i].name
+
+    object.position.setFromCylindricalCoords(16, theta, y)
+
+    vector.x = object.position.x * 2
+    vector.y = object.position.y
+    vector.z = object.position.z * 2
+
+    object.lookAt(vector)
+
+    helix.push(object)
+  }
+
   return {
     objects,
     table,
     sphere,
+    helix,
   }
 }
 
 export const data = parseMatrix()
+
+export const people = Array.from({ length: 101 }).fill(0).map(() => ({
+  name: Mock.mock('@cname'),
+  mobile: Mock.mock(/\d{4}/),
+}))

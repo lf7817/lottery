@@ -22,7 +22,7 @@ export default function GameOne() {
         <OrbitControls />
         <Suspense fallback={null}>
           <group visible={sceneReady}>
-            {store.status === GameStatus.GREETING ? <Greeting /> : <PhotoWall type="sphere" />}
+            {store.status === GameStatus.GREETING ? <Greeting /> : <PhotoWall type="table" />}
             <Decoration />
           </group>
           <Preload all />

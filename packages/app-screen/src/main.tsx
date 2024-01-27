@@ -4,6 +4,9 @@ import { RouterProvider } from 'react-router-dom'
 import FullScreenWebContainer from '@lottery/shared/components/FullScreenContainer'
 import { MittProvider } from '@lottery/shared/hooks/useMitt'
 import router from '@/router'
+import { gameStoreAction } from '@/store'
+
+gameStoreAction.initialState()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <FullScreenWebContainer designHeight={1080} designWidth={1920} bodyScale bodyColor="#000">

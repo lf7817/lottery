@@ -1,5 +1,5 @@
 import { SpriteAnimator } from '@react-three/drei'
-import { AssetPaths } from '@/pages/GameOne/config.ts'
+import { AssetPaths } from '@/pages/GameOne/config'
 import MeshPlaneHeightFit from '@/components/Three/MeshPlaneHeightFit.tsx'
 import MeshCircle from '@/components/Three/MeshCircle.tsx'
 import Flower from '@/pages/GameOne/components/Flower.tsx'
