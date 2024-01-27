@@ -2,14 +2,14 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import { Loader, OrbitControls, Preload, Stats } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
+import { gameOneState } from '../store'
 import PhotoWall from './PhotoWall'
 import Decoration from './Decoration.tsx'
 import Greeting from './Greeting.tsx'
 import { GameStatus } from '@/constants'
-import { gameStoreState } from '@/store'
 
 export default function GameOne() {
-  const store = useSnapshot(gameStoreState)
+  const store = useSnapshot(gameOneState)
   const [sceneReady, setSceneReady] = useState(false)
 
   return (

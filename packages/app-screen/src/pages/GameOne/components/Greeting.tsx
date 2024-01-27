@@ -2,8 +2,8 @@ import { Html, SpriteAnimator, useTexture } from '@react-three/drei'
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import * as stylex from '@stylexjs/stylex'
+import { gameOneAction } from '../store'
 import { AssetPaths } from '@/pages/GameOne/config.ts'
-import { gameStoreAction } from '@/store'
 
 const styles = stylex.create({
   btn: (flag: boolean) => ({
@@ -90,7 +90,7 @@ export default function Greeting() {
         textureDataURL={AssetPaths.particledata}
       />
       <Html name="html1">
-        <div {...stylex.props(styles.btn(animationState))} onClick={() => gameStoreAction.doSignIn()}>点击开始</div>
+        <div {...stylex.props(styles.btn(animationState))} onClick={() => gameOneAction.doSignIn()}>点击开始</div>
       </Html>
     </group>
   )

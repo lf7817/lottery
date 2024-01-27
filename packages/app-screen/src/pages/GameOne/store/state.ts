@@ -1,16 +1,16 @@
 import { proxy } from 'valtio'
 import { GameStatus } from '@/constants'
-import { awards } from '@/store/data'
+import { awards } from '@/pages/GameOne/store/data.ts'
 import { Award, Person } from '@/types'
 
-export interface GameStoreState {
+export interface GameOneStoreState {
   status: GameStatus
   awards: Award[]
   people: Person[]
 }
 
 // state
-export const gameStoreState: GameStoreState = proxy<GameStoreState>(
+export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
   {
     status: GameStatus.GREETING,
     awards,

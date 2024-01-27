@@ -1,32 +1,32 @@
 import { subscribe } from 'valtio'
 import { devtools } from 'valtio/utils'
-import { GameStoreState, gameStoreState } from './state'
+import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
 // actions
-export const gameStoreAction = {
+export const gameOneAction = {
   /**
    * 初始化 state
    */
-  initialState() {
+  initialStore() {
     // 启用开发者工具
-    devtools(gameStoreState, { name: 'gameOne', enabled: true })
-    const cacheState: GameStoreState | undefined = JSON.parse(
+    devtools(gameOneState, { name: 'gameOne', enabled: true })
+    const cacheState: GameOneStoreState | undefined = JSON.parse(
       localStorage.getItem(cacheToken)!,
     )
 
     if (cacheState) {
       Object.keys(cacheState).forEach((key) => {
         // @ts-expect-error
-        gameStoreState[key] = cacheState[key]
+        gameOneState[key] = cacheState[key]
       })
     }
 
     // 订阅 state 做持久化
-    subscribe(gameStoreState, () => {
-      localStorage.setItem(cacheToken, JSON.stringify(gameStoreState))
+    subscribe(gameOneState, () => {
+      localStorage.setItem(cacheToken, JSON.stringify(gameOneState))
     })
   },
   /**
@@ -36,12 +36,12 @@ export const gameStoreAction = {
     this.changeStatus(GameStatus.SIGN_IN)
   },
   changeStatus(s: GameStatus) {
-    gameStoreState.status = s
+    gameOneState.status = s
   },
   reset() {
-    gameStoreState.status = GameStatus.GREETING
-    gameStoreState.awards = []
-    gameStoreState.people = []
+    gameOneState.status = GameStatus.GREETING
+    gameOneState.awards = []
+    gameOneState.people = []
     localStorage.removeItem(cacheToken)
   },
 }
