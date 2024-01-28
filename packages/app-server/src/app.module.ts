@@ -1,10 +1,19 @@
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
+import { ConfigModule } from '@nestjs/config'
+import configs from './configs/config'
+import { SignInModule } from './modules/sign-in/sign-in.module'
+import { WxModule } from './modules/wx/wx.module'
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configs],
+      expandVariables: true,
+      envFilePath: ['.env.local'],
+    }),
+    WxModule,
+    SignInModule,
+  ],
 })
 export class AppModule {}

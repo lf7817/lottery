@@ -37,3 +37,5 @@ coverage
 
 *.local
 .turbo
+
+packages/app-server/db/db.json
