@@ -3,8 +3,10 @@ import { stylex } from '@stylexjs/stylex'
 import { useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { useFrame, useThree } from '@react-three/fiber'
-import { data, people } from './data.ts'
+import { useSnapshot } from 'valtio'
+import { data } from './data.ts'
 import styles from './styles.ts'
+import { gameOneState } from '@/pages/GameOne/store'
 
 interface PhotoWallProps {
   type: 'table' | 'sphere' | 'helix'
@@ -12,6 +14,7 @@ interface PhotoWallProps {
 
 export default function PhotoWall(props: PhotoWallProps) {
   const { scene } = useThree()
+  const { people } = useSnapshot(gameOneState)
 
   useLayoutEffect(() => {
     const cards = scene.getObjectByName('cards')

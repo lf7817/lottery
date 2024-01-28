@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import { Object3D } from 'three'
-import Mock from 'mockjs'
 
 /**
  * 2024矩阵
@@ -91,8 +90,3 @@ function parseMatrix() {
 }
 
 export const data = parseMatrix()
-
-export const people = Array.from({ length: 101 }).fill(0).map(() => ({
-  name: Mock.mock('@cname'),
-  mobile: Mock.mock(/\d{4}/),
-}))
