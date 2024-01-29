@@ -12,10 +12,12 @@ export class SignInDto {
   @IsNotEmpty()
   @IsString()
   activityId: string
-}
 
-export class SignInCode2TokenDto {
   @IsNotEmpty()
   @IsString()
-  code: string
+  openid: string
+
+  @IsNotEmpty()
+  @IsString()
+  headimgurl: string
 }
