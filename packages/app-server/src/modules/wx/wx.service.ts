@@ -1,29 +1,47 @@
-import { Inject, Injectable } from '@nestjs/common'
-import { WeChatService } from 'nest-wechat'
-import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager'
+import { Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { HttpService } from '@nestjs/axios'
+import { AxiosResponse } from 'axios'
+import { WechatException } from '../../common/exceptions/wechat.exception'
+import { WxAccessTokenResult, WxUserinfoResult } from './wx.interface'
 
 @Injectable()
 export class WxService {
   constructor(
-    public readonly wx: WeChatService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    public readonly config: ConfigService,
+    private readonly httpService: HttpService,
   ) {}
 
-  async getStableAccessToken(): Promise<string> {
-    const token = await this.cacheManager.get<string>('wx:access_token')
-
-    if (token)
-      return token
-
-    const res = await this.wx.getStableAccessToken()
-
-    if (res.access_token)
-      await this.cacheManager.set('wx:access_token', res.access_token, 6900 * 1000)
-
-    return res.access_token
+  private get appId() {
+    return this.config.get<string>('WECHAT_APPID')
   }
 
-  async code2token(code: string) {
-    console.log(code)
+  private get secret() {
+    return this.config.get<string>('WECHAT_SECRET')
+  }
+
+  public async wxGetUserinfo(openId: string, accessToken: string): Promise<AxiosResponse<WxUserinfoResult>> {
+    const url = `https://api.weixin.qq.com/sns/userinfo?access_token=${accessToken}&openid=${openId}&lang=zh_CN`
+    return this.httpService.axiosRef.get<WxUserinfoResult>(url)
+  }
+
+  public async wxGetAccessTokenByCode(code: string): Promise<AxiosResponse<WxAccessTokenResult>> {
+    const url = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${this.appId}&secret=${this.secret}&code=${code}&grant_type=authorization_code`
+    return this.httpService.axiosRef.get<WxAccessTokenResult>(url)
+  }
+
+  public async getUserInfo(code) {
+    const res = await this.wxGetAccessTokenByCode(code)
+
+    if (!res.data.errcode) {
+      const userinfo = await this.wxGetUserinfo(res.data.openid, res.data.access_token)
+
+      if (!userinfo.data.errcode)
+        return userinfo.data
+
+      throw new WechatException(userinfo.data.errcode, userinfo.data.errmsg)
+    }
+
+    throw new WechatException(res.data.errcode, res.data.errmsg)
   }
 }

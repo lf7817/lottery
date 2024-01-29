@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     if (code) {
-      fetch(`http://localhost:4000/wx/code2token?code=${code}`, {
+      fetch(`http://localhost:4000/wx/userinfo?code=${code}`, {
         method: 'GET',
         mode: 'cors',
         headers: {

@@ -6,8 +6,8 @@ import { WxCode2TokenDto } from './wx.dto'
 export class WxController {
   constructor(private readonly wxService: WxService) {}
 
-  @Get('code2token')
-  async code2token(@Query() query: WxCode2TokenDto) {
-    return this.wxService.code2token(query.code)
+  @Get('userinfo')
+  async getUserAccessToken(@Query() query: WxCode2TokenDto) {
+    return this.wxService.getUserInfo(query.code)
   }
 }

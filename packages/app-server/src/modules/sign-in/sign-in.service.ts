@@ -6,7 +6,6 @@ export class SignInService {
   constructor(private readonly wxService: WxService) {}
 
   async signIn() {
-    const token = await this.wxService.getStableAccessToken()
-    return token
+
   }
 }
