@@ -7,8 +7,8 @@ import { isWechat } from '@/utils'
 
 export default function Auth() {
   const navigate = useNavigate()
-  const { code, activityId } = useRouterParams()
-  const targetUrl = encodeURIComponent(`${window.location.origin}/?activityId=${activityId}#/auth`)
+  const { code } = useRouterParams()
+  const targetUrl = encodeURIComponent(`${window.location.href}`)
 
   useEffect(() => {
     if (localStorage.getItem(CacheToken.USER_INFO)) {
