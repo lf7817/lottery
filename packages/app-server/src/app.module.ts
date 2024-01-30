@@ -6,6 +6,7 @@ import { ServeStaticModule } from '@nestjs/serve-static'
 import configs from './configs/config'
 import { SignInModule } from './modules/sign-in/sign-in.module'
 import { WxModule } from './modules/wx/wx.module'
+import { AppController } from './app.controller'
 
 @Module({
   imports: [
@@ -33,5 +34,6 @@ import { WxModule } from './modules/wx/wx.module'
     WxModule,
     SignInModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
