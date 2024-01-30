@@ -1,5 +1,5 @@
 import { Html } from '@react-three/drei'
-import { stylex } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { useFrame, useThree } from '@react-three/fiber'
