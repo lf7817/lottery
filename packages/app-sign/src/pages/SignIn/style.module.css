@@ -1,3 +1,99 @@
 .wrapper {
+  position: relative;;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: 140px;
+}
 
+.avatar {
+  display: block;
+  width: 280px;
+  height: 280px;
+  border: 8px solid #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: aliceblue;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 540px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50px 50px 50px 50px;
+  padding: 0 54px;
+  box-sizing: border-box;
+}
+
+.item + .item {
+  margin-top: 42px;
+}
+
+.input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 28px;
+  font-weight: 500;
+  color: #760000;
+}
+
+.label {
+  font-size: 28px;
+  font-weight: bold;
+  color: #760000;
+  flex-basis: 100px;
+}
+
+.error {
+  width: 100%;
+  font-size: 24px;
+  color: #eee;
+  margin: 20px 0;
+  text-indent: 165px;
+}
+
+.submit {
+  width: 540px;
+  height: 112px;
+  background: #FFFFFF linear-gradient(to bottom, #F8BD34, #F84B00);
+  border-radius: 56px 56px 56px 56px;
+  opacity: 1;
+  border: none;
+  outline: none;
+  margin-top: 82px;
+}
+
+.success {
+  margin-top: 40px;
+  color: #fff;
+}
+
+.successTitle {
+  text-align: center;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.successDesc {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 32px;
 }

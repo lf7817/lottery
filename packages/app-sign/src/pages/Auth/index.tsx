@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from '@/pages/SignIn/style.module.css'
 import useRouterParams from '@/hooks/useRouterParams.ts'
 import { CacheToken } from '@/contants'
+import { isWechat } from '@/utils'
 
 export default function Auth() {
   const navigate = useNavigate()
@@ -23,6 +24,9 @@ export default function Auth() {
         })
     }
   }, [])
+
+  if (!isWechat())
+    return <div>请使用微信扫一扫</div>
 
   return (
     <div className={styles.wrapper}>

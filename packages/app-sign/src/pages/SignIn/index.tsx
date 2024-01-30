@@ -1,17 +1,57 @@
 import { useForm } from 'react-hook-form'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 import styles from './style.module.css'
 import { isWechat } from '@/utils'
 import { CacheToken } from '@/contants'
 import useRouterParams from '@/hooks/useRouterParams.ts'
+import { UserInfo } from '@/types'
+import PageContainer from '@/components/PageContainer'
+
+interface FormData {
+  username: string
+  mobile: string
+}
+
+const schema = z.object({
+  username: z.string().trim().min(2, { message: '请正确填写名称' }),
+  mobile: z.string().regex(/^1[3-9]\d{9}$/, '请正确填写手机号码'),
+})
 
 export default function SignIn() {
-  const userinfo = useRef(JSON.parse(localStorage.getItem(CacheToken.USER_INFO)!))
-  const lastActivityId = useRef(localStorage.getItem(CacheToken.ACTIVITY_ID)!)
+  const navigate = useNavigate()
+  const userinfo = useRef<UserInfo>(JSON.parse(localStorage.getItem(CacheToken.USER_INFO)!))
+  const [activity, setActivity] = useState<FetchSigninParams>(JSON.parse(localStorage.getItem(CacheToken.ACTIVITY)!))
   const { activityId } = useRouterParams()
-  const { register, handleSubmit } = useForm()
+  const [hasSignin, setSignin] = useState(activity && activity.activityId === activityId)
+  const { register, handleSubmit, formState } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  })
 
-  console.log(activityId, userinfo)
+  useEffect(() => {
+    if (!userinfo.current)
+      navigate({ pathname: '/auth' })
+  }, [])
+
+  async function submit(data: FormData) {
+    const body: FetchSigninParams = {
+      username: data.username,
+      mobile: data.mobile,
+      activityId: activityId!,
+      openid: userinfo.current!.openid,
+      headimgurl: userinfo.current!.headimgurl,
+    }
+
+    fetchSignin(body)
+      .then(res => res.json())
+      .then(() => {
+        localStorage.setItem(CacheToken.ACTIVITY, JSON.stringify(body))
+        setActivity(body)
+        setSignin(true)
+      })
+  }
 
   if (!isWechat())
     return <div>请使用微信扫一扫</div>
@@ -19,26 +59,76 @@ export default function SignIn() {
   if (!activityId)
     return <div>路由参数错误</div>
 
-  if (lastActivityId.current === activityId)
-    return <div>您已经签到过了</div>
+  if (hasSignin && !!activity) {
+    return (
+      <PageContainer>
+        <div className={styles.wrapper}>
+          <div className={styles.avatar} style={{ backgroundImage: `url(${userinfo.current?.headimgurl})` }} />
+          <div className={styles.success}>
+            <div className={styles.successTitle}>{activity.username}</div>
+            <div className={styles.successDesc}>
+              您已成功签到，感谢您的参与！
+              <br />
+              抽奖结果请关注大屏
+            </div>
+          </div>
+        </div>
+      </PageContainer>
+    )
+  }
 
   return (
-    <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit(data => console.log(data))}>
-        <div>
-          <label>姓名:</label>
-          <br />
-          <input {...register('username')} />
-        </div>
+    <PageContainer>
+      <div className={styles.wrapper}>
+        <div className={styles.avatar} style={{ backgroundImage: `url(${userinfo.current?.headimgurl})` }} />
+        <form className={styles.form} onSubmit={handleSubmit(submit)}>
+          <div className={styles.item}>
+            <label className={styles.label}>姓名</label>
+            <input className={styles.input} {...register('username')} />
 
-        <div>
-          <label>手机号:</label>
-          <br />
-          <input {...register('mobile', { required: true })} />
-        </div>
-
-        <button type="submit">提交</button>
-      </form>
-    </div>
+          </div>
+          { formState.errors.username?.message && <div className={styles.error}>{formState.errors.username.message}</div> }
+          <div className={styles.item}>
+            <label className={styles.label}>手机号</label>
+            <input className={styles.input} {...register('mobile')} />
+          </div>
+          { formState.errors.mobile?.message && <div className={styles.error}>{formState.errors.mobile.message}</div> }
+          <button type="submit" className={styles.submit}>提交</button>
+        </form>
+      </div>
+    </PageContainer>
   )
 }
+
+interface FetchSigninParams {
+  username: string
+  mobile: string
+  activityId: string
+  openid: string
+  headimgurl: string
+}
+
+async function fetchSignin(data: FetchSigninParams) {
+  return fetch(`/lottery-api/sign-in`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+}
+
+// function test() {
+//   return Array.from({ length: 1000 }).fill(1).map((_, index) => {
+//     return fetchSignin({
+//       username: `测试${index}`,
+//       mobile: `138${index.toString().padStart(8, '0')}`,
+//       activityId: '5',
+//       openid: index.toString(),
+//       headimgurl: '1',
+//     })
+//   })
+// }
+//
+// window.test = test

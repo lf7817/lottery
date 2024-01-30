@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Get, Post, Query } from '@nestjs/common'
 import { SignInService } from './sign-in.service'
 import { SignInDto } from './sign-in.dto'
 
@@ -9,5 +9,10 @@ export class SignInController {
   @Post()
   async signIn(@Body() body: SignInDto) {
     return await this.signInService.signIn(body)
+  }
+
+  @Get()
+  async getPeopleByActityId(@Query('id') id: string) {
+    return await this.signInService.getPeopleByActityId(id)
   }
 }
