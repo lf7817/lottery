@@ -22,9 +22,9 @@ const schema = z.object({
 
 export default function SignIn() {
   const navigate = useNavigate()
+  const { activityId } = useRouterParams()
   const userinfo = useRef<UserInfo>(JSON.parse(localStorage.getItem(CacheToken.USER_INFO)!))
   const [activity, setActivity] = useState<FetchSigninParams>(JSON.parse(localStorage.getItem(CacheToken.ACTIVITY)!))
-  const { activityId } = useRouterParams()
   const [hasSignin, setSignin] = useState(activity && activity.activityId === activityId)
   const { register, handleSubmit, formState } = useForm<FormData>({
     resolver: zodResolver(schema),

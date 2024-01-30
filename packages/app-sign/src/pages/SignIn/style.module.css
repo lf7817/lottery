@@ -58,7 +58,8 @@
   font-size: 28px;
   font-weight: bold;
   color: #760000;
-  flex-basis: 100px;
+  flex-basis: 120px;
+  white-space: nowrap;
 }
 
 .error {
@@ -78,6 +79,8 @@
   border: none;
   outline: none;
   margin-top: 82px;
+  color: #fff;
+  font-size: 32px;
 }
 
 .success {
