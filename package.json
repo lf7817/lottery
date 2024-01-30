@@ -17,7 +17,8 @@
     "dev:server": "turbo run start:dev --filter=@lottery/server",
     "build:server": "turbo run build --filter=@lottery/server",
     "build": "pnpm run build:screen && pnpm run build:sign && pnpm run build:server",
-    "start": "turbo run start --filter=@lottery/server"
+    "start": "turbo run start --filter=@lottery/server",
+    "deploy": "pnpm run build && pnpm run start"
   },
   "keywords": [],
   "author": "",
