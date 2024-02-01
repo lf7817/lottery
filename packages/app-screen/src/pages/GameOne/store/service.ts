@@ -37,8 +37,8 @@ async function fetchSignin(data: any) {
   })
 }
 
-function test(id: string) {
-  return Array.from({ length: 100 }).fill(1).map((_, index) => {
+function test(id: string, len: number) {
+  return Array.from({ length: len }).fill(1).map((_, index) => {
     return fetchSignin({
       username: mockjs.mock('@cname'),
       mobile: `138${index.toString().padStart(8, '0')}`,

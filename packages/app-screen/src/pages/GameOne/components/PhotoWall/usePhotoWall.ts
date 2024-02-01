@@ -1,5 +1,5 @@
 import { useSnapshot } from 'valtio'
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Group } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { gsap } from 'gsap'
@@ -14,6 +14,10 @@ export default function usePhotoWall() {
   const { status, people } = useSnapshot(gameOneState)
   const { currentAward } = useSnapshot(gameOneDerive)
 
+  useEffect(() => {
+    transformObjects(cards.current!.children, status >= GameStatus.OPENING ? data.sphere : data.table)
+  }, [])
+
   const startGame = () => {
     if (people.length >= 2) {
       gsap.to(cards.current!.rotation, {
@@ -23,6 +27,7 @@ export default function usePhotoWall() {
         ease: 'power1.inOut',
       })
       gameOneAction.changeStatus(GameStatus.OPENING)
+      transformObjects(cards.current!.children, data.sphere)
     }
 
     else
@@ -34,13 +39,6 @@ export default function usePhotoWall() {
     console.log(currentAward)
     gameOneAction.changeStatus(status === GameStatus.DRAWING ? GameStatus.OPENING : GameStatus.DRAWING)
   }
-
-  useLayoutEffect(() => {
-    if (status >= GameStatus.OPENING)
-      transformObjects(cards.current!.children, data.sphere)
-    else
-      transformObjects(cards.current!.children, data.table)
-  }, [status])
 
   useFrame((_, delta) => {
     if (!cards.current)

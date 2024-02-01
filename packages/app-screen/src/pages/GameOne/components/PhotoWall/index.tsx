@@ -6,8 +6,8 @@ import { gameOneAction } from '@/pages/GameOne/store'
 import { commonStyles } from '@/styles/common.ts'
 import { GameStatus } from '@/constants'
 import usePhotoWall from '@/pages/GameOne/components/PhotoWall/usePhotoWall.ts'
-import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 import Awards from '@/pages/GameOne/components/Awards'
+import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 
 export default function PhotoWall() {
   const { draw, startGame, status, cards, people } = usePhotoWall()
@@ -28,39 +28,42 @@ export default function PhotoWall() {
         }
       </group>
 
-      {
-        (status === GameStatus.SIGN_IN || status === GameStatus.WAITING) && (
-          <group>
-            <Html position={[-8, -8, 0]} transform>
-              <div
-                {...stylex.props(commonStyles.button(true))}
-                onClick={() => gameOneAction.changeStatus(status === GameStatus.SIGN_IN ? GameStatus.WAITING : GameStatus.SIGN_IN)}
-              >
-                年会签到
-              </div>
-            </Html>
-            <Html position={[8, -8, 0]} transform>
-              <div {...stylex.props(commonStyles.button(true))} onClick={startGame}>开始抽奖</div>
-            </Html>
-          </group>
-        )
-      }
+      <group>
+        {
+          (status === GameStatus.SIGN_IN || status === GameStatus.WAITING) && (
+            <group>
+              <Html position={[-8, -8, 0]} transform>
+                <div
+                  {...stylex.props(commonStyles.button(true))}
+                  onClick={() => gameOneAction.changeStatus(status === GameStatus.SIGN_IN ? GameStatus.WAITING : GameStatus.SIGN_IN)}
+                >
+                  年会签到
+                </div>
+              </Html>
+              <Html position={[8, -8, 0]} transform>
+                <div {...stylex.props(commonStyles.button(true))} onClick={startGame}>开始抽奖</div>
+              </Html>
+            </group>
+          )
+        }
 
-      {
-        status >= GameStatus.OPENING && (
-          <group>
-            <Html position={[1, -9, 3]} transform>
-              <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={draw}>
-                {status === GameStatus.OPENING ? '抽奖' : '停止'}
-              </div>
-            </Html>
-          </group>
-        )
-      }
+        {
+          status >= GameStatus.OPENING && (
+            <group>
+              <Html position={[1, -9, 3]} transform>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={draw}>
+                  {status === GameStatus.OPENING ? '抽奖' : '停止'}
+                </div>
+              </Html>
+            </group>
+          )
+        }
 
-      { status >= GameStatus.OPENING && <Awards /> }
+        { status >= GameStatus.OPENING && <Awards /> }
 
-      { status === GameStatus.SIGN_IN && <Qrcode /> }
+        { status === GameStatus.SIGN_IN && <Qrcode /> }
+      </group>
+
     </group>
   )
 }

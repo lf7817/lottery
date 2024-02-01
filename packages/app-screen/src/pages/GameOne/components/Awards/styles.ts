@@ -1,7 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 
 export default stylex.create({
-  awards: {},
+  awards: {
+    userSelect: 'none',
+  },
   item: (active: boolean) => ({
     display: 'flex',
     alignItems: 'center',
@@ -20,7 +22,7 @@ export default stylex.create({
     padding: '0 20px',
     boxSizing: 'border-box',
     opacity: active ? 1 : 0.7,
-    boxShadow: active ? '0 0 15px 0 rgba(0, 255, 255, 0.8)' : undefined,
+    boxShadow: active ? '0 0 15px 0 rgba(0, 255, 255, 0.6)' : undefined,
   }),
   image: (url: string) => ({
     width: 90,

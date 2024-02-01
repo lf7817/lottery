@@ -38,7 +38,7 @@ export const gameOneDerive = derive({
       prizeId: firstPrize.id,
       prizeTitle: firstPrize.title,
       image: firstPrize.image,
-      remain: firstPrize.remain ?? firstPrize.total,
+      remain: 0,
       count: first.count,
     }
   },
