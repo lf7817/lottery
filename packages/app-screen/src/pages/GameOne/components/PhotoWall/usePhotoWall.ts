@@ -2,8 +2,9 @@ import { useSnapshot } from 'valtio'
 import { useLayoutEffect, useRef } from 'react'
 import { Group } from 'three'
 import { useFrame } from '@react-three/fiber'
+import { gsap } from 'gsap'
 import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
-import { GameStatus, PhotoWallType } from '@/constants'
+import { GameStatus } from '@/constants'
 import { transformObjects } from '@/utils'
 import { data } from '@/pages/GameOne/components/PhotoWall/data.ts'
 
@@ -13,11 +14,19 @@ export default function usePhotoWall() {
   const { status, people } = useSnapshot(gameOneState)
 
   const startGame = () => {
-    if (people.length >= 2)
+    if (people.length >= 2) {
+      gsap.to(cards.current!.rotation, {
+        y: Math.PI * 2,
+        delay: 1.3,
+        duration: 2.8,
+        ease: 'power1.inOut',
+      })
       gameOneAction.changeStatus(GameStatus.OPENING)
+    }
+
     else
-      // eslint-disable-next-line no-alert
-      alert('人数不足')
+    // eslint-disable-next-line no-alert
+    { alert('人数不足') }
   }
 
   const draw = () => {
@@ -25,8 +34,10 @@ export default function usePhotoWall() {
   }
 
   useLayoutEffect(() => {
-    const type = status < GameStatus.OPENING ? PhotoWallType.TABLE : PhotoWallType.SPHERE
-    transformObjects(cards.current!.children, type === PhotoWallType.TABLE ? data.table : data.sphere)
+    if (status >= GameStatus.OPENING)
+      transformObjects(cards.current!.children, data.sphere)
+    else
+      transformObjects(cards.current!.children, data.table)
   }, [status])
 
   useFrame((_, delta) => {
