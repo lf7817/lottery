@@ -4,34 +4,11 @@ import { gsap } from 'gsap'
 import * as stylex from '@stylexjs/stylex'
 import { gameOneAction } from '../store'
 import { AssetPaths } from '@/pages/GameOne/config.ts'
-
-const styles = stylex.create({
-  btn: (flag: boolean) => ({
-    'display': 'flex',
-    'justifyContent': 'center',
-    'alignItems': 'center',
-    'width': 160,
-    'height': 60,
-    'marginLeft': -80,
-    'color': 'yellow',
-    'fontSize': 24,
-    'fontWeight': 'bold',
-    'background': 'rgba(74,222,215, 0.6)',
-    'border': '2px solid rgb(74,222,215)',
-    'cursor': 'pointer',
-    'userSelect': 'none',
-    'transition': 'opacity 0.5s ease-in-out',
-    'transform': 'translateY(300px)',
-    'opacity': flag ? 1 : 0,
-    'borderRadius': 10,
-    ':hover': {
-      background: 'rgba(74,222,215, 0.8)',
-    },
-  }),
-})
+import { commonStyles } from '@/styles/common.ts'
+import { GameStatus } from '@/constants'
 
 export default function Greeting() {
-  const [animationState, setAnimationState] = useState(false)
+  const [opacity, setOpacity] = useState(false)
   const title = useRef<THREE.Mesh>(null)
   const [play, setPlay] = useState(false)
   const texture = useTexture(AssetPaths.greeting)
@@ -85,12 +62,12 @@ export default function Greeting() {
         loop={false}
         play={play}
         alphaTest={0.01}
-        onEnd={() => setAnimationState(true)}
+        onEnd={() => setOpacity(true)}
         textureImageURL={AssetPaths.particle}
         textureDataURL={AssetPaths.particledata}
       />
-      <Html name="html1">
-        <div {...stylex.props(styles.btn(animationState))} onClick={() => gameOneAction.doSignIn()}>点击开始</div>
+      <Html name="html1" position={[1.19, -4, opacity ? 0 : 100]} transform>
+        <div {...stylex.props(commonStyles.button(opacity))} onClick={() => gameOneAction.changeStatus(GameStatus.WAITING)}>点击开始</div>
       </Html>
     </group>
   )

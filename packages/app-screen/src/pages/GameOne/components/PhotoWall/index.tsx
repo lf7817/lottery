@@ -1,107 +1,61 @@
 import { Html } from '@react-three/drei'
 import * as stylex from '@stylexjs/stylex'
-import { useLayoutEffect } from 'react'
-import { gsap } from 'gsap'
-import { useFrame, useThree } from '@react-three/fiber'
-import { useSnapshot } from 'valtio'
 import { data } from './data.ts'
 import styles from './styles.ts'
-import { gameOneState } from '@/pages/GameOne/store'
+import { gameOneAction } from '@/pages/GameOne/store'
+import { commonStyles } from '@/styles/common.ts'
+import { GameStatus } from '@/constants'
+import usePhotoWall from '@/pages/GameOne/components/PhotoWall/usePhotoWall.ts'
+import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 
-interface PhotoWallProps {
-  type: 'table' | 'sphere' | 'helix'
-}
-
-export default function PhotoWall(props: PhotoWallProps) {
-  const { scene } = useThree()
-  const { people } = useSnapshot(gameOneState)
-
-  useLayoutEffect(() => {
-    const cards = scene.getObjectByName('cards')
-
-    cards?.children.forEach((card) => {
-      if (props.type === 'table') {
-        const object = data.table.find(item => item.name === card.name)!
-
-        gsap.to(card.position, {
-          x: object.position.x,
-          y: object.position.y,
-          z: object.position.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-
-        gsap.to(card.rotation, {
-          x: object.rotation.x,
-          y: object.rotation.y,
-          z: object.rotation.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-      } else if (props.type === 'sphere') {
-        const target = data.sphere.find(item => item.name === card.name)!
-
-        gsap.to(card.position, {
-          x: target.position.x,
-          y: target.position.y,
-          z: target.position.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-
-        gsap.to(card.rotation, {
-          x: target.rotation.x,
-          y: target.rotation.y,
-          z: target.rotation.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-      } else if (props.type === 'helix') {
-        const target = data.helix.find(item => item.name === card.name)!
-
-        gsap.to(card.position, {
-          x: target.position.x,
-          y: target.position.y,
-          z: target.position.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-
-        gsap.to(card.rotation, {
-          x: target.rotation.x,
-          y: target.rotation.y,
-          z: target.rotation.z,
-          duration: Math.random() + 1,
-          delay: Math.random() * 2,
-          ease: 'power2.inOut',
-        })
-      }
-    })
-  }, [props.type, scene])
-
-  useFrame(() => {
-    // const cards = scene.getObjectByName('cards')!
-
-    // cards.rotation.y += 0.04
-  })
+export default function PhotoWall() {
+  const { draw, startGame, status, cards, people } = usePhotoWall()
 
   return (
-    <group name="cards" position-z={-4}>
+    <group>
+      <group ref={cards} name="cards" position-z={-4}>
+        {
+          data.objects.map((item, index) => (
+            <Html key={item.name} name={item.name} position={item.position} transform>
+              <div {...stylex.props(styles.card(status < GameStatus.OPENING ? item.userData.highlight : false))}>
+                <div {...stylex.props(styles.mobile)}>{people[index]?.mobile ?? '--'}</div>
+                <div {...stylex.props(styles.name)}>{people[index]?.name ?? '待加入'}</div>
+              </div>
+            </Html>
+          ))
+        }
+      </group>
       {
-        data.objects.map((item, index) => (
-          <Html key={item.name} name={item.name} position={item.position} transform>
-            <div {...stylex.props(styles.card(props.type === 'table' ? item.userData.highlight : false))}>
-              <div {...stylex.props(styles.mobile)}>{people[index]?.mobile ?? '--'}</div>
-              <div {...stylex.props(styles.name)}>{people[index]?.name ?? '待加入'}</div>
-            </div>
-          </Html>
-        ))
+        (status === GameStatus.SIGN_IN || status === GameStatus.WAITING) && (
+          <group>
+            <Html position={[-8, -8, 0]} transform>
+              <div
+                {...stylex.props(commonStyles.button(true))}
+                onClick={() => gameOneAction.changeStatus(status === GameStatus.SIGN_IN ? GameStatus.WAITING : GameStatus.SIGN_IN)}
+              >
+                年会签到
+              </div>
+            </Html>
+            <Html position={[8, -8, 0]} transform>
+              <div {...stylex.props(commonStyles.button(true))} onClick={startGame}>开始抽奖</div>
+            </Html>
+          </group>
+        )
       }
+
+      {
+        status >= GameStatus.OPENING && (
+          <group>
+            <Html position={[1, -9, 3]} transform>
+              <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={draw}>
+                {status === GameStatus.OPENING ? '抽奖' : '停止'}
+              </div>
+            </Html>
+          </group>
+        )
+      }
+
+      { status === GameStatus.SIGN_IN && <Qrcode /> }
     </group>
   )
 }

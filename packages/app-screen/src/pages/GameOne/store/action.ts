@@ -29,19 +29,17 @@ export const gameOneAction = {
       localStorage.setItem(cacheToken, JSON.stringify(gameOneState))
     })
   },
-  /**
-   * 签到
-   */
-  doSignIn() {
-    this.changeStatus(GameStatus.SIGN_IN)
-  },
-  changeStatus(s: GameStatus) {
-    gameOneState.status = s
-  },
   reset() {
     gameOneState.status = GameStatus.GREETING
     gameOneState.awards = []
     gameOneState.people = []
     localStorage.removeItem(cacheToken)
+  },
+  changeStatus(s: GameStatus) {
+    gameOneState.status = s
+  },
+  generateQRcode(isNew?: boolean) {
+    if (isNew || !gameOneState.qrcode)
+      gameOneState.qrcode = new Date().getTime().toString()
   },
 }

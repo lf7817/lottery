@@ -8,6 +8,7 @@ export interface GameOneStoreState {
   status: GameStatus
   awards: Award[]
   people: Person[]
+  qrcode?: string
 }
 
 // state

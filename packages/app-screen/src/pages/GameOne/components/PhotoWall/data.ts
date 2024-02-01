@@ -70,7 +70,7 @@ function parseMatrix() {
     const object = new THREE.Object3D()
     object.name = objects[i].name
 
-    object.position.setFromCylindricalCoords(16, theta, y)
+    object.position.setFromCylindricalCoords(14, theta, y)
 
     vector.x = object.position.x * 2
     vector.y = object.position.y

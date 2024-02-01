@@ -82,7 +82,7 @@ function generateRandomPoint(params: GenerateRandomPointParams): Omit<RandomPoin
     ],
     scale: {
       initialValue: 0,
-      maxValue: (1 - Math.random() * 0.5) * 3,
+      maxValue: (1 - Math.random() * 0.5) * 4,
       delta: 0.04,
     },
   }
