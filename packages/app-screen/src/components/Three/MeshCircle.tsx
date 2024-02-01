@@ -18,9 +18,13 @@ export default function MeshCircle(props: MeshCircleProps) {
   const ref = useRef<Mesh>(null)
   const texture = useTexture(props.textureUrl)
 
-  useFrame(() => {
+  useFrame((_, delta) => {
+    const targetDelta = 0.016
+    const resultDelta = delta / targetDelta
+
     if (props.spin && ref.current)
-      ref.current.rotation.z += props.spin
+      // ref.current.rotation.z += props.spin
+      ref.current.rotation.z += -resultDelta * props.spin
   })
 
   return (

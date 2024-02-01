@@ -30,17 +30,19 @@ export default function usePhotoWall() {
   }, [status])
 
   useFrame((_, delta) => {
-    // const fps = Math.round(1 / delta)
-
     if (!cards.current)
       return
 
+    const targetDelta = 0.0166667
+    const deltaRatio = delta / targetDelta
+    const resultRatio = delta * deltaRatio
+
     if (status === GameStatus.DRAWING) {
       if (elapsedTime.current < 10)
-        elapsedTime.current += delta
+        elapsedTime.current += resultRatio
     } else if (status === GameStatus.OPENING) {
       if (elapsedTime.current > 0)
-        elapsedTime.current = Math.max(elapsedTime.current - delta * 4, 0)
+        elapsedTime.current = Math.max(elapsedTime.current - resultRatio * 4, 0)
     }
 
     cards.current.rotation.y += elapsedTime.current * 0.01

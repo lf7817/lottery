@@ -26,9 +26,12 @@ export default function MeshPlaneHeightFit(props: PlaneHeightFitProps) {
   texture.repeat.set(repeat, 1)
   texture.offset.y = props.textureOffsetY || 0
 
-  useFrame(() => {
+  useFrame((_, delta) => {
+    const targetDelta = 0.016
+    const resultDelta = delta / targetDelta
+
     if (props.speed)
-      texture.offset.x += props.speed
+      texture.offset.x += resultDelta * 0.0004
   })
 
   return (

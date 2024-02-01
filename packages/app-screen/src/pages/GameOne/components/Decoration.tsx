@@ -88,35 +88,35 @@ export default function Decoration() {
           textureUrl={AssetPaths.papercut1}
           position={[0, 29, 0]}
           radius={15}
-          spin={-0.001}
+          spin={0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut2}
           position={[-16, 30.5, 0.1]}
           radius={14}
-          spin={-0.001}
+          spin={0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut2}
           position={[16, 30.5, 0.1]}
           radius={14}
-          spin={-0.001}
+          spin={0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut1}
           position={[-36, 26, 0.2]}
           radius={14.4}
-          spin={-0.001}
+          spin={0.001}
         />
 
         <MeshCircle
           textureUrl={AssetPaths.papercut1}
           position={[36, 26, 0.2]}
           radius={14.4}
-          spin={-0.001}
+          spin={0.001}
         />
       </group>
 
