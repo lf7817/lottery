@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { Group } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { gsap } from 'gsap'
-import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
+import { gameOneAction, gameOneDerive, gameOneState } from '@/pages/GameOne/store'
 import { GameStatus } from '@/constants'
 import { transformObjects } from '@/utils'
 import { data } from '@/pages/GameOne/components/PhotoWall/data.ts'
@@ -12,6 +12,7 @@ export default function usePhotoWall() {
   const elapsedTime = useRef(0)
   const cards = useRef<Group>(null)
   const { status, people } = useSnapshot(gameOneState)
+  const { currentAward } = useSnapshot(gameOneDerive)
 
   const startGame = () => {
     if (people.length >= 2) {
@@ -30,6 +31,7 @@ export default function usePhotoWall() {
   }
 
   const draw = () => {
+    console.log(currentAward)
     gameOneAction.changeStatus(status === GameStatus.DRAWING ? GameStatus.OPENING : GameStatus.DRAWING)
   }
 

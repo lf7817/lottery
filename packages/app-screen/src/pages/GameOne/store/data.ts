@@ -9,7 +9,7 @@ export const awards: Award[] = [
     prize: [
       {
         id: '0_0',
-        title: '华为MatePad 11',
+        title: '华为HUAWEI MatePad 11 2023款',
         total: 1,
         image: mockjs.Random.image('200x200'),
       },
@@ -35,7 +35,7 @@ export const awards: Award[] = [
     prize: [
       {
         id: '3_0',
-        title: '小熊料理锅',
+        title: '小熊（Bear）折叠多功能料理锅',
         total: 2,
         image: mockjs.Random.image('200x200'),
       },
@@ -48,7 +48,7 @@ export const awards: Award[] = [
     prize: [
       {
         id: '4_0',
-        title: '九阳破壁机',
+        title: '九阳（Joyoung）破壁机',
         total: 3,
         image: mockjs.Random.image('200x200'),
       },
@@ -57,7 +57,7 @@ export const awards: Award[] = [
   {
     id: '4',
     title: '幸运奖',
-    count: 1,
+    count: 10,
     prize: [
       {
         id: '5_0',

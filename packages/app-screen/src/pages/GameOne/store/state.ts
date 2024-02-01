@@ -8,7 +8,6 @@ export interface GameOneStoreState {
   awards: Award[]
   people: Person[]
   qrcode?: string
-  currentAwardId?: string
 }
 
 // state
@@ -23,6 +22,5 @@ export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
       })),
     })),
     people: [],
-    currentAwardId: awards[awards.length - 1].id,
   },
 )

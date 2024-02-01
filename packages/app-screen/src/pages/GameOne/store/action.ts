@@ -46,4 +46,10 @@ export const gameOneAction = {
   updatePeople(people: Person[]) {
     gameOneState.people = people
   },
+  startDraw() {
+    gameOneState.status = GameStatus.DRAWING
+  },
+  stopDraw() {
+    gameOneState.status = GameStatus.OPENING
+  },
 }

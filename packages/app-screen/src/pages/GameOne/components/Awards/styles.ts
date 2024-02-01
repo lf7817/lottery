@@ -20,6 +20,7 @@ export default stylex.create({
     padding: '0 20px',
     boxSizing: 'border-box',
     opacity: active ? 1 : 0.7,
+    boxShadow: active ? '0 0 15px 0 rgba(0, 255, 255, 0.8)' : undefined,
   }),
   image: (url: string) => ({
     width: 90,
@@ -43,5 +44,12 @@ export default stylex.create({
     fontSize: 24,
     fontWeight: 500,
   },
-  progress: {},
+  count: {
+    color: '#fff',
+    marginLeft: 10,
+  },
+  prize: {
+    marginTop: 4,
+    color: 'rgba(255,255,0, .9)',
+  },
 })
