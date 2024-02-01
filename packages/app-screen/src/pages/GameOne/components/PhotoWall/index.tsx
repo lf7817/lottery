@@ -7,6 +7,7 @@ import { commonStyles } from '@/styles/common.ts'
 import { GameStatus } from '@/constants'
 import usePhotoWall from '@/pages/GameOne/components/PhotoWall/usePhotoWall.ts'
 import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
+import Awards from '@/pages/GameOne/components/Awards'
 
 export default function PhotoWall() {
   const { draw, startGame, status, cards, people } = usePhotoWall()
@@ -26,6 +27,7 @@ export default function PhotoWall() {
           ))
         }
       </group>
+
       {
         (status === GameStatus.SIGN_IN || status === GameStatus.WAITING) && (
           <group>
@@ -55,6 +57,8 @@ export default function PhotoWall() {
           </group>
         )
       }
+
+      { status >= GameStatus.OPENING && <Awards /> }
 
       { status === GameStatus.SIGN_IN && <Qrcode /> }
     </group>

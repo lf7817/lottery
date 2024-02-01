@@ -8,19 +8,21 @@ export interface GameOneStoreState {
   awards: Award[]
   people: Person[]
   qrcode?: string
+  currentAwardId?: string
 }
 
 // state
 export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
   {
     status: GameStatus.GREETING,
-    awards,
+    awards: awards.map(award => ({
+      ...award,
+      prize: award.prize.map(prize => ({
+        ...prize,
+        remain: prize.remain ?? prize.total,
+      })),
+    })),
     people: [],
-    // people: Array.from({ length: 101 }).fill(0).map(() => ({
-    //   username: Mock.mock('@cname'),
-    //   mobile: Mock.mock(/\d{4}/),
-    //   openid: Mock.mock(/\d{4}/),
-    //   headimgurl: Mock.mock('@image'),
-    // })),
+    currentAwardId: awards[awards.length - 1].id,
   },
 )
