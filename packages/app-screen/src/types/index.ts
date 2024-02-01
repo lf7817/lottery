@@ -10,14 +10,9 @@ export interface Award {
   prize: Prize[]
 }
 
-interface PersonAward {
-
-}
-
 export interface Person {
-  name: string
+  username: string
   mobile: string
-  openId?: string
-  avatar?: string
-  award?: PersonAward
+  openid: string
+  headimgurl: string
 }

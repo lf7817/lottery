@@ -4,7 +4,9 @@ import { QRCodeSVG } from 'qrcode.react'
 import * as stylex from '@stylexjs/stylex'
 import { useSnapshot } from 'valtio'
 import { Group } from 'three'
+import { useRequest } from 'ahooks'
 import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
+import { fetchUserList } from '@/pages/GameOne/store/service.ts'
 
 const styles = stylex.create({
   qrcode: {
@@ -39,7 +41,9 @@ const styles = stylex.create({
 export default function Qrcode() {
   const ref = useRef<Group>(null)
   const { qrcode } = useSnapshot(gameOneState)
-  const url = `http://192.168.107.89:4000/sign?activityId=${qrcode}`
+  console.log(qrcode)
+  const url = `http://192.168.107.7:4000/sign?activityId=${qrcode}`
+  useRequest(() => fetchUserList(qrcode), { refreshDeps: [qrcode], pollingInterval: 1000 })
 
   useLayoutEffect(() => {
     gameOneAction.generateQRcode()

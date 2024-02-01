@@ -2,6 +2,7 @@ import { subscribe } from 'valtio'
 import { devtools } from 'valtio/utils'
 import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
+import { Person } from '@/types'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -41,5 +42,8 @@ export const gameOneAction = {
   generateQRcode(isNew?: boolean) {
     if (isNew || !gameOneState.qrcode)
       gameOneState.qrcode = new Date().getTime().toString()
+  },
+  updatePeople(people: Person[]) {
+    gameOneState.people = people
   },
 }

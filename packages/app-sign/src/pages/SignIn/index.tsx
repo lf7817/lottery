@@ -118,17 +118,3 @@ async function fetchSignin(data: FetchSigninParams) {
     body: JSON.stringify(data),
   })
 }
-
-// function test() {
-//   return Array.from({ length: 1000 }).fill(1).map((_, index) => {
-//     return fetchSignin({
-//       username: `测试${index}`,
-//       mobile: `138${index.toString().padStart(8, '0')}`,
-//       activityId: '5',
-//       openid: index.toString(),
-//       headimgurl: '1',
-//     })
-//   })
-// }
-//
-// window.test = test

@@ -10,6 +10,13 @@ export default defineConfig({
     cors: true,
     host: '127.0.0.1',
     port: 4173,
+    proxy: {
+      '/lottery-api': {
+        target: 'http://localhost:4000/lottery-api',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/lottery-api/, ''),
+      },
+    },
   },
   plugins: [react(), stylexPlugin()],
   resolve: {

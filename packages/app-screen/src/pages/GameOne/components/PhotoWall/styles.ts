@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 
 export default stylex.create({
   card: (highlight: boolean) => ({
+    'position': 'relative',
     'width': 140 / 4 * 3,
     'height': 140,
     'color': highlight ? '#C40E17' : '#E6B175',
@@ -33,4 +34,16 @@ export default stylex.create({
     background: 'rgba(249, 192, 94, 0.7)',
     boxShadow: '0 0 20px 10px rgba(0,0,0,0.2)',
   },
+  avatar: url => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    // zIndex: -1,
+    backgroundImage: `url(${url})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+
+  }),
 })

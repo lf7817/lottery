@@ -18,8 +18,9 @@ export default function PhotoWall() {
           data.objects.map((item, index) => (
             <Html key={item.name} name={item.name} position={item.position} transform>
               <div {...stylex.props(styles.card(status < GameStatus.OPENING ? item.userData.highlight : false))}>
-                <div {...stylex.props(styles.mobile)}>{people[index]?.mobile ?? '--'}</div>
-                <div {...stylex.props(styles.name)}>{people[index]?.name ?? '待加入'}</div>
+                {!!people[index]?.headimgurl && <div {...stylex.props(styles.avatar(people[index]?.headimgurl))} />}
+                <div {...stylex.props(styles.mobile)}>{people[index]?.mobile?.slice(7) ?? '--'}</div>
+                <div {...stylex.props(styles.name)}>{people[index]?.username ?? '待加入'}</div>
               </div>
             </Html>
           ))
