@@ -3,6 +3,7 @@ import { devtools } from 'valtio/utils'
 import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 import { Person } from '@/types'
+import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -51,5 +52,37 @@ export const gameOneAction = {
   },
   stopDraw() {
     gameOneState.status = GameStatus.OPENING
+  },
+  getRandomPeople() {
+    const currentAward = gameOneDerive.currentAward
+    if (currentAward.remain === 0)
+      return
+
+    const arr = gameOneState.people.filter(person => !person.awardId).map(person => ({ ...person }))
+    if (arr.length === 0)
+      return
+
+    const len = Math.min(currentAward.remain, currentAward.count)
+
+    const newArr: Person[] = [] // 组成的新数组初始化
+    for (let i = 0; i < len; i++) {
+      const index = Math.floor(Math.random() * arr.length)
+      const item = arr[index]
+      newArr.push(item)
+      arr.splice(index, 1)
+    }
+
+    newArr.forEach((item) => {
+      const p = gameOneState.people.find(person => person.openid === item?.openid)
+
+      if (p) {
+        p.awardId = currentAward.awardId
+        p.prizeId = currentAward.prizeId
+      }
+    })
+
+    gameOneState.awards.find(item => item.id === currentAward.awardId)!.prize.find(item => item.id === currentAward.prizeId)!.remain! -= len
+
+    return newArr.reverse()
   },
 }

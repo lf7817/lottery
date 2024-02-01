@@ -34,7 +34,7 @@ export const awards: Award[] = [
     count: 1,
     prize: [
       {
-        id: '3_0',
+        id: '2_0',
         title: '小熊（Bear）折叠多功能料理锅',
         total: 2,
         image: mockjs.Random.image('200x200'),
@@ -47,7 +47,7 @@ export const awards: Award[] = [
     count: 1,
     prize: [
       {
-        id: '4_0',
+        id: '3_0',
         title: '九阳（Joyoung）破壁机',
         total: 3,
         image: mockjs.Random.image('200x200'),
@@ -60,19 +60,19 @@ export const awards: Award[] = [
     count: 10,
     prize: [
       {
-        id: '5_0',
+        id: '4_0',
         title: '颈椎按摩仪',
         total: 10,
         image: mockjs.Random.image('200x200'),
       },
       {
-        id: '5_1',
+        id: '4_1',
         title: '移动电源',
         total: 10,
         image: mockjs.Random.image('200x200'),
       },
       {
-        id: '5_2',
+        id: '4_2',
         title: '电热水杯',
         total: 10,
         image: mockjs.Random.image('200x200'),

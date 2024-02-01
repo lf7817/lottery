@@ -36,8 +36,16 @@ export default function usePhotoWall() {
   }
 
   const draw = () => {
-    console.log(currentAward)
-    gameOneAction.changeStatus(status === GameStatus.DRAWING ? GameStatus.OPENING : GameStatus.DRAWING)
+    if (status === GameStatus.OPENING) {
+      if (currentAward.remain === 0)
+        // eslint-disable-next-line no-alert
+        alert('奖品已抽完')
+      else
+        gameOneAction.changeStatus(GameStatus.DRAWING)
+    } else if (status === GameStatus.DRAWING) {
+      gameOneAction.getRandomPeople()
+      gameOneAction.changeStatus(GameStatus.OPENING)
+    }
   }
 
   useFrame((_, delta) => {

@@ -34,27 +34,3 @@ export function transformObjects(objects: Object3D[], targets: Object3D[]) {
     })
   }))
 }
-
-//
-// objects.forEach((card) => {
-//   const object = targets.find(item => item.name === card.name)!
-//
-//   gsap.to(card.position, {
-//     x: object.position.x,
-//     y: object.position.y,
-//     z: object.position.z,
-//     duration: Math.random() * 2 + 1,
-//     delay: Math.random() * 2,
-//     ease: 'power1.inOut',
-//   })
-//
-//   gsap.to(card.rotation, {
-//     x: object.rotation.x,
-//     y: object.rotation.y,
-//     z: object.rotation.z,
-//     duration: Math.random() * 2 + 1,
-//     delay: Math.random() * 2,
-//     ease: 'power1.inOut',
-//   })
-// })
-// }

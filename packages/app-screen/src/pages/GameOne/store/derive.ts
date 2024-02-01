@@ -8,10 +8,11 @@ export const gameOneDerive = derive({
 
     let award: Award | undefined
     let prize: Prize | undefined
+    let lastAwardId: string | undefined
 
     for (let i = awards.length - 1; i >= 0; i--) {
       award = awards[i]
-      prize = award.prize.find(p => (p.remain ?? p.total) > 0)
+      prize = award.prize.find(p => p.remain! > 0)
 
       if (prize)
         break
@@ -26,6 +27,7 @@ export const gameOneDerive = derive({
         image: prize.image,
         remain: prize.remain ?? prize.total,
         count: award.count,
+        lastAwardId: lastAwardId ?? award.id,
       }
     }
 
@@ -40,6 +42,7 @@ export const gameOneDerive = derive({
       image: firstPrize.image,
       remain: 0,
       count: first.count,
+      lastAwardId: first.id,
     }
   },
 })

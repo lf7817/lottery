@@ -12,6 +12,8 @@ export default function GameOne() {
   const store = useSnapshot(gameOneState)
   const [sceneReady, setSceneReady] = useState(false)
 
+  console.log(store.people.filter(item => !!item.awardId))
+
   return (
     <>
       <Canvas

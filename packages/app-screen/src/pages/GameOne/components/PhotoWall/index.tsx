@@ -8,6 +8,7 @@ import { GameStatus } from '@/constants'
 import usePhotoWall from '@/pages/GameOne/components/PhotoWall/usePhotoWall.ts'
 import Awards from '@/pages/GameOne/components/Awards'
 import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
+import Card from '@/pages/GameOne/components/PhotoWall/Card.tsx'
 
 export default function PhotoWall() {
   const { draw, startGame, status, cards, people } = usePhotoWall()
@@ -18,11 +19,7 @@ export default function PhotoWall() {
         {
           data.objects.map((item, index) => (
             <Html key={item.name} name={item.name} position={item.position} transform>
-              <div {...stylex.props(styles.card(status < GameStatus.OPENING ? item.userData.highlight : false))}>
-                {!!people[index]?.headimgurl && <div {...stylex.props(styles.avatar(people[index]?.headimgurl))} />}
-                <div {...stylex.props(styles.mobile)}>{people[index]?.mobile?.slice(7) ?? '--'}</div>
-                <div {...stylex.props(styles.name)}>{people[index]?.username ?? '待加入'}</div>
-              </div>
+              <Card person={people[index]} highlight={status < GameStatus.OPENING ? item.userData.highlight : false} />
             </Html>
           ))
         }
