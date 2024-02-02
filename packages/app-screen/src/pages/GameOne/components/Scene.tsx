@@ -3,10 +3,10 @@ import { Suspense, useState } from 'react'
 import { Loader, OrbitControls, Preload, Stats } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
 import { gameOneState } from '../store'
-import PhotoWall from './PhotoWall'
 import Decoration from './Decoration.tsx'
 import Greeting from './Greeting.tsx'
 import { GameStatus } from '@/constants'
+import PhotoWall from '@/pages/GameOne/components/PhotoWall'
 
 export default function GameOne() {
   const store = useSnapshot(gameOneState)
@@ -23,7 +23,8 @@ export default function GameOne() {
         <Suspense fallback={null}>
           <group visible={sceneReady}>
             <Decoration />
-            {store.status === GameStatus.GREETING ? <Greeting /> : <PhotoWall />}
+            {store.status === GameStatus.GREETING && <Greeting /> }
+            { store.status > GameStatus.GREETING && store.status < GameStatus.AWARD && <PhotoWall />}
           </group>
           <Preload all />
         </Suspense>
