@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 import { toast } from 'react-toastify'
 import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
 import { GameStatus } from '@/constants'
-import { transformObjects } from '@/utils'
+import { celebrateFireworks, transformObjects } from '@/utils'
 import { data } from '@/pages/GameOne/components/PhotoWall/data.ts'
 
 export default function usePhotoWall() {
@@ -39,7 +39,12 @@ export default function usePhotoWall() {
    * 抽奖&停止
    */
   const draw = () => {
-    gameOneAction.draw()
+    const winners = gameOneAction.draw()
+
+    if (winners) {
+      // 把中奖者放到前面
+      celebrateFireworks()
+    }
   }
 
   useFrame((_, delta) => {

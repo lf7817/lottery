@@ -1,5 +1,6 @@
 import { Object3D } from 'three'
 import { gsap } from 'gsap'
+import confetti from 'canvas-confetti'
 
 export function getAssetPath(filePath: string) {
   return `${import.meta.env.BASE_URL}${filePath}`
@@ -33,4 +34,55 @@ export function transformObjects(objects: Object3D[], targets: Object3D[]) {
       })
     })
   }))
+}
+
+export async function celebrateFireworks() {
+  const myCanvas = document.createElement('canvas')
+  myCanvas.width = 1920
+  myCanvas.height = 1080
+  myCanvas.style.position = 'absolute'
+  myCanvas.style.top = '0px'
+  myCanvas.style.left = '0px'
+  myCanvas.style.right = '0px'
+  myCanvas.style.bottom = '0px'
+  myCanvas.style.zIndex = '10000000'
+  myCanvas.style.pointerEvents = 'none'
+
+  document.getElementById('root')?.appendChild(myCanvas)
+
+  const myConfetti = confetti.create(myCanvas, {
+    useWorker: true,
+  })
+
+  const end = Date.now() + (4 * 1000)
+  // go Buckeyes!
+  const colors = ['#FFFF00', '#FFA500']
+
+  await new Promise((resolve) => {
+    (function frame() {
+      myConfetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors,
+        scalar: 1.4,
+      })
+      myConfetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors,
+        scalar: 1.4,
+      })
+
+      if (Date.now() < end)
+        requestAnimationFrame(frame)
+      else
+        setTimeout(resolve, 5000)
+    }())
+  })
+
+  document.getElementById('root')?.removeChild(myCanvas)
 }

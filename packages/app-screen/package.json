@@ -19,6 +19,7 @@
     "@stylexjs/stylex": "^0.5.1",
     "@types/three": "^0.160.0",
     "ahooks": "^3.7.9",
+    "canvas-confetti": "^1.9.2",
     "gsap": "^3.12.4",
     "mockjs": "^1.1.0",
     "qrcode.react": "^3.1.0",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@stylexjs/rollup-plugin": "^0.5.1",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/mockjs": "^1.0.10",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",

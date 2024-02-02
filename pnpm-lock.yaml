@@ -65,6 +65,9 @@ importers:
       ahooks:
         specifier: ^3.7.9
         version: 3.7.9(react@18.2.0)
+      canvas-confetti:
+        specifier: ^1.9.2
+        version: 1.9.2
       gsap:
         specifier: ^3.12.4
         version: 3.12.4
@@ -96,6 +99,9 @@ importers:
       '@stylexjs/rollup-plugin':
         specifier: ^0.5.1
         version: 0.5.1
+      '@types/canvas-confetti':
+        specifier: ^1.6.4
+        version: 1.6.4
       '@types/mockjs':
         specifier: ^1.0.10
         version: 1.0.10
@@ -2300,6 +2306,10 @@ packages:
       '@types/node': 20.11.3
     dev: true
 
+  /@types/canvas-confetti@1.6.4:
+    resolution: {integrity: sha512-fNyZ/Fdw/Y92X0vv7B+BD6ysHL4xVU5dJcgzgxLdGbn8O3PezZNIJpml44lKM0nsGur+o/6+NZbZeNTt00U1uA==}
+    dev: true
+
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
@@ -3448,6 +3458,10 @@ packages:
   /caniuse-lite@1.0.30001577:
     resolution: {integrity: sha512-rs2ZygrG1PNXMfmncM0B5H1hndY5ZCC9b5TkFaVNfZ+AUlyqcMyVIQtc3fsezi0NUCk5XZfDf9WS6WxMxnfdrg==}
     dev: true
+
+  /canvas-confetti@1.9.2:
+    resolution: {integrity: sha512-6Xi7aHHzKwxZsem4mCKoqP6YwUG3HamaHHAlz1hTNQPCqXhARFpSXnkC9TWlahHY5CG6hSL5XexNjxK8irVErg==}
+    dev: false
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
