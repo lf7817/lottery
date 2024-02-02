@@ -1,6 +1,6 @@
 import { useSnapshot } from 'valtio'
 import { useEffect, useRef } from 'react'
-import { Group } from 'three'
+import { Group, Object3D } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { gsap } from 'gsap'
 import { toast } from 'react-toastify'
@@ -12,7 +12,7 @@ import { data } from '@/pages/GameOne/components/PhotoWall/data.ts'
 export default function usePhotoWall() {
   const elapsedTime = useRef(0)
   const cards = useRef<Group>(null)
-  const { status, people } = useSnapshot(gameOneState)
+  const { status, people, currentWinners } = useSnapshot(gameOneState)
 
   useEffect(() => {
     transformObjects(cards.current!.children, status >= GameStatus.OPENING ? data.sphere : data.table)
@@ -36,14 +36,32 @@ export default function usePhotoWall() {
   }
 
   /**
+   * 展示获奖人员
+   * @param winners
+   */
+  const showWinners = (_winners: Object3D[]) => {
+
+  }
+
+  /**
    * 抽奖&停止
    */
-  const draw = () => {
-    const winners = gameOneAction.draw()
+  const draw = (start: boolean) => {
+    if (start) {
+      gameOneAction.draw(true)
+      transformObjects(cards.current!.children, data.sphere)
+    } else {
+      const winners = gameOneAction.draw(false)
 
-    if (winners) {
-      // 把中奖者放到前面
-      celebrateFireworks()
+      if (winners) {
+        // 把中奖者放到前面
+        const cardObjects = winners
+          .map(winner => cards.current!.children.find(i => i.userData.person.openid === winner.openid)!)
+          .filter(Boolean)
+
+        showWinners(cardObjects)
+        celebrateFireworks()
+      }
     }
   }
 
@@ -66,5 +84,5 @@ export default function usePhotoWall() {
     cards.current.rotation.y += elapsedTime.current * 0.01
   })
 
-  return { startGame, status, people, cards, draw }
+  return { startGame, status, people, cards, draw, currentWinners }
 }

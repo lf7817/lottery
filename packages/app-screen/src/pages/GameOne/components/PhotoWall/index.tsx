@@ -11,15 +11,25 @@ import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 import Card from '@/pages/GameOne/components/PhotoWall/Card.tsx'
 
 export default function PhotoWall() {
-  const { draw, startGame, status, cards, people } = usePhotoWall()
+  const { currentWinners, draw, startGame, status, cards, people } = usePhotoWall()
 
   return (
     <group>
       <group ref={cards} name="cards" position-z={-4}>
         {
           data.objects.map((item, index) => (
-            <Html key={item.name} name={item.name} position={item.position} transform>
-              <Card person={people[index]} highlight={status < GameStatus.OPENING ? item.userData.highlight : false} />
+            <Html
+              key={item.name}
+              name={item.name}
+              position={item.position}
+              transform
+              userData={{ person: people[index] }}
+            >
+              <Card
+                person={people[index]}
+                win={status === GameStatus.OPENING && !!currentWinners && currentWinners.some(winner => winner.username === people[index]?.username)}
+                highlight={status < GameStatus.OPENING ? item.userData.highlight : false}
+              />
             </Html>
           ))
         }
@@ -52,7 +62,7 @@ export default function PhotoWall() {
           (status === GameStatus.OPENING || status === GameStatus.DRAWING) && (
             <group>
               <Html position={[1, -9, 3]} transform>
-                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={draw}>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => draw(status === GameStatus.OPENING)}>
                   {status === GameStatus.OPENING ? '抽奖' : '停止'}
                 </div>
               </Html>

@@ -78,7 +78,7 @@ export const gameOneAction = {
   /**
    * 抽奖
    */
-  draw() {
+  draw(start: boolean) {
     if (gameOneDerive.prizeRemain.length === 0) {
       toast.info('全部奖品已抽完')
       this.changeStatus(GameStatus.END)
@@ -95,10 +95,10 @@ export const gameOneAction = {
       return
     }
 
-    if (gameOneState.status === GameStatus.OPENING) {
+    if (start) {
+      gameOneState.currentWinners = undefined
       this.changeStatus(GameStatus.DRAWING)
-    } else if (gameOneState.status === GameStatus.DRAWING) {
-      // 停止
+    } else {
       this.changeStatus(GameStatus.OPENING)
       return this.getRandomWinners()
     }
@@ -131,6 +131,8 @@ export const gameOneAction = {
       person.awardId = current.id
       person.prizeId = prize.id
     })
+
+    gameOneState.currentWinners = people
 
     return people
   },

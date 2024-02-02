@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Person } from '@/types'
 
 interface CardProps {
+  win?: boolean
   person?: Person
   highlight?: boolean
 }
@@ -47,7 +48,8 @@ const styles = stylex.create({
   }),
 })
 
-export default function Card({ person, highlight }: CardProps) {
+export default function Card({ person, highlight, win }: CardProps) {
+  console.log(win)
   return (
     <div {...stylex.props(styles.card(!!highlight))}>
       {!!person?.headimgurl && <div {...stylex.props(styles.avatar(person?.headimgurl))} />}

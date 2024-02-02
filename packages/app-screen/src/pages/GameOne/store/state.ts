@@ -9,6 +9,10 @@ export interface GameOneStoreState {
   people: Person[]
   qrcode?: string
   currentAwardId: string
+  /**
+   * 本次中奖人
+   */
+  currentWinners?: Person[]
 }
 
 const lastAward = awards[awards.length - 1]
