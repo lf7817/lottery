@@ -7,10 +7,20 @@ import Decoration from './Decoration.tsx'
 import Greeting from './Greeting.tsx'
 import { GameStatus } from '@/constants'
 import PhotoWall from '@/pages/GameOne/components/PhotoWall'
+import Winners from '@/pages/GameOne/components/Winners'
 
 export default function GameOne() {
   const store = useSnapshot(gameOneState)
   const [sceneReady, setSceneReady] = useState(false)
+
+  function render() {
+    if (store.status === GameStatus.GREETING)
+      return <Greeting />
+    else if (store.status > GameStatus.GREETING && store.status < GameStatus.AWARD)
+      return <PhotoWall />
+    else if (store.status === GameStatus.AWARD)
+      return <Winners />
+  }
 
   return (
     <>
@@ -23,8 +33,7 @@ export default function GameOne() {
         <Suspense fallback={null}>
           <group visible={sceneReady}>
             <Decoration />
-            {store.status === GameStatus.GREETING && <Greeting /> }
-            { store.status > GameStatus.GREETING && store.status < GameStatus.AWARD && <PhotoWall />}
+            {render()}
           </group>
           <Preload all />
         </Suspense>
