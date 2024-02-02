@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react'
 import { Group } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { gsap } from 'gsap'
-import { gameOneAction, gameOneDerive, gameOneState } from '@/pages/GameOne/store'
+import { toast } from 'react-toastify'
+import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
 import { GameStatus } from '@/constants'
 import { transformObjects } from '@/utils'
 import { data } from '@/pages/GameOne/components/PhotoWall/data.ts'
@@ -12,40 +13,33 @@ export default function usePhotoWall() {
   const elapsedTime = useRef(0)
   const cards = useRef<Group>(null)
   const { status, people } = useSnapshot(gameOneState)
-  const { currentAward } = useSnapshot(gameOneDerive)
 
   useEffect(() => {
     transformObjects(cards.current!.children, status >= GameStatus.OPENING ? data.sphere : data.table)
   }, [])
 
+  /**
+   * 开始游戏
+   */
   const startGame = () => {
-    if (people.length >= 2) {
-      gsap.to(cards.current!.rotation, {
-        y: Math.PI * 2,
-        delay: 1.3,
-        duration: 2.8,
-        ease: 'power1.inOut',
-      })
-      gameOneAction.changeStatus(GameStatus.OPENING)
-      transformObjects(cards.current!.children, data.sphere)
-    }
+    if (people.length < 2)
+      return toast.info('人数不足')
 
-    else
-    // eslint-disable-next-line no-alert
-    { alert('人数不足') }
+    gsap.to(cards.current!.rotation, {
+      y: Math.PI * 2,
+      delay: 1.3,
+      duration: 2.8,
+      ease: 'power1.inOut',
+    })
+    gameOneAction.changeStatus(GameStatus.OPENING)
+    transformObjects(cards.current!.children, data.sphere)
   }
 
+  /**
+   * 抽奖&停止
+   */
   const draw = () => {
-    if (status === GameStatus.OPENING) {
-      if (currentAward.remain === 0)
-        // eslint-disable-next-line no-alert
-        alert('奖品已抽完')
-      else
-        gameOneAction.changeStatus(GameStatus.DRAWING)
-    } else if (status === GameStatus.DRAWING) {
-      gameOneAction.getRandomPeople()
-      gameOneAction.changeStatus(GameStatus.OPENING)
-    }
+    gameOneAction.draw()
   }
 
   useFrame((_, delta) => {

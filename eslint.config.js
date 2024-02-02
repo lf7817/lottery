@@ -19,5 +19,6 @@ export default await antfu({
     'ts/consistent-type-imports': 'off',
     'react/no-unknown-property': 'off',
     'style/brace-style': 'off',
+    'no-alert': 'off',
   },
 })

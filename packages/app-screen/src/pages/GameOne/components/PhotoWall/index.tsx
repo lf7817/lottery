@@ -44,8 +44,12 @@ export default function PhotoWall() {
           )
         }
 
+        { status >= GameStatus.OPENING && <Awards /> }
+
+        { status === GameStatus.SIGN_IN && <Qrcode /> }
+
         {
-          status >= GameStatus.OPENING && (
+          (status === GameStatus.OPENING || status === GameStatus.DRAWING) && (
             <group>
               <Html position={[1, -9, 3]} transform>
                 <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={draw}>
@@ -56,9 +60,24 @@ export default function PhotoWall() {
           )
         }
 
-        { status >= GameStatus.OPENING && <Awards /> }
+        {
+          status === GameStatus.END && (
+            <group>
+              <Html position={[7, -9, 3]} transform>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => gameOneAction.changeStatus(GameStatus.AWARD)}>
+                  颁奖
+                </div>
+              </Html>
 
-        { status === GameStatus.SIGN_IN && <Qrcode /> }
+              <Html position={[-6, -9, 3]} transform>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => gameOneAction.reset()}>
+                  重置
+                </div>
+              </Html>
+            </group>
+          )
+        }
+
       </group>
 
     </group>

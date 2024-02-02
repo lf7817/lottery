@@ -1,16 +1,18 @@
 import { subscribe } from 'valtio'
 import { devtools } from 'valtio/utils'
+import { toast } from 'react-toastify'
 import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 import { Person } from '@/types'
 import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
+import { awards } from '@/pages/GameOne/store/data.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
 // actions
 export const gameOneAction = {
   /**
-   * 初始化 state
+   * 初始化 state&开发者工具
    */
   initialStore() {
     // 启用开发者工具
@@ -31,57 +33,121 @@ export const gameOneAction = {
       localStorage.setItem(cacheToken, JSON.stringify(gameOneState))
     })
   },
+  /**
+   * 重置状态
+   */
   reset() {
+    if (!window.confirm('确定要重置吗？'))
+      return
+
     gameOneState.status = GameStatus.GREETING
-    gameOneState.awards = []
+    gameOneState.awards = awards.map(award => ({
+      ...award,
+      prize: award.prize.map(prize => ({
+        ...prize,
+        remain: prize.remain ?? prize.total,
+      })),
+    }))
     gameOneState.people = []
+    gameOneState.currentAwardId = awards[awards.length - 1].id
+    gameOneState.qrcode = undefined
     localStorage.removeItem(cacheToken)
   },
+  /**
+   * 修改状态
+   * @param s
+   */
   changeStatus(s: GameStatus) {
     gameOneState.status = s
   },
+  /**
+   * 生成签到二维码
+   * @param isNew
+   */
   generateQRcode(isNew?: boolean) {
     if (isNew || !gameOneState.qrcode)
       gameOneState.qrcode = new Date().getTime().toString()
   },
+  /**
+   * 更新签到人
+   * @param people
+   */
   updatePeople(people: Person[]) {
     gameOneState.people = people
   },
-  startDraw() {
-    gameOneState.status = GameStatus.DRAWING
-  },
-  stopDraw() {
-    gameOneState.status = GameStatus.OPENING
-  },
-  getRandomPeople() {
-    const currentAward = gameOneDerive.currentAward
-    if (currentAward.remain === 0)
+  /**
+   * 抽奖
+   */
+  draw() {
+    if (gameOneDerive.prizeRemain.length === 0) {
+      toast.info('全部奖品已抽完')
+      this.changeStatus(GameStatus.END)
       return
+    }
 
-    const arr = gameOneState.people.filter(person => !person.awardId).map(person => ({ ...person }))
-    if (arr.length === 0)
+    if (gameOneDerive.current.remain === 0) {
+      toast.info('当前奖项已抽完，请选择其他奖项')
       return
+    }
 
-    const len = Math.min(currentAward.remain, currentAward.count)
+    if (gameOneDerive.peopleRemain.length === 0) {
+      toast.info('剩余抽奖人数不足')
+      return
+    }
 
-    const newArr: Person[] = [] // 组成的新数组初始化
+    if (gameOneState.status === GameStatus.OPENING) {
+      this.changeStatus(GameStatus.DRAWING)
+    } else if (gameOneState.status === GameStatus.DRAWING) {
+      // 停止
+      this.changeStatus(GameStatus.OPENING)
+      return this.getRandomWinners()
+    }
+  },
+  /**
+   * 切换奖项
+   * @param id
+   */
+  changeAward(id: string) {
+    if (gameOneState.status === GameStatus.DRAWING)
+      return toast.info('正在抽奖中，请稍后再试')
+
+    gameOneState.currentAwardId = id
+  },
+  /**
+   * 获取获奖人员&奖品
+   */
+  getRandomWinners() {
+    const { current, peopleRemain } = gameOneDerive
+    // 获取抽奖人数
+    const count = Math.min(current.count, peopleRemain.length, current.remain)
+    // 获胜者
+    const people = this.getRandomPeople(count)
+    // 奖品
+    const prizes = current.prize
+    // 消耗奖品&人
+    people.forEach((person) => {
+      const prize = prizes.find(item => item.remain! > 0)!
+      prize.remain!--
+      person.awardId = current.id
+      person.prizeId = prize.id
+    })
+
+    return people
+  },
+  /**
+   * 随机获取人员
+   * @param len
+   */
+  getRandomPeople(len: number) {
+    const newArr: Person[] = []
+    const arr = [...gameOneDerive.peopleRemain]
+
     for (let i = 0; i < len; i++) {
       const index = Math.floor(Math.random() * arr.length)
       const item = arr[index]
       newArr.push(item)
       arr.splice(index, 1)
     }
-
-    newArr.forEach((item) => {
-      const p = gameOneState.people.find(person => person.openid === item?.openid)
-
-      if (p) {
-        p.awardId = currentAward.awardId
-        p.prizeId = currentAward.prizeId
-      }
-    })
-
-    gameOneState.awards.find(item => item.id === currentAward.awardId)!.prize.find(item => item.id === currentAward.prizeId)!.remain! -= len
 
     return newArr.reverse()
   },

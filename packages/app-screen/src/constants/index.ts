@@ -9,6 +9,10 @@ export enum GameStatus {
   OPENING,
   /** 抽奖中 */
   DRAWING,
+  /** 游戏结束 */
+  END,
+  /** 颁奖模式 */
+  AWARD,
 }
 
 export enum PhotoWallType {
