@@ -47,9 +47,11 @@ function parseMatrix(tableMatrix: number[][]) {
 
       const t = new Object3D()
       t.name = name
-      t.position.x = 3 * (col - Math.floor(tableMatrix[row].length / 2)) * 0.95
+      t.position.x = 3 * (col - Math.floor(tableMatrix[row].length / 2)) * 0.95 + 0.3
       t.position.y = -4 * (row - Math.floor(tableMatrix.length / 2)) * 0.931
       t.position.z = 0
+      t.rotation.set(0, 0, 0)
+      t.scale.set(1, 1, 1)
       t.userData.highlight = highlight
 
       table.push(t)
@@ -80,7 +82,8 @@ function parseMatrix(tableMatrix: number[][]) {
     const object = new THREE.Object3D()
     object.name = objects[i].name
 
-    object.position.setFromCylindricalCoords(14, theta, y)
+    object.position.setFromCylindricalCoords(16, theta, y)
+    object.scale.set(1, 1, 1)
 
     vector.x = object.position.x * 2
     vector.y = object.position.y

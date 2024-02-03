@@ -30,6 +30,8 @@ export default function GameOne() {
         onCreated={() => setTimeout(() => setSceneReady(true), 600)}
       >
         <OrbitControls />
+        <Stats />
+
         <Suspense fallback={null}>
           <group visible={sceneReady}>
             <Decoration />
@@ -37,7 +39,6 @@ export default function GameOne() {
           </group>
           <Preload all />
         </Suspense>
-        <Stats />
       </Canvas>
       <Loader />
     </>

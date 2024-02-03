@@ -12,6 +12,7 @@ const styles = stylex.create({
     'position': 'relative',
     'width': 140 / 4 * 3,
     'height': 140,
+    'marginLeft': -70 / 4 * 3,
     'color': highlight ? '#C40E17' : '#E6B175',
     'backgroundColor': highlight ? '#E6B175' : 'rgba(0,0,0, 0.3)',
     'overflow': 'hidden',
@@ -48,8 +49,8 @@ const styles = stylex.create({
   }),
 })
 
-export default function Card({ person, highlight, win }: CardProps) {
-  console.log(win)
+export default function Card({ person, highlight }: CardProps) {
+  // console.log(win)
   return (
     <div {...stylex.props(styles.card(!!highlight))}>
       {!!person?.headimgurl && <div {...stylex.props(styles.avatar(person?.headimgurl))} />}

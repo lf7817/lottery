@@ -1,6 +1,6 @@
 import { useSnapshot } from 'valtio'
 import { useEffect, useRef } from 'react'
-import { Group, Object3D } from 'three'
+import { Group, Object3D, Vector3 } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { gsap } from 'gsap'
 import { toast } from 'react-toastify'
@@ -15,6 +15,14 @@ export default function usePhotoWall() {
   const { status, people, currentWinners } = useSnapshot(gameOneState)
 
   useEffect(() => {
+    if (status >= GameStatus.OPENING) {
+      gsap.to(cards.current!.position, {
+        z: -14,
+        delay: 1.3,
+        duration: 2.8,
+        ease: 'power1.inOut',
+      })
+    }
     transformObjects(cards.current!.children, status >= GameStatus.OPENING ? data.sphere : data.table)
   }, [])
 
@@ -31,6 +39,14 @@ export default function usePhotoWall() {
       duration: 2.8,
       ease: 'power1.inOut',
     })
+
+    gsap.to(cards.current!.position, {
+      z: -14,
+      delay: 1.3,
+      duration: 2.8,
+      ease: 'power1.inOut',
+    })
+
     gameOneAction.changeStatus(GameStatus.OPENING)
     transformObjects(cards.current!.children, data.sphere)
   }
@@ -39,8 +55,24 @@ export default function usePhotoWall() {
    * 展示获奖人员
    * @param winners
    */
-  const showWinners = (_winners: Object3D[]) => {
+  const showWinners = (winners: Object3D[]) => {
+    const targetPosition = new Vector3(0, 0, 10)
+    const groupPosition = new Vector3(0, 0, 14)
 
+    winners.forEach((winner) => {
+      const localPosition = targetPosition.add(groupPosition)
+
+      gsap.to(winner.position, {
+        x: localPosition.x,
+        y: localPosition.y,
+        z: localPosition.z,
+        duration: 1,
+        ease: 'power1.inOut',
+        onComplete: () => {
+          winner.lookAt(0, 0, 14)
+        },
+      })
+    })
   }
 
   /**
@@ -74,14 +106,23 @@ export default function usePhotoWall() {
     const resultRatio = delta * deltaRatio
 
     if (status === GameStatus.DRAWING) {
-      if (elapsedTime.current < 10)
+      if (elapsedTime.current < 5)
         elapsedTime.current += resultRatio
-    } else if (status === GameStatus.OPENING) {
-      if (elapsedTime.current > 0)
-        elapsedTime.current = Math.max(elapsedTime.current - resultRatio * 4, 0)
-    }
 
-    cards.current.rotation.y += elapsedTime.current * 0.01
+      cards.current.rotation.y += elapsedTime.current * 0.02
+    } else if (status === GameStatus.OPENING) {
+      const targetY = Math.ceil(cards.current!.rotation.y / 2 / Math.PI)
+      const deltaY = targetY * 2 * Math.PI - cards.current!.rotation.y
+
+      // 停止时让卡片慢慢停下来，然后 rotation.y为 2n * Math.PI
+      if (Math.abs(deltaY) < 0.001) {
+        cards.current.rotation.y = targetY * 2 * Math.PI
+        elapsedTime.current = 0
+      }
+      else {
+        cards.current.rotation.y += deltaY * 0.02
+      }
+    }
   })
 
   return { startGame, status, people, cards, draw, currentWinners }
