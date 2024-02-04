@@ -1,7 +1,7 @@
 import { proxy } from 'valtio'
 import { GameStatus } from '@/constants'
 import { awards } from '@/pages/GameOne/store/data.ts'
-import { Award, Person } from '@/types'
+import {Award, Person } from '@/types'
 
 export interface GameOneStoreState {
   status: GameStatus

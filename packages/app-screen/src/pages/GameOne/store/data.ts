@@ -1,5 +1,11 @@
-import * as mockjs from 'mockjs'
 import { Award } from '@/types'
+import pad from '../assets/pad.png'
+import watch from '../assets/watch.png'
+import guo from '../assets/guo.png'
+import ji from '../assets/ji.png'
+import cdb from '../assets/cdb.png'
+import cup from '../assets/cup.png'
+import amy from '../assets/amy.png'
 
 export const awards: Award[] = [
   {
@@ -9,9 +15,10 @@ export const awards: Award[] = [
     prize: [
       {
         id: '0_0',
-        title: '华为HUAWEI MatePad 11 2023款',
+        title: '华为HUAWEI MatePad',
         total: 1,
-        image: mockjs.Random.image('200x200'),
+        image: pad,
+        desc :'MatePad 11 2023款 8+128G'
       },
     ],
   },
@@ -22,9 +29,10 @@ export const awards: Award[] = [
     prize: [
       {
         id: '1_0',
-        title: '华为手表',
+        title: '华为手表GT3',
         total: 1,
-        image: mockjs.Random.image('200x200'),
+        image: watch,
+        desc :'46mm,血氧自动检测、体温检测'
       },
     ],
   },
@@ -37,7 +45,8 @@ export const awards: Award[] = [
         id: '2_0',
         title: '小熊（Bear）折叠多功能料理锅',
         total: 2,
-        image: mockjs.Random.image('200x200'),
+        image: guo,
+        desc :'烤涮两用、升级折叠'
       },
     ],
   },
@@ -50,7 +59,8 @@ export const awards: Award[] = [
         id: '3_0',
         title: '九阳（Joyoung）破壁机',
         total: 3,
-        image: mockjs.Random.image('200x200'),
+        image: ji,
+        desc :'1.75L大容量 降噪、预约加热'
       },
     ],
   },
@@ -63,19 +73,22 @@ export const awards: Award[] = [
         id: '4_0',
         title: '颈椎按摩仪',
         total: 10,
-        image: mockjs.Random.image('200x200'),
+        image: amy,
+        desc :'18档脉冲+智能语音提示'
       },
       {
         id: '4_1',
         title: '移动电源',
         total: 10,
-        image: mockjs.Random.image('200x200'),
+        image: cdb,
+        desc :'10000毫安大容量，轻薄便携'
       },
       {
         id: '4_2',
         title: '电热水杯',
         total: 10,
-        image: mockjs.Random.image('200x200'),
+        image: cup,
+        desc :'350ml一键烧水'
       },
     ],
   },
