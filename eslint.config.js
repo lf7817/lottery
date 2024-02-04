@@ -20,5 +20,6 @@ export default await antfu({
     'react/no-unknown-property': 'off',
     'style/brace-style': 'off',
     'no-alert': 'off',
+    'ts/no-use-before-define': 'off',
   },
 })

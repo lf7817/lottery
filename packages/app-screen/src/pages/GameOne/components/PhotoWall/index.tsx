@@ -1,6 +1,6 @@
 import { Html } from '@react-three/drei'
 import * as stylex from '@stylexjs/stylex'
-import { data } from './data.ts'
+import { objectData } from './data.ts'
 import styles from './styles.ts'
 import { gameOneAction } from '@/pages/GameOne/store'
 import { commonStyles } from '@/styles/common.ts'
@@ -17,7 +17,7 @@ export default function PhotoWall() {
     <group>
       <group ref={cards} name="cards" position-z={-4}>
         {
-          data.objects.map((item, index) => (
+          objectData.objects.map((item, index) => (
             <Html
               key={item.name}
               name={item.name}

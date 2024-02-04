@@ -6,6 +6,7 @@ import { GameStatus } from '@/constants'
 import { Person } from '@/types'
 import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
 import { awards } from '@/pages/GameOne/store/data.ts'
+import { objectData } from '@/pages/GameOne/components/PhotoWall/data.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -142,7 +143,7 @@ export const gameOneAction = {
    */
   getRandomPeople(len: number) {
     const newArr: Person[] = []
-    const arr = [...gameOneDerive.peopleRemain]
+    const arr = [...gameOneDerive.peopleRemain].slice(0, objectData.objects.length)
 
     for (let i = 0; i < len; i++) {
       const index = Math.floor(Math.random() * arr.length)

@@ -102,4 +102,4 @@ function parseMatrix(tableMatrix: number[][]) {
   }
 }
 
-export const data = parseMatrix(tMatrix)
+export const objectData = parseMatrix(tMatrix)

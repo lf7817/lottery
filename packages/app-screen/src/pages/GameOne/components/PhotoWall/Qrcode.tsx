@@ -42,7 +42,7 @@ export default function Qrcode() {
   const ref = useRef<Group>(null)
   const { qrcode } = useSnapshot(gameOneState)
   console.log(qrcode)
-  const url = `http://192.168.107.7:4000/sign?activityId=${qrcode}`
+  const url = `http://192.168.106.79:4000/sign?activityId=${qrcode}`
   useRequest(() => fetchUserList(qrcode), { refreshDeps: [qrcode], pollingInterval: 1000 })
 
   useLayoutEffect(() => {
