@@ -1,9 +1,10 @@
 import { derive } from 'valtio/utils'
 import { gameOneState } from '@/pages/GameOne/store/state.ts'
+import { objectData } from '@/pages/GameOne/components/PhotoWall/data.ts'
 
 export const gameOneDerive = derive({
   prizeRemain: get => get(gameOneState).awards.map(item => item.prize).flat().filter(item => item.remain! > 0),
-  peopleRemain: get => get(gameOneState).people.filter(item => !item.awardId),
+  peopleRemain: get => get(gameOneState).people.slice(0, objectData.objects.length).filter(item => !item.awardId),
   current: (get) => {
     const { awards, currentAwardId } = get(gameOneState)
     const award = awards.find(item => item.id === currentAwardId)!
