@@ -3,6 +3,7 @@ import * as stylex from '@stylexjs/stylex'
 export default stylex.create({
   wrapper: {
     display:'flex',
+    position:'relative'
   },
   left:(url:string)=>({
     width:'498px',
@@ -75,7 +76,8 @@ export default stylex.create({
     width:'300px',
     height:'300px',
     backgroundImage:`url(${url})`,
-    backgroundSize:'100% 100%',
+    backgroundSize:'cover',
+    backgroundPosition:'center',
     backgroundRepeat:'no-repeat',
   }),
   people:(currentPrize:string)=>({
@@ -90,6 +92,21 @@ export default stylex.create({
     backgroundImage:`url(${url})`,
     backgroundSize:'100% 100%',
     backgroundRepeat:'no-repeat',
+    marginBottom:'30px',
+    position:'relative',
+  }),
+  delete:(currentPrize:string)=>({
+    width:currentPrize==='4'?'120px':'200px',
+    height:currentPrize==='4'?'120px':'200px',
+    borderRadius:'50%',
+    backgroundColor:'#000',
+    opacity:'0.5',
+    textAlign:'center',
+    lineHeight:currentPrize==='4'?'120px':'200px',
+    fontSize:currentPrize==='4'?'24px':'36px',
+    color:'#fff', 
+    fontWeight:'bold',
+    cursor:'pointer'
   }),
   username:(currentPrize:string)=>({
     width:'100%',
@@ -97,6 +114,11 @@ export default stylex.create({
     fontSize:currentPrize==='4'?'24px':'36px',
     color:'rgba(252, 230, 184, 1)',
     textAlign:'center',
-    margin:'30px 0'
-  })
+    margin:'10px 0',
+  }),
+  cancel:{
+    position:'absolute',
+    top:700,
+    left:800
+  }
 })

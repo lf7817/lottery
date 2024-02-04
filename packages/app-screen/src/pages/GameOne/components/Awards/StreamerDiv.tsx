@@ -33,6 +33,7 @@ export const styles= stylex.create({
     position: 'relative',
     overflow: 'hidden',
     margin: active ? '30px 0' : '20px 0',
+    borderRadius:10
   }),
   spin:{
     'position':'absolute',
@@ -41,14 +42,14 @@ export const styles= stylex.create({
       top: 0,
       left: 0,
       width: '100%',
-      height: '2px',
+      height: '5px',
       background: 'linear-gradient(90deg,transparent,#03e9f4)',
       animation: `${animate1} 1s linear infinite`,
     },
     ':nth-child(2)':{
       top: '-100%',
       right: 0,
-      width: '2px',
+      width: '5px',
       height: '100%',
       background: 'linear-gradient(180deg,transparent,#03e9f4)',
       animation: `${animate2} 1s linear infinite`,
@@ -58,7 +59,7 @@ export const styles= stylex.create({
       bottom: 0,
       right: 0,
       width: '100%',
-      height: '2px',
+      height: '5px',
       background: 'linear-gradient(270deg,transparent,#03e9f4)',
       animation: `${animate3} 1s linear infinite`,
       animationDelay: '0.50s'
@@ -66,7 +67,7 @@ export const styles= stylex.create({
     ':nth-child(4)':{
       bottom: '-100%',
       left: 0,
-      width: '2px',
+      width: '5px',
       height: '100%',
       background: 'linear-gradient(360deg,transparent,#03e9f4)',
       animation: `${animate4} 1s linear infinite`,
