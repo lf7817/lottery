@@ -1,6 +1,8 @@
 import { ErrorElement, SoRouteObject, convertRoutes } from '@lottery/shared/components/Router'
 import { Navigate } from 'react-router-dom'
-import GameOnePage from '@/pages/GameOne'
+import GameOneLayout from '@/pages/GameOne'
+import GameOneLottery from '@/pages/GameOne/pages/Lottery.tsx'
+import GameOneGreating from '@/pages/GameOne/pages/Greating.tsx'
 
 const routeConfig: SoRouteObject[] = [
   {
@@ -9,19 +11,21 @@ const routeConfig: SoRouteObject[] = [
     children: [
       {
         path: 'game-one',
-        element: <GameOnePage />,
-      },
-      {
-        path: 'setting',
-        asyncElement: () => import('@/pages/Settings'),
-      },
-      {
-        path: 'greating',
-        asyncElement: () => import('@/pages/Greating'),
+        element: <GameOneLayout />,
+        children: [
+          {
+            path: 'greating',
+            element: <GameOneGreating />,
+          },
+          {
+            path: 'lottery',
+            element: <GameOneLottery />,
+          },
+        ],
       },
       {
         path: '/',
-        element: <Navigate to="/greating" replace />,
+        element: <Navigate to="/game-one/greating" replace />,
       },
     ],
   },
