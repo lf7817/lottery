@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "react-toastify": "^10.0.4",
+    "react-use-audio-player": "^2.2.0",
     "three": "^0.160.0",
     "valtio": "^1.13.0"
   },

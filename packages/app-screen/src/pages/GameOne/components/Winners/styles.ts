@@ -10,8 +10,8 @@ export default stylex.create({
   },
   left:(url:string)=>({
     width:'498px',
-    height:'943px',
-    padding:'75px 22px',
+    height:'990px',
+    padding:'120px 22px',
     boxSizing:'border-box',
     backgroundImage:`url(${url})`,
     backgroundSize:'100% 100%',
@@ -19,7 +19,7 @@ export default stylex.create({
   }),
   right:(url:string,id:string)=>({
     width:'1131px',
-    height:'943px',
+    height:'990px',
     marginLeft:'36px',
     boxSizing:'border-box',
     backgroundImage:`url(${url})`,
@@ -144,7 +144,7 @@ export default stylex.create({
   }),
   cancel:{
     position:'absolute',
-    top:700,
+    top:750,
     left:800
   }
 })
