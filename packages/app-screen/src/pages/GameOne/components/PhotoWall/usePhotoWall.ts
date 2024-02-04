@@ -73,8 +73,8 @@ export default function usePhotoWall() {
 
     // 要保证cards的 retation.y 为 2n * Math.PI才行
     const parentPosition = new Vector3(0, 0, -14)
-    const cardWidth = 6
-    const cardHeight = 8
+    const cardWidth = 8
+    const cardHeight = 10
 
     await new Promise((resolve) => {
       setTimeout(() => {
@@ -107,9 +107,9 @@ export default function usePhotoWall() {
           })
 
           gsap.to(winner.scale, {
-            x: 2,
-            y: 2,
-            z: 2,
+            x: winnerCards.length === 1 ? 4 : 2.5,
+            y: winnerCards.length === 1 ? 4 : 2.5,
+            z: winnerCards.length === 1 ? 4 : 2.5,
             duration: 1,
             ease: 'power1.inOut',
           })

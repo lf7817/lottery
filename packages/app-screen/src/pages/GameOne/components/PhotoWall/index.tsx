@@ -27,6 +27,7 @@ export default function PhotoWall() {
             >
               <Card
                 person={people[index]}
+                onRemove={openid => gameOneAction.removeWinner(openid)}
                 win={status === GameStatus.OPENING && !!currentWinners && currentWinners.some(winner => winner.username === people[index]?.username)}
                 highlight={status < GameStatus.OPENING ? item.userData.highlight : false}
               />
