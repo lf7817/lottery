@@ -56,6 +56,7 @@ export default function Winners() {
         {people.filter((e)=>e.awardId===current.id&&e.prizeId===current.prize[currentPrize].id).map((item)=>{
           return <div key={item.mobile} {...stylex.props(styles.people(current.id))}>
             <div {...stylex.props(styles.headimgurl(item.headimgurl,current.id))} onMouseEnter={()=>setShow(true)} onMouseLeave={()=>setShow(false)}>
+              {/*<span {...stylex.props(styles.span)}></span>*/}
               {show&&<div {...stylex.props(styles.delete(current.id))} onClick={()=>gameOneAction.removeWinner(item.openid)}>X</div>}
             </div>
             <div {...stylex.props(styles.username(current.id))}>{item.username}</div>

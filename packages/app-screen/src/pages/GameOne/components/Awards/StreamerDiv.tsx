@@ -25,7 +25,7 @@ const animate4 = stylex.keyframes({
   '50%': {bottom: '100%'},
   '100%': {bottom: '100%'},
 })
-export const styles= stylex.create({
+const styles= stylex.create({
   spinner:(active)=>( {
     transform: active ? 'scale(1.2)' : 'scale(1)',
     transformOrigin: 'left center',

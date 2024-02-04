@@ -1,5 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
-
+const animate = stylex.keyframes({
+  '0%': {transform: 'rotate(0deg)'},
+  '100%': {transform: 'rotate(360deg)'},
+})
 export default stylex.create({
   wrapper: {
     display:'flex',
@@ -94,7 +97,30 @@ export default stylex.create({
     backgroundRepeat:'no-repeat',
     marginBottom:'30px',
     position:'relative',
+    // border: '4px solid #282828',
+    // overflow:'hidden',
+    // ':before':{
+    //   content:'',
+    //   position:'absoulte',
+    //   top: '25px',
+    //   left: '25px',
+    //   right: '25px',
+    //   bottom: '25px',
+    //   zIndex:10,
+    //   background:'#212121',
+    //   borderRadius: '50%',
+    //   border: '2px solid #292929'
+    // }
   }),
+  span:{
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: '50%',
+    filter: 'blur(20px)',
+    zIndex: -1,
+    animation: `${animate} 0.5s linear infinite`,
+  },
   delete:(currentPrize:string)=>({
     width:currentPrize==='4'?'120px':'200px',
     height:currentPrize==='4'?'120px':'200px',

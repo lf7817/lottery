@@ -16,8 +16,12 @@ const routeConfig: SoRouteObject[] = [
         asyncElement: () => import('@/pages/Settings'),
       },
       {
+        path: 'greating',
+        asyncElement: () => import('@/pages/Greating'),
+      },
+      {
         path: '/',
-        element: <Navigate to="/game-one" replace />,
+        element: <Navigate to="/greating" replace />,
       },
     ],
   },
