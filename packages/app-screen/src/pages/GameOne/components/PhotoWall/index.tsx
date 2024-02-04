@@ -11,7 +11,7 @@ import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 import Card from '@/pages/GameOne/components/PhotoWall/Card.tsx'
 
 export default function PhotoWall() {
-  const { currentWinners, draw, startGame, status, cards, people } = usePhotoWall()
+  const { currentWinners, backToSign, draw, startGame, status, cards, people } = usePhotoWall()
 
   return (
     <group>
@@ -62,12 +62,30 @@ export default function PhotoWall() {
         {
           (status === GameStatus.OPENING || status === GameStatus.DRAWING) && (
             <group>
+              <Html position={[-10, -9, 3]} transform>
+                <div
+                  {...stylex.props(commonStyles.button(true), styles.btn)}
+                  onClick={backToSign}
+                >
+                  返回
+                </div>
+              </Html>
+
               <Html position={[1, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => draw(status === GameStatus.OPENING)}
                 >
                   {status === GameStatus.OPENING ? '抽奖' : '停止'}
+                </div>
+              </Html>
+
+              <Html position={[12, -9, 3]} transform>
+                <div
+                  {...stylex.props(commonStyles.button(true), styles.btn)}
+                  onClick={() => gameOneAction.changeStatus(GameStatus.AWARD)}
+                >
+                  颁奖
                 </div>
               </Html>
             </group>

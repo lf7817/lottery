@@ -133,6 +133,11 @@ export default function usePhotoWall() {
     }
   }
 
+  const backToSign = () => {
+    gameOneAction.changeStatus(GameStatus.WAITING)
+    transformObjects(cards.current!.children, objectData.table, { duration: 2, delay: 1 })
+  }
+
   useFrame((_, delta) => {
     if (!cards.current)
       return
@@ -161,5 +166,5 @@ export default function usePhotoWall() {
     }
   })
 
-  return { startGame, status, people, cards, draw, currentWinners }
+  return { startGame, status, people, cards, draw, currentWinners, backToSign }
 }
