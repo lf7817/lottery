@@ -74,7 +74,10 @@ export const gameOneAction = {
    * @param people
    */
   updatePeople(people: Person[]) {
-    gameOneState.people = people
+    gameOneState.people = people.map(person => ({
+      ...person,
+      mobile: person.mobile.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'),
+    }))
   },
   /**
    * 抽奖

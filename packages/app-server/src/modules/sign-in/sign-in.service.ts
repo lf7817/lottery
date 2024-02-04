@@ -16,6 +16,7 @@ export class SignInService {
   async signIn(body: SignInDto) {
     return this.mutex.runExclusive(async () => {
       const map = await this.cacheManager.get<Map<string, SignInDto>>(body.activityId) ?? new Map<string, SignInDto>()
+      body.mobile = body.mobile.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
       map.set(body.openid, body)
       await this.cacheManager.set(body.activityId, map, 3600 * 1000 * 24)
       return body
