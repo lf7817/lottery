@@ -42,7 +42,7 @@ export default function Qrcode() {
   const ref = useRef<Group>(null)
   const { qrcode } = useSnapshot(gameOneState)
   console.log(qrcode)
-  const url = `/lottery/sign?activityId=${qrcode}`
+  const url = `${import.meta.env.VITE_HOST}/lottery/sign?activityId=${qrcode}`
   useRequest(() => fetchUserList(qrcode), { refreshDeps: [qrcode], pollingInterval: 1000 })
 
   useLayoutEffect(() => {
