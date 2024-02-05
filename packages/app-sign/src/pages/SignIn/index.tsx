@@ -24,8 +24,7 @@ export default function SignIn() {
   const navigate = useNavigate()
   const { activityId } = useRouterParams()
   const userinfo = useRef<UserInfo>(JSON.parse(localStorage.getItem(CacheToken.USER_INFO)!))
-  const [activity, setActivity] = useState<FetchSigninParams>(JSON.parse(localStorage.getItem(CacheToken.ACTIVITY)!))
-  const [hasSignin, setSignin] = useState(activity && activity.activityId === activityId)
+  const [hasSignin, setSignin] = useState(false)
   const { register, handleSubmit, formState } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
@@ -33,6 +32,8 @@ export default function SignIn() {
   useEffect(() => {
     if (!userinfo.current)
       navigate({ pathname: '/auth' })
+    else
+      queryHasSignIn()
   }, [])
 
   async function submit(data: FormData) {
@@ -47,9 +48,21 @@ export default function SignIn() {
     fetchSignin(body)
       .then(res => res.json())
       .then(() => {
-        localStorage.setItem(CacheToken.ACTIVITY, JSON.stringify(body))
-        setActivity(body)
         setSignin(true)
+      })
+  }
+
+  async function queryHasSignIn() {
+    fetchHasSignin({
+      activityId: activityId!,
+      openid: userinfo.current!.openid,
+    })
+      .then(res => res.json())
+      .then((res) => {
+        if (res.code === 0 && !!res.data)
+          setSignin(true)
+        else
+          setSignin(false)
       })
   }
 
@@ -59,13 +72,13 @@ export default function SignIn() {
   if (!activityId)
     return <div>路由参数错误</div>
 
-  if (hasSignin && !!activity) {
+  if (hasSignin) {
     return (
       <PageContainer>
         <div className={styles.wrapper}>
           <div className={styles.avatar} style={{ backgroundImage: `url(${userinfo.current?.headimgurl})` }} />
           <div className={styles.success}>
-            <div className={styles.successTitle}>{activity.username}</div>
+            {/* <div className={styles.successTitle}>姓名</div> */}
             <div className={styles.successDesc}>
               您已成功签到，感谢您的参与！
               <br />
@@ -110,6 +123,22 @@ interface FetchSigninParams {
 
 async function fetchSignin(data: FetchSigninParams) {
   return fetch(`/lottery-api/sign-in`, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+}
+
+interface FetchHasSigninParams {
+  activityId: string
+  openid: string
+}
+
+async function fetchHasSignin(data: FetchHasSigninParams) {
+  return fetch(`/lottery-api/sign-in/hasSignIn`, {
     method: 'POST',
     mode: 'cors',
     headers: {

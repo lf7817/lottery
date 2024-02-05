@@ -21,3 +21,13 @@ export class SignInDto {
   @IsString()
   headimgurl: string
 }
+
+export class HasSignInDto {
+  @IsNotEmpty()
+  @IsString()
+  activityId: string
+
+  @IsNotEmpty()
+  @IsString()
+  openid: string
+}
