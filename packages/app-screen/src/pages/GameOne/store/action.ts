@@ -5,7 +5,7 @@ import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 import { Person } from '@/types'
 import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
-import {awards, sound} from '@/pages/GameOne/store/data.ts'
+import {awards, sound, sound1, sound2, sound3} from '@/pages/GameOne/store/data.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -51,7 +51,12 @@ export const gameOneAction = {
     gameOneState.people = []
     gameOneState.currentAwardId = awards[awards.length - 1].id
     gameOneState.qrcode = undefined
+    gameOneState.audio = {
+      index:0,
+      state:false
+    }
     localStorage.removeItem(cacheToken)
+    
   },
   /**
    * 修改状态
@@ -171,11 +176,18 @@ export const gameOneAction = {
           gameOneState.currentWinners = gameOneState.currentWinners.filter(w => w.openid !== openid)
       } }
   },
-  playAudio(play:boolean){
-    console.log(play)
+  playAudio(play:boolean,current?:number){
+    gameOneState.audio.state=play
+    if(current){
+      gameOneState.audio.index=current
+    }
+    const index:number =current??gameOneState.audio.index??0
+    sound1.pause()
+    sound2.pause()
+    sound3.pause()
     if (play)
-      sound.pause()
+      sound[index].play()
     else
-      sound.play()
+      sound[index].pause()
   }
 }

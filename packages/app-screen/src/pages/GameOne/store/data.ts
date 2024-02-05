@@ -6,7 +6,9 @@ import ji from '../assets/ji.png'
 import cdb from '../assets/cdb.png'
 import cup from '../assets/cup.png'
 import amy from '../assets/amy.png'
-import audio from "@/pages/GameOne/assets/audio/audio1.wav";
+import audio1 from "@/pages/GameOne/assets/audio/audio1.mp3";
+import audio2 from "@/pages/GameOne/assets/audio/audio2.wav";
+import audio3 from "@/pages/GameOne/assets/audio/audio3.wav";
 import {Howl} from 'howler';
 
 
@@ -97,9 +99,25 @@ export const awards: Award[] = [
   },
 ]
 
-export const sound = new Howl({
-  src: [audio],
+export const sound1 = new Howl({
+  src: [audio1],
   autoplay: true,
   loop: true,
   volume: 0.5,
 })
+
+export const sound2 = new Howl({
+  src: [audio2],
+  autoplay: true,
+  loop: true,
+  volume: 0.5,
+})
+export const sound3 = new Howl({
+  src: [audio3],
+  autoplay: true,
+  loop: true,
+  volume: 0.5,
+})
+
+export const sound = [sound1,sound2,sound3]
+

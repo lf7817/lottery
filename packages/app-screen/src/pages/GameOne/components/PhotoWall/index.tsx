@@ -2,7 +2,7 @@ import { Html } from '@react-three/drei'
 import * as stylex from '@stylexjs/stylex'
 import { objectData } from './data.ts'
 import styles from './styles.ts'
-import { gameOneAction } from '@/pages/GameOne/store'
+import {gameOneAction} from '@/pages/GameOne/store'
 import { commonStyles } from '@/styles/common.ts'
 import { GameStatus } from '@/constants'
 import usePhotoWall from '@/pages/GameOne/components/PhotoWall/usePhotoWall.ts'
@@ -83,7 +83,10 @@ export default function PhotoWall() {
               <Html position={[12, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
-                  onClick={() => gameOneAction.changeStatus(GameStatus.AWARD)}
+                  onClick={() => {
+                    gameOneAction.playAudio(true,2)
+                    gameOneAction.changeStatus(GameStatus.AWARD)
+                  }}
                 >
                   颁奖
                 </div>
@@ -98,7 +101,10 @@ export default function PhotoWall() {
               <Html position={[7, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
-                  onClick={() => gameOneAction.changeStatus(GameStatus.AWARD)}
+                  onClick={() => {
+                    gameOneAction.playAudio(true,2)
+                    gameOneAction.changeStatus(GameStatus.AWARD)
+                  }}
                 >
                   颁奖
                 </div>

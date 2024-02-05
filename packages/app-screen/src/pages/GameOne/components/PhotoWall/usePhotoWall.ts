@@ -52,7 +52,8 @@ export default function usePhotoWall() {
       duration: 2.8,
       ease: 'power1.inOut',
     })
-
+    
+    gameOneAction.playAudio(true,1)
     gameOneAction.changeStatus(GameStatus.OPENING)
     transformObjects(cards.current!.children, objectData.sphere)
   }
@@ -134,6 +135,7 @@ export default function usePhotoWall() {
   }
 
   const backToSign = () => {
+    gameOneAction.playAudio(true,0)
     gameOneAction.changeStatus(GameStatus.WAITING)
     transformObjects(cards.current!.children, objectData.table, { duration: 2, delay: 1 })
   }

@@ -65,7 +65,10 @@ export default function Winners() {
         })}
       </div>
       <div {...stylex.props(styles.cancel)}>
-        <div {...stylex.props(commonStyles.button(true))} onClick={()=>gameOneAction.changeStatus(GameStatus.OPENING)}>返回</div>
+        <div {...stylex.props(commonStyles.button(true))} onClick={()=> {
+          gameOneAction.playAudio(true,1)
+          gameOneAction.changeStatus(GameStatus.OPENING)
+        }}>返回</div>
       </div>
     </div>
   </Html>

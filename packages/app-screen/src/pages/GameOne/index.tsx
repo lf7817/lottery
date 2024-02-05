@@ -1,20 +1,20 @@
 import * as stylex from '@stylexjs/stylex'
 import { Outlet } from 'react-router-dom'
-import { gameOneAction } from './store'
+import {gameOneAction, gameOneState} from './store'
 import styles from './styles.ts'
 import './preload.ts'
 import play from './assets/play.png'
-import {useState} from "react";
+import {useSnapshot} from "valtio";
 
 gameOneAction.initialStore()
 
 export default function GameOneLayout() {
-  const [playAudio,setPlayAudio] = useState(false)
+  const { audio } = useSnapshot(gameOneState)
+
   return (
     <div {...stylex.props(styles.wrapper)}>
-      <div {...stylex.props(styles.btn(play,playAudio))} onClick={()=> {
-        setPlayAudio(!playAudio)
-        gameOneAction.playAudio(playAudio)
+      <div {...stylex.props(styles.btn(play,audio.state))} onClick={()=> {
+        gameOneAction.playAudio(!gameOneState.audio.state)
       }}/>
       <Outlet />
     </div>
