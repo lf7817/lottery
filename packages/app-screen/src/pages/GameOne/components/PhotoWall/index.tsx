@@ -130,11 +130,9 @@ export default function PhotoWall() {
                   首页
                 </div>
               </Html>
-
             </group>
           )
         }
-
       </group>
     </group>
   )

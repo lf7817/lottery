@@ -2,12 +2,15 @@ import { Html, SpriteAnimator, useTexture } from '@react-three/drei'
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import * as stylex from '@stylexjs/stylex'
-import { gameOneAction } from '../store'
+import { useSnapshot } from 'valtio'
+import { gameOneAction, gameOneState } from '../store'
 import { AssetPaths } from '@/pages/GameOne/config.ts'
 import { commonStyles } from '@/styles/common.ts'
 import { GameStatus } from '@/constants'
 
 export default function Greeting() {
+  const { welcome, status } = useSnapshot(gameOneState)
+  const autoplay = !welcome && status === GameStatus.GREETING
   const [opacity, setOpacity] = useState(false)
   const title = useRef<THREE.Mesh>(null)
   const [play, setPlay] = useState(false)
@@ -41,7 +44,8 @@ export default function Greeting() {
         scale={[60, 60, 60]}
         position={[0, 0, 10]}
         startFrame={0}
-        autoPlay={true}
+        autoPlay={false}
+        play={autoplay}
         loop={false}
         alphaTest={0.01}
         onFrame={onFrame}
