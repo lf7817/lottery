@@ -37,5 +37,6 @@ coverage
 
 *.local
 .turbo
+.env.production
 
 packages/app-server/db/db.json
