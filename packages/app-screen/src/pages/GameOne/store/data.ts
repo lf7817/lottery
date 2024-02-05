@@ -6,6 +6,9 @@ import ji from '../assets/ji.png'
 import cdb from '../assets/cdb.png'
 import cup from '../assets/cup.png'
 import amy from '../assets/amy.png'
+import audio from "@/pages/GameOne/assets/audio/audio1.wav";
+import {Howl} from 'howler';
+
 
 export const awards: Award[] = [
   {
@@ -93,3 +96,10 @@ export const awards: Award[] = [
     ],
   },
 ]
+
+export const sound = new Howl({
+  src: [audio],
+  autoplay: true,
+  loop: true,
+  volume: 0.5,
+})

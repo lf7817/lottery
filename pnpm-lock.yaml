@@ -59,6 +59,9 @@ importers:
       '@stylexjs/stylex':
         specifier: ^0.5.1
         version: 0.5.1
+      '@types/howler':
+        specifier: ^2.2.11
+        version: 2.2.11
       '@types/three':
         specifier: ^0.160.0
         version: 0.160.0
@@ -71,6 +74,9 @@ importers:
       gsap:
         specifier: ^3.12.4
         version: 3.12.4
+      howler:
+        specifier: ^2.2.4
+        version: 2.2.4
       mockjs:
         specifier: ^1.1.0
         version: 1.1.0
@@ -89,9 +95,6 @@ importers:
       react-toastify:
         specifier: ^10.0.4
         version: 10.0.4(react-dom@18.2.0)(react@18.2.0)
-      react-use-audio-player:
-        specifier: ^2.2.0
-        version: 2.2.0(react@18.2.0)
       three:
         specifier: ^0.160.0
         version: 0.160.0
@@ -2367,6 +2370,10 @@ packages:
     dependencies:
       '@types/node': 20.11.3
     dev: true
+
+  /@types/howler@2.2.11:
+    resolution: {integrity: sha512-7aBoUL6RbSIrqKnpEgfa1wSNUBK06mn08siP2QI0zYk7MXfEJAaORc4tohamQYqCqVESoDyRWSdQn2BOKWj2Qw==}
+    dev: false
 
   /@types/http-errors@2.0.4:
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
@@ -7267,15 +7274,6 @@ packages:
       clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /react-use-audio-player@2.2.0(react@18.2.0):
-    resolution: {integrity: sha512-IMM+WiZAq1KUvTwq0sAdRdjEzyG4jzz1tK/JtC/+LLt3z/uJk3AFRLL3pgbOgS/2SnfVzFKCxR7pnBsu6nUFvg==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      howler: 2.2.4
-      react: 18.2.0
     dev: false
 
   /react-use-measure@2.1.1(react-dom@18.2.0)(react@18.2.0):
