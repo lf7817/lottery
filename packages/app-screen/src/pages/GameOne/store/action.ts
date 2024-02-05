@@ -5,7 +5,7 @@ import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 import { Person } from '@/types'
 import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
-import { awards } from '@/pages/GameOne/store/data.ts'
+import {awards, sound} from '@/pages/GameOne/store/data.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -171,4 +171,11 @@ export const gameOneAction = {
           gameOneState.currentWinners = gameOneState.currentWinners.filter(w => w.openid !== openid)
       } }
   },
+  playAudio(play:boolean){
+    console.log(play)
+    if (play)
+      sound.pause()
+    else
+      sound.play()
+  }
 }

@@ -17,7 +17,7 @@ export default function Winners() {
   const { awards,people } = useSnapshot(gameOneState)
   const [current,setCurrent] = useState(awards[0])
   const [currentPrize,setCurrentPrize] = useState(0)
-  const [show,setShow] = useState(false)
+  const [show,setShow] = useState('')
   function choose(e:Award){
     setCurrent(e)
   }
@@ -55,9 +55,9 @@ export default function Winners() {
       <div {...stylex.props(styles.right(right,current.id))}>
         {people.filter((e)=>e.awardId===current.id&&e.prizeId===current.prize[currentPrize].id).map((item)=>{
           return <div key={item.mobile} {...stylex.props(styles.people(current.id))}>
-            <div {...stylex.props(styles.headimgurl(item.headimgurl,current.id))} onMouseEnter={()=>setShow(true)} onMouseLeave={()=>setShow(false)}>
+            <div {...stylex.props(styles.headimgurl(item.headimgurl,current.id))} onMouseEnter={()=>setShow(item.openid)} onMouseLeave={()=>setShow('')}>
               {/*<span {...stylex.props(styles.span)}></span>*/}
-              {show&&<div {...stylex.props(styles.delete(current.id))} onClick={()=>gameOneAction.removeWinner(item.openid)}>X</div>}
+              {show===item.openid&&<div {...stylex.props(styles.delete(current.id))} onClick={()=>gameOneAction.removeWinner(item.openid)}>X</div>}
             </div>
             <div {...stylex.props(styles.username(current.id))}>{item.username}</div>
             <div {...stylex.props(styles.username(current.id))}>{item.mobile.slice(7,11)}</div>

@@ -59,6 +59,9 @@ importers:
       '@stylexjs/stylex':
         specifier: ^0.5.1
         version: 0.5.1
+      '@types/howler':
+        specifier: ^2.2.11
+        version: 2.2.11
       '@types/three':
         specifier: ^0.160.0
         version: 0.160.0
@@ -71,6 +74,9 @@ importers:
       gsap:
         specifier: ^3.12.4
         version: 3.12.4
+      howler:
+        specifier: ^2.2.4
+        version: 2.2.4
       mockjs:
         specifier: ^1.1.0
         version: 1.1.0
@@ -2364,6 +2370,10 @@ packages:
     dependencies:
       '@types/node': 20.11.3
     dev: true
+
+  /@types/howler@2.2.11:
+    resolution: {integrity: sha512-7aBoUL6RbSIrqKnpEgfa1wSNUBK06mn08siP2QI0zYk7MXfEJAaORc4tohamQYqCqVESoDyRWSdQn2BOKWj2Qw==}
+    dev: false
 
   /@types/http-errors@2.0.4:
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
@@ -5236,6 +5246,10 @@ packages:
   /hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
+
+  /howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
+    dev: false
 
   /html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}

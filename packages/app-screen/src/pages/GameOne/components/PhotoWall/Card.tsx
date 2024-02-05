@@ -106,7 +106,7 @@ const styles = stylex.create({
 })
 
 export default function Card({ person, highlight, win, onRemove }: CardProps) {
-  const [hover, setHover] = useState(false)
+  const [hover, setHover] = useState('')
 
   if (!win) {
     return (
@@ -119,15 +119,13 @@ export default function Card({ person, highlight, win, onRemove }: CardProps) {
   }
 
   return (
-    <div {...stylex.props(styles.wrapper(bgWinner))}>
+    <div {...stylex.props(styles.wrapper(bgWinner))} onMouseEnter={()=>setHover(person?.openid ||'')} onMouseLeave={()=>setHover('')}>
       <div {...stylex.props(styles.headimgurl(person?.headimgurl || ''))} />
       <div {...stylex.props(styles.username)}>{person?.username}</div>
       <div {...stylex.props(styles.phone)}>{person?.mobile.slice(7)}</div>
       <div
-        {...stylex.props(styles.cancel(hover))}
+        {...stylex.props(styles.cancel(hover===person?.openid))}
         onClick={() => onRemove(person!.openid)}
-        onPointerOver={() => setHover(true)}
-        onPointerLeave={() => setHover(false)}
       >
         x
       </div>
