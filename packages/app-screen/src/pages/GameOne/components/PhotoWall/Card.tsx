@@ -119,13 +119,16 @@ export default function Card({ person, highlight, win, onRemove }: CardProps) {
   }
 
   return (
-    <div {...stylex.props(styles.wrapper(bgWinner))} onMouseEnter={()=>setHover(person?.openid ||'')} onMouseLeave={()=>setHover('')}>
+    <div {...stylex.props(styles.wrapper(bgWinner))} onMouseEnter={() => setHover(person?.openid || '')} onMouseLeave={() => setHover('')}>
       <div {...stylex.props(styles.headimgurl(person?.headimgurl || ''))} />
       <div {...stylex.props(styles.username)}>{person?.username}</div>
       <div {...stylex.props(styles.phone)}>{person?.mobile.slice(7)}</div>
       <div
-        {...stylex.props(styles.cancel(hover===person?.openid))}
-        onClick={() => onRemove(person!.openid)}
+        {...stylex.props(styles.cancel(hover === person?.openid))}
+        onClick={() => {
+          onRemove(person!.openid)
+          setHover('')
+        }}
       >
         x
       </div>
