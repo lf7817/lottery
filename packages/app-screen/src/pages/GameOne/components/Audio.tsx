@@ -16,6 +16,7 @@ const styles = stylex.create({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
+    cursor: 'pointer',
   }),
 })
 
