@@ -87,7 +87,7 @@ export default function PhotoWall() {
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => {
-                    gameOneAction.playAudio(true, 2)
+                    gameOneAction.changeMusic(2)
                     gameOneAction.changeStatus(GameStatus.AWARD)
                   }}
                 >
@@ -118,7 +118,7 @@ export default function PhotoWall() {
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => {
-                    gameOneAction.playAudio(true, 2)
+                    gameOneAction.changeMusic(2)
                     gameOneAction.changeStatus(GameStatus.AWARD)
                   }}
                 >

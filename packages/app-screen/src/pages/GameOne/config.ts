@@ -21,4 +21,8 @@ export const AssetPaths = {
   particle: getAssetPath('texture/particle-min.webp'),
   particledata: getAssetPath('texture/particle.json'),
   greetingVideo: getAssetPath('video/greeting.mp4'),
+  audio: getAssetPath('texture/play.png'),
+  audioOpen: getAssetPath('audio/open.mp3'),
+  audioLottery: getAssetPath('audio/lottery.m4a'),
+  audioAward: getAssetPath('audio/award.m4a'),
 }

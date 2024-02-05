@@ -89,7 +89,7 @@ export default function Winners() {
           <div
             {...stylex.props(commonStyles.button(true))}
             onClick={() => {
-              gameOneAction.playAudio(true, 1)
+              gameOneAction.changeMusic(1)
               gameOneAction.changeStatus(GameStatus.OPENING)
             }}
           >

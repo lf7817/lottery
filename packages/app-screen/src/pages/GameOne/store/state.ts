@@ -35,7 +35,7 @@ export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
     currentAwardId: lastAward.id,
     audio: {
       index: 0,
-      state: false,
+      enabled: false,
     },
   },
 )

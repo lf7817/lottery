@@ -56,3 +56,11 @@ http://localhost:4000/sign/
 
 app-screen端提供了个方法，在控制台输入window.mock("活动ID", 110)即可模拟110人
 点击年会签到控制台就会打印活动ID
+
+## QA
+
+### 如何制作精灵动画，比如这个项目里的灯笼、龙？
+1. 到资源网（比如千库网）上找你想要的动画视频，下带 AE模板的
+2. 使用 AE导出 png 序列
+3. 根据情况压缩下图片质量，我这里用的图压，导出 webp的格式更小还支持透明通道
+4. 然后使用[texturepacker](https://www.codeandweb.com/texturepacker)制作精灵，导出json和图片

@@ -1,4 +1,3 @@
-import { Howl } from 'howler'
 import pad from '../assets/pad.png'
 import watch from '../assets/watch.png'
 import guo from '../assets/guo.png'
@@ -7,9 +6,6 @@ import cdb from '../assets/cdb.png'
 import cup from '../assets/cup.png'
 import amy from '../assets/amy.png'
 import { Award } from '@/types'
-import audio1 from '@/pages/GameOne/assets/audio/open.mp3?url'
-import audio2 from '@/pages/GameOne/assets/audio/lottery.m4a?url'
-import audio3 from '@/pages/GameOne/assets/audio/award.m4a?url'
 
 export const awards: Award[] = [
   {
@@ -98,24 +94,24 @@ export const awards: Award[] = [
   },
 ]
 
-export const sound1 = new Howl({
-  src: [audio1],
-  autoplay: true,
-  loop: true,
-  volume: 0.5,
-})
-
-export const sound2 = new Howl({
-  src: [audio2],
-  autoplay: true,
-  loop: true,
-  volume: 0.5,
-})
-export const sound3 = new Howl({
-  src: [audio3],
-  autoplay: true,
-  loop: true,
-  volume: 0.5,
-})
-
-export const sound = [sound1, sound2, sound3]
+// export const sound1 = new Howl({
+//   src: [audio1],
+//   autoplay: true,
+//   loop: true,
+//   volume: 0.5,
+// })
+//
+// export const sound2 = new Howl({
+//   src: [audio2],
+//   autoplay: true,
+//   loop: true,
+//   volume: 0.5,
+// })
+// export const sound3 = new Howl({
+//   src: [audio3],
+//   autoplay: true,
+//   loop: true,
+//   volume: 0.5,
+// })
+//
+// export const sound = [sound1, sound2, sound3]

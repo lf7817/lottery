@@ -53,7 +53,7 @@ export default function usePhotoWall() {
       ease: 'power1.inOut',
     })
 
-    gameOneAction.playAudio(true, 1)
+    gameOneAction.changeMusic(1)
     gameOneAction.changeStatus(GameStatus.OPENING)
     transformObjects(cards.current!.children, objectData.sphere)
   }
@@ -135,7 +135,7 @@ export default function usePhotoWall() {
   }
 
   const backToSign = () => {
-    gameOneAction.playAudio(true, 0)
+    gameOneAction.changeMusic(0)
     gameOneAction.changeStatus(GameStatus.WAITING)
     gsap.to(cards.current!.position, {
       z: -14,

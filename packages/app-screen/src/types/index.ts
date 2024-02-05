@@ -34,6 +34,6 @@ export interface Person {
 }
 
 export interface AudioState {
-  state: boolean
+  enabled: boolean
   index: number
 }

@@ -5,7 +5,7 @@ import { GameOneStoreState, gameOneState } from './state.ts'
 import { GameStatus } from '@/constants'
 import { Person } from '@/types'
 import { gameOneDerive } from '@/pages/GameOne/store/derive.ts'
-import { awards, sound, sound1, sound2, sound3 } from '@/pages/GameOne/store/data.ts'
+import { awards } from '@/pages/GameOne/store/data.ts'
 
 export const cacheToken = 'GAME_STORE_STATE'
 
@@ -28,7 +28,8 @@ export const gameOneAction = {
       })
     }
 
-    // this.playAudio(false, gameOneState.audio.index ?? 0)
+    // 启动关闭音频
+    gameOneState.audio.enabled = false
 
     // 订阅 state 做持久化
     subscribe(gameOneState, () => {
@@ -55,7 +56,7 @@ export const gameOneAction = {
     gameOneState.qrcode = undefined
     gameOneState.audio = {
       index: 0,
-      state: false,
+      enabled: false,
     }
     localStorage.removeItem(cacheToken)
   },
@@ -177,18 +178,15 @@ export const gameOneAction = {
           gameOneState.currentWinners = gameOneState.currentWinners.filter(w => w.openid !== openid)
       } }
   },
-  playAudio(play: boolean, current?: number) {
-    gameOneState.audio.state = play
-    if (current)
-      gameOneState.audio.index = current
-
-    const index: number = current ?? gameOneState.audio.index ?? 0
-    sound1.stop()
-    sound2.stop()
-    sound3.stop()
-
-    if (play)
-      sound[index].play()
+  toggleAudio(enabled?: boolean) {
+    gameOneState.audio.enabled = !!enabled || !gameOneState.audio.enabled
+  },
+  /**
+   * 切换音乐
+   * @param index 0-开场音乐 1-抽奖音乐 2-颁奖音乐
+   */
+  changeMusic(index: 0 | 1 | 2) {
+    gameOneState.audio.index = index
   },
   showWelcome(show: boolean) {
     gameOneState.welcome = show
