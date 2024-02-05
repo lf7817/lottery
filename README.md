@@ -51,3 +51,8 @@ http://localhost:4000/screen/
 # 签到端
 http://localhost:4000/sign/
 ```
+
+## mock
+
+app-screen端提供了个方法，在控制台输入window.mock("活动ID", 110)即可模拟110人
+点击年会签到控制台就会打印活动ID

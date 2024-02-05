@@ -19,6 +19,7 @@ export default function Winners() {
   const [currentPrize, setCurrentPrize] = useState(0)
   const [show, setShow] = useState('')
   function choose(e: Award) {
+    setCurrentPrize(0)
     setCurrent(e)
   }
   function change(type: string) {
@@ -45,13 +46,13 @@ export default function Winners() {
           </div>
           <div {...stylex.props(styles.pic)}>
             {current?.prize.length > 1 && <div {...stylex.props(styles.btn(zuo))} onClick={() => change('zuo')} />}
-            <div {...stylex.props(styles.img(current.prize[currentPrize].image))} />
+            <div {...stylex.props(styles.img(current.prize[currentPrize]?.image))} />
             {current?.prize.length > 1 && <div {...stylex.props(styles.btn(you))} onClick={() => change('you')} />}
           </div>
           <div {...stylex.props(styles.xian(xian))} />
-          <div {...stylex.props(styles.name)}>{current.prize[currentPrize].title}</div>
+          <div {...stylex.props(styles.name)}>{current.prize[currentPrize]?.title}</div>
           <div {...stylex.props(styles.xian(xian))} />
-          <div {...stylex.props(styles.name)}>{current.prize[currentPrize].desc}</div>
+          <div {...stylex.props(styles.name)}>{current.prize[currentPrize]?.desc}</div>
         </div>
         <div {...stylex.props(styles.right(right, current.id))}>
           {people.filter(e => e.awardId === current.id && e.prizeId === current.prize[currentPrize].id).map((item) => {
