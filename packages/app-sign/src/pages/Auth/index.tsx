@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useRouterParams from '@lottery/shared/hooks/useRouterParams.ts'
 import styles from './style.module.css'
-import useRouterParams from '@/hooks/useRouterParams.ts'
 import { CacheToken } from '@/contants'
 import { isWechat } from '@/utils'
 

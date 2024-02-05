@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import { Loader, OrbitControls, Preload, Stats } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
+import useRouterParams from '@lottery/shared/hooks/useRouterParams.ts'
 import { gameOneState } from '../store'
 import Decoration from './Decoration.tsx'
 import Greeting from './Greeting.tsx'
@@ -10,6 +11,7 @@ import PhotoWall from '@/pages/GameOne/components/PhotoWall'
 import Winners from '@/pages/GameOne/components/Winners'
 
 export default function GameOne() {
+  const { debug } = useRouterParams()
   const store = useSnapshot(gameOneState)
   const [sceneReady, setSceneReady] = useState(false)
 
@@ -29,8 +31,14 @@ export default function GameOne() {
         camera={{ position: [0, 0, 50], fov: 45, far: 100000, near: 0.1 }}
         onCreated={() => setTimeout(() => setSceneReady(true), 600)}
       >
-        <OrbitControls />
-        <Stats />
+        {
+          debug === '1' && (
+            <>
+              <OrbitControls />
+              <Stats />
+            </>
+          )
+        }
 
         <Suspense fallback={null}>
           <group visible={sceneReady}>

@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common'
 import { Mutex } from 'async-mutex'
 import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager'
 import { WxService } from '../wx/wx.service'
-import { SignInDto } from './sign-in.dto'
+import { HasSignInDto, SignInDto } from './sign-in.dto'
 
 @Injectable()
 export class SignInService {
@@ -26,5 +26,13 @@ export class SignInService {
   async getPeopleByActityId(id: string) {
     const map = await this.cacheManager.get<Map<string, SignInDto>>(id) ?? new Map<string, SignInDto>()
     return [...map.values()]
+  }
+
+  async hasSignIn(body: HasSignInDto) {
+    const map = await this.cacheManager.get<Map<string, SignInDto>>(body.activityId)
+    if (!map)
+      return false
+
+    return map.has(body.openid)
   }
 }
