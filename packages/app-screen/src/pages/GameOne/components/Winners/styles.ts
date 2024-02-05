@@ -146,6 +146,11 @@ export default stylex.create({
   cancel: {
     position: 'absolute',
     top: 750,
-    left: 800,
+    left: 580,
+  },
+  home: {
+    position: 'absolute',
+    top: 750,
+    left: 920,
   },
 })

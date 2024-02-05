@@ -137,6 +137,12 @@ export default function usePhotoWall() {
   const backToSign = () => {
     gameOneAction.playAudio(true, 0)
     gameOneAction.changeStatus(GameStatus.WAITING)
+    gsap.to(cards.current!.position, {
+      z: -14,
+      delay: 1.3,
+      duration: 2.8,
+      ease: 'power1.inOut',
+    })
     transformObjects(cards.current!.children, objectData.table, { duration: 2, delay: 1 })
   }
 

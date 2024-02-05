@@ -32,3 +32,8 @@ export interface Person {
   /** 奖品 ID */
   prizeId?: string
 }
+
+export interface AudioState {
+  state: boolean
+  index: number
+}

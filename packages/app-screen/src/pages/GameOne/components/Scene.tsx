@@ -9,6 +9,7 @@ import Greeting from './Greeting.tsx'
 import { GameStatus } from '@/constants'
 import PhotoWall from '@/pages/GameOne/components/PhotoWall'
 import Winners from '@/pages/GameOne/components/Winners'
+import Welcome from '@/pages/GameOne/components/Welcome.tsx'
 
 export default function GameOne() {
   const { debug } = useRouterParams()
@@ -42,6 +43,7 @@ export default function GameOne() {
 
         <Suspense fallback={null}>
           <group visible={sceneReady}>
+            <Welcome />
             <Decoration />
             {render()}
           </group>

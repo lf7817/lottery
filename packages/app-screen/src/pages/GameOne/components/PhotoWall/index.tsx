@@ -48,8 +48,11 @@ export default function PhotoWall() {
                   年会签到
                 </div>
               </Html>
-              <Html position={[8, -8, 0]} transform>
+              <Html position={[0, -8, 0]} transform>
                 <div {...stylex.props(commonStyles.button(true))} onClick={startGame}>开始抽奖</div>
+              </Html>
+              <Html position={[8, -8, 0]} transform>
+                <div {...stylex.props(commonStyles.button(true))} onClick={() => gameOneAction.showWelcome(true)}>首页</div>
               </Html>
             </group>
           )
@@ -62,7 +65,7 @@ export default function PhotoWall() {
         {
           (status === GameStatus.OPENING || status === GameStatus.DRAWING) && (
             <group>
-              <Html position={[-10, -9, 3]} transform>
+              <Html position={[-11, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={backToSign}
@@ -71,7 +74,7 @@ export default function PhotoWall() {
                 </div>
               </Html>
 
-              <Html position={[1, -9, 3]} transform>
+              <Html position={[-3, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => draw(status === GameStatus.OPENING)}
@@ -80,7 +83,7 @@ export default function PhotoWall() {
                 </div>
               </Html>
 
-              <Html position={[12, -9, 3]} transform>
+              <Html position={[5, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => {
@@ -89,6 +92,14 @@ export default function PhotoWall() {
                   }}
                 >
                   颁奖
+                </div>
+              </Html>
+              <Html position={[13, -9, 3]} transform>
+                <div
+                  {...stylex.props(commonStyles.button(true), styles.btn)}
+                  onClick={() => gameOneAction.showWelcome(true)}
+                >
+                  首页
                 </div>
               </Html>
             </group>
@@ -98,7 +109,12 @@ export default function PhotoWall() {
         {
           status === GameStatus.END && (
             <group>
-              <Html position={[7, -9, 3]} transform>
+              <Html position={[-7, -9, 3]} transform>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => gameOneAction.reset()}>
+                  重置
+                </div>
+              </Html>
+              <Html position={[1, -9, 3]} transform>
                 <div
                   {...stylex.props(commonStyles.button(true), styles.btn)}
                   onClick={() => {
@@ -109,12 +125,12 @@ export default function PhotoWall() {
                   颁奖
                 </div>
               </Html>
-
-              <Html position={[-6, -9, 3]} transform>
-                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => gameOneAction.reset()}>
-                  重置
+              <Html position={[9, -9, 3]} transform>
+                <div {...stylex.props(commonStyles.button(true), styles.btn)} onClick={() => gameOneAction.showWelcome(true)}>
+                  首页
                 </div>
               </Html>
+
             </group>
           )
         }

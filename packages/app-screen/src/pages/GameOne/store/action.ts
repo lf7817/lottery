@@ -28,6 +28,8 @@ export const gameOneAction = {
       })
     }
 
+    // this.playAudio(false, gameOneState.audio.index ?? 0)
+
     // 订阅 state 做持久化
     subscribe(gameOneState, () => {
       localStorage.setItem(cacheToken, JSON.stringify(gameOneState))
@@ -184,7 +186,11 @@ export const gameOneAction = {
     sound1.stop()
     sound2.stop()
     sound3.stop()
+
     if (play)
       sound[index].play()
+  },
+  showWelcome(show: boolean) {
+    gameOneState.welcome = show
   },
 }

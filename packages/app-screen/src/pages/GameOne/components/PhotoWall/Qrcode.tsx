@@ -57,7 +57,7 @@ export default function Qrcode() {
   }
 
   return (
-    <group ref={ref} position={[29.5, 0, 0]}>
+    <group ref={ref} position={[27, 0, 4]}>
       <Html transform>
         <div {...stylex.props(styles.qrcode)} onClick={onClick}>
           <div {...stylex.props(styles.inner)}>

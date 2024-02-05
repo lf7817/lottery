@@ -20,4 +20,5 @@ export const AssetPaths = {
   greeting: getAssetPath('texture/greeting-min.png'),
   particle: getAssetPath('texture/particle-min.webp'),
   particledata: getAssetPath('texture/particle.json'),
+  greetingVideo: getAssetPath('video/greeting.mp4'),
 }

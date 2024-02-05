@@ -41,7 +41,13 @@ export default function Winners() {
         <div {...stylex.props(styles.left(left))}>
           <div {...stylex.props(styles.title)}>
             {awards.map(e => (
-              <div {...stylex.props(styles.item(current.id, e.id))} key={e.id} onClick={() => choose(e as Award)}>{e.title}</div>
+              <div
+                {...stylex.props(styles.item(current.id, e.id))}
+                key={e.id}
+                onClick={() => choose(e as Award)}
+              >
+                {e.title}
+              </div>
             ))}
           </div>
           <div {...stylex.props(styles.pic)}>
@@ -58,9 +64,20 @@ export default function Winners() {
           {people.filter(e => e.awardId === current.id && e.prizeId === current.prize[currentPrize].id).map((item) => {
             return (
               <div key={item.mobile} {...stylex.props(styles.people(current.id))}>
-                <div {...stylex.props(styles.headimgurl(item.headimgurl, current.id))} onMouseEnter={() => setShow(item.openid)} onMouseLeave={() => setShow('')}>
+                <div
+                  {...stylex.props(styles.headimgurl(item.headimgurl, current.id))}
+                  onMouseEnter={() => setShow(item.openid)}
+                  onMouseLeave={() => setShow('')}
+                >
                   {/* <span {...stylex.props(styles.span)}></span> */}
-                  {show === item.openid && <div {...stylex.props(styles.delete(current.id))} onClick={() => gameOneAction.removeWinner(item.openid)}>X</div>}
+                  {show === item.openid && (
+                    <div
+                      {...stylex.props(styles.delete(current.id))}
+                      onClick={() => gameOneAction.removeWinner(item.openid)}
+                    >
+                      X
+                    </div>
+                  )}
                 </div>
                 <div {...stylex.props(styles.username(current.id))}>{item.username}</div>
                 <div {...stylex.props(styles.username(current.id))}>{item.mobile.slice(7, 11)}</div>
@@ -77,6 +94,14 @@ export default function Winners() {
             }}
           >
             返回
+          </div>
+        </div>
+        <div {...stylex.props(styles.home)}>
+          <div
+            {...stylex.props(commonStyles.button(true))}
+            onClick={() => gameOneAction.showWelcome(true)}
+          >
+            首页
           </div>
         </div>
       </div>
