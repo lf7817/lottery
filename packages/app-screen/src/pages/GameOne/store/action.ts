@@ -181,12 +181,10 @@ export const gameOneAction = {
       gameOneState.audio.index = current
 
     const index: number = current ?? gameOneState.audio.index ?? 0
-    sound1.pause()
-    sound2.pause()
-    sound3.pause()
+    sound1.stop()
+    sound2.stop()
+    sound3.stop()
     if (play)
       sound[index].play()
-    else
-      sound[index].pause()
   },
 }
