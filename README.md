@@ -1,6 +1,6 @@
 # 年会抽奖
 
-环境要求
+## 环境要求
 
 ```json
   {
@@ -9,12 +9,15 @@
   }
 ```
 
-安装依赖（根目录）
+## 安装依赖（根目录）
 ```bash
 pnpm install
 ```
 
-环境变量
+## 环境变量
+
+> 没有微信公众号可以用[微信测试号](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index),
+> 使用测试号记得修改**授权回调页面域名**
 
 *app-server*目录下新建 ``.env.local``
 ```
@@ -35,7 +38,7 @@ VITE_HOST = '替换成你的域名或 IP'
 VITE_WECHAT_APPID = xxxx
 ```
 
-运行
+## 运行
 ```bash
 pnpm run build
 pnpm run start
