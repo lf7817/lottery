@@ -19,7 +19,7 @@ export interface Award {
   count: number
   /** 一个奖项里可以有多个商品 */
   prize: Prize[]
-  
+
 }
 
 export interface Person {

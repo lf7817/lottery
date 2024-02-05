@@ -1,7 +1,7 @@
 import { proxy } from 'valtio'
 import { GameStatus } from '@/constants'
-import {awards} from '@/pages/GameOne/store/data.ts'
-import {Award, Person } from '@/types'
+import { awards } from '@/pages/GameOne/store/data.ts'
+import { Award, Person } from '@/types'
 
 export interface GameOneStoreState {
   status: GameStatus
@@ -13,10 +13,10 @@ export interface GameOneStoreState {
    * 本次中奖人
    */
   currentWinners?: Person[]
-  audio:{
-    index:number
-    state:boolean
-  } 
+  audio: {
+    index: number
+    state: boolean
+  }
 }
 
 const lastAward = awards[awards.length - 1]
@@ -35,8 +35,8 @@ export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
     people: [],
     currentAwardId: lastAward.id,
     audio: {
-      index:0,
-      state:false
-    }
+      index: 0,
+      state: false,
+    },
   },
 )

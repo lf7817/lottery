@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
+
 const rotoImg = stylex.keyframes({
-  '0%': {transform:'rotate(0deg)'},
-  '100%': {transform:'rotate(360deg)'},
+  '0%': { transform: 'rotate(0deg)' },
+  '100%': { transform: 'rotate(360deg)' },
 })
 export default stylex.create({
   wrapper: {
@@ -9,7 +10,7 @@ export default stylex.create({
     height: '100%',
     // backgroundColor: '#CD2B12',
   },
-  btn: (url: string,play:boolean) => ({
+  btn: (url: string, play: boolean) => ({
     position: 'absolute',
     top: 20,
     right: 30,
@@ -21,6 +22,6 @@ export default stylex.create({
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     zIndex: 10,
-    animation: play?`${rotoImg} 6s linear infinite`:null
+    animation: play ? `${rotoImg} 6s linear infinite` : null,
   }),
 })

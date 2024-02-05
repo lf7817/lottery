@@ -1,4 +1,4 @@
-import { Award } from '@/types'
+import { Howl } from 'howler'
 import pad from '../assets/pad.png'
 import watch from '../assets/watch.png'
 import guo from '../assets/guo.png'
@@ -6,11 +6,10 @@ import ji from '../assets/ji.png'
 import cdb from '../assets/cdb.png'
 import cup from '../assets/cup.png'
 import amy from '../assets/amy.png'
-import audio1 from "@/pages/GameOne/assets/audio/audio1.mp3";
-import audio2 from "@/pages/GameOne/assets/audio/audio2.wav";
-import audio3 from "@/pages/GameOne/assets/audio/audio3.wav";
-import {Howl} from 'howler';
-
+import { Award } from '@/types'
+import audio1 from '@/pages/GameOne/assets/audio/audio1.mp3'
+import audio2 from '@/pages/GameOne/assets/audio/audio2.wav'
+import audio3 from '@/pages/GameOne/assets/audio/audio3.wav'
 
 export const awards: Award[] = [
   {
@@ -23,7 +22,7 @@ export const awards: Award[] = [
         title: '华为HUAWEI MatePad',
         total: 1,
         image: pad,
-        desc :'MatePad 11 2023款 8+128G'
+        desc: 'MatePad 11 2023款 8+128G',
       },
     ],
   },
@@ -37,7 +36,7 @@ export const awards: Award[] = [
         title: '华为手表GT3',
         total: 1,
         image: watch,
-        desc :'46mm,血氧自动检测、体温检测'
+        desc: '46mm,血氧自动检测、体温检测',
       },
     ],
   },
@@ -51,7 +50,7 @@ export const awards: Award[] = [
         title: '小熊（Bear）折叠多功能料理锅',
         total: 2,
         image: guo,
-        desc :'烤涮两用、升级折叠'
+        desc: '烤涮两用、升级折叠',
       },
     ],
   },
@@ -65,7 +64,7 @@ export const awards: Award[] = [
         title: '九阳（Joyoung）破壁机',
         total: 3,
         image: ji,
-        desc :'1.75L大容量 降噪、预约加热'
+        desc: '1.75L大容量 降噪、预约加热',
       },
     ],
   },
@@ -79,21 +78,21 @@ export const awards: Award[] = [
         title: '颈椎按摩仪',
         total: 10,
         image: amy,
-        desc :'18档脉冲+智能语音提示'
+        desc: '18档脉冲+智能语音提示',
       },
       {
         id: '4_1',
         title: '移动电源',
         total: 10,
         image: cdb,
-        desc :'10000毫安大容量，轻薄便携'
+        desc: '10000毫安大容量，轻薄便携',
       },
       {
         id: '4_2',
         title: '电热水杯',
         total: 10,
         image: cup,
-        desc :'350ml一键烧水'
+        desc: '350ml一键烧水',
       },
     ],
   },
@@ -119,5 +118,4 @@ export const sound3 = new Howl({
   volume: 0.5,
 })
 
-export const sound = [sound1,sound2,sound3]
-
+export const sound = [sound1, sound2, sound3]
