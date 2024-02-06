@@ -6,7 +6,7 @@ import * as z from 'zod'
 import useRouterParams from '@lottery/shared/hooks/useRouterParams.ts'
 import styles from './style.module.css'
 import { isWechat } from '@/utils'
-import { CacheToken } from '@/contants'
+import { CacheToken, HOST } from '@/contants'
 import { UserInfo } from '@/types'
 import PageContainer from '@/components/PageContainer'
 
@@ -122,7 +122,7 @@ interface FetchSigninParams {
 }
 
 async function fetchSignin(data: FetchSigninParams) {
-  return fetch(`/lottery-api/sign-in`, {
+  return fetch(`${HOST}/sign-in`, {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -138,7 +138,7 @@ interface FetchHasSigninParams {
 }
 
 async function fetchHasSignin(data: FetchHasSigninParams) {
-  return fetch(`/lottery-api/sign-in/hasSignIn`, {
+  return fetch(`${HOST}/sign-in/hasSignIn`, {
     method: 'POST',
     mode: 'cors',
     headers: {

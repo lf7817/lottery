@@ -2,13 +2,14 @@ import { MResponse } from '@lottery/shared/types'
 import * as mockjs from 'mockjs'
 import { Person } from '@/types'
 import { gameOneAction } from '@/pages/GameOne/store/action.ts'
+import { HOST } from '@/constants'
 
 export async function fetchUserList(id?: string) {
   if (!id)
     return []
 
   try {
-    const res = await fetch(`/lottery-api/sign-in?id=${id}`, {
+    const res = await fetch(`${HOST}/sign-in?id=${id}`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -27,7 +28,7 @@ export async function fetchUserList(id?: string) {
 }
 
 async function fetchSignin(data: any) {
-  return fetch(`/lottery-api/sign-in`, {
+  return fetch(`${HOST}/sign-in`, {
     method: 'POST',
     mode: 'cors',
     headers: {

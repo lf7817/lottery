@@ -19,10 +19,10 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'development' ? '/' : '/lottery/sign/',
   server: {
     proxy: {
-      '/lottery-api': {
+      '/lottery/lottery-api': {
         target: 'http://localhost:4000/lottery-api',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/lottery-api/, ''),
+        rewrite: path => path.replace(/^\/lottery\/lottery-api/, ''),
       },
     },
   },

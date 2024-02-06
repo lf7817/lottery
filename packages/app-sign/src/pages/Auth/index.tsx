@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useRouterParams from '@lottery/shared/hooks/useRouterParams.ts'
 import styles from './style.module.css'
-import { CacheToken } from '@/contants'
+import { CacheToken, HOST } from '@/contants'
 import { isWechat } from '@/utils'
 
 export default function Auth() {
@@ -42,7 +42,7 @@ export default function Auth() {
 }
 
 async function fetchWxUserInfo(code: string) {
-  return fetch(`/lottery-api/wx/userinfo?code=${code}`, {
+  return fetch(`${HOST}/wx/userinfo?code=${code}`, {
     method: 'GET',
     mode: 'cors',
     headers: {

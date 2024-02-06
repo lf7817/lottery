@@ -20,3 +20,5 @@ export enum PhotoWallType {
   SPHERE = 'SPHERE',
   HELIX = 'HELIX',
 }
+
+export const HOST = import.meta.env.VITE_API_HOST
