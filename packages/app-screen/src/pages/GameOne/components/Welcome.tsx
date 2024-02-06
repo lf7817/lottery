@@ -33,7 +33,6 @@ export default function Welcome() {
   const group = useRef<Group>(null)
   const { welcome, audio } = useSnapshot(gameOneState)
   const isFirst = useRef(true)
-  const lastMusic = useRef(audio.index)
 
   useLayoutEffect(() => {
     if (group.current) {
@@ -47,13 +46,10 @@ export default function Welcome() {
           ease: welcome ? 'bounce.out' : 'power4.in',
         })
 
-        if (welcome) {
-          lastMusic.current = audio.index
+        if (welcome)
           gameOneAction.changeMusic(0)
-        }
-        else {
-          gameOneAction.changeMusic(lastMusic.current as any)
-        }
+        else
+          gameOneAction.changeMusic(audio.lastIndex)
       }
     }
   }, [welcome])

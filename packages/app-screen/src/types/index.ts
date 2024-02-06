@@ -36,4 +36,5 @@ export interface Person {
 export interface AudioState {
   enabled: boolean
   index: number
+  lastIndex: number
 }

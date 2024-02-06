@@ -56,6 +56,7 @@ export const gameOneAction = {
     gameOneState.qrcode = undefined
     gameOneState.audio = {
       index: 0,
+      lastIndex: 0,
       enabled: false,
     }
     localStorage.removeItem(cacheToken)
@@ -185,7 +186,8 @@ export const gameOneAction = {
    * 切换音乐
    * @param index 0-开场音乐 1-抽奖音乐 2-颁奖音乐
    */
-  changeMusic(index: 0 | 1 | 2) {
+  changeMusic(index: number) {
+    gameOneState.audio.lastIndex = gameOneState.audio.index
     gameOneState.audio.index = index
   },
   showWelcome(show: boolean) {
