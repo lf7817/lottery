@@ -152,7 +152,7 @@ export default function usePhotoWall() {
   }
 
   const stopDrawAudio = () => {
-    if (audioDraw.current) {
+    if (audioDraw.current && gameOneState.audio.enabled) {
       gameOneAction.setVolume(1)
       audioDraw.current.setLoop(false)
       audioDraw.current.offset = 4
