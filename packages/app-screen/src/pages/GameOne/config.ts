@@ -25,4 +25,11 @@ export const AssetPaths = {
   audioOpen: getAssetPath('audio/open.mp3'),
   audioLottery: getAssetPath('audio/lottery.m4a'),
   audioAward: getAssetPath('audio/award.m4a'),
+  awardPad: getAssetPath('award/pad.png'),
+  awardWatch: getAssetPath('award/watch.png'),
+  awardGuo: getAssetPath('award/guo.png'),
+  awardJi: getAssetPath('award/ji.png'),
+  awardCdb: getAssetPath('award/cdb.png'),
+  awardCup: getAssetPath('award/cup.png'),
+  awardAmy: getAssetPath('award/amy.png'),
 }
