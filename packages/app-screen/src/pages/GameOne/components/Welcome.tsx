@@ -7,6 +7,7 @@ import { gsap } from 'gsap'
 import entry from '../assets/video-entry.png'
 import { AssetPaths } from '@/pages/GameOne/config.ts'
 import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
+import { GameStatus } from '@/constants'
 
 const styles = stylex.create({
   wrapper: {
@@ -27,6 +28,14 @@ const styles = stylex.create({
     cursor: 'pointer',
     zIndex: 10,
   }),
+  reset: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: 100,
+    height: 100,
+    cursor: 'pointer',
+  },
 })
 
 export default function Welcome() {
@@ -68,6 +77,7 @@ export default function Welcome() {
             disablePictureInPicture={false}
           />
           <div {...stylex.props(styles.entry())} onClick={() => gameOneAction.showWelcome(false)} />
+          <div {...stylex.props(styles.reset)} onClick={() => gameOneAction.changeStatus(GameStatus.GREETING)} />
         </div>
       </Html>
     </group>
