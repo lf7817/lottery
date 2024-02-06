@@ -83,10 +83,14 @@ export const gameOneAction = {
    * @param people
    */
   updatePeople(people: Person[]) {
-    gameOneState.people = people.map(person => ({
-      ...person,
-      mobile: person.mobile.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'),
-    }))
+    people.forEach((person) => {
+      if (!gameOneState.people.find(p => p.openid === person.openid)) {
+        gameOneState.people.push({
+          ...person,
+          mobile: person.mobile.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'),
+        })
+      }
+    })
   },
   /**
    * 抽奖
