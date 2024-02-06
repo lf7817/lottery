@@ -30,12 +30,14 @@ WECHAT_SECRET = xxxxxx
 ```
 # 签到端地址
 VITE_HOST = '替换成你的域名或 IP'
+VITE_API_HOST = '/lottery/lottery-api'
 ```
 
 *app-sign*目录下新建``.env.production``指定生产端环境变量
 ```bash
 # 微信公众号 APPID, 用于微信授权登录
 VITE_WECHAT_APPID = xxxx
+VITE_API_HOST = '/lottery/lottery-api'
 ```
 
 ## 运行
@@ -64,3 +66,8 @@ app-screen端提供了个方法，在控制台输入window.mock("活动ID", 110)
 2. 使用 AE导出 png 序列
 3. 根据情况压缩下图片质量，我这里用的图压，导出 webp的格式更小还支持透明通道
 4. 然后使用[texturepacker](https://www.codeandweb.com/texturepacker)制作精灵，导出json和图片
+
+## 感谢
+- https://threejs.org/examples/?q=periodictable#css3d_periodictable
+- https://github.com/moshang-xc/lottery
+- https://github.com/GAtomis/lottery-web

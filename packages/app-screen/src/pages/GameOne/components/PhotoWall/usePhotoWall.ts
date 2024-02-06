@@ -138,7 +138,7 @@ export default function usePhotoWall() {
     gameOneAction.changeMusic(0)
     gameOneAction.changeStatus(GameStatus.WAITING)
     gsap.to(cards.current!.position, {
-      z: -14,
+      z: -4,
       delay: 1.3,
       duration: 2.8,
       ease: 'power1.inOut',
