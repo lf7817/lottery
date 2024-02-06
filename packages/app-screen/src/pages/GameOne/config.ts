@@ -22,7 +22,7 @@ export const AssetPaths = {
   particledata: getAssetPath('texture/particle.json'),
   greetingVideo: getAssetPath('video/greeting.mp4'),
   audio: getAssetPath('texture/play.png'),
-  audioOpen: getAssetPath('audio/open.mp3'),
+  audioOpen: getAssetPath('audio/open.ogg'),
   audioLottery: getAssetPath('audio/lottery.m4a'),
   audioAward: getAssetPath('audio/award.m4a'),
   awardPad: getAssetPath('award/pad.png'),
