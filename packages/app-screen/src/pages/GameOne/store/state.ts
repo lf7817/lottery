@@ -41,3 +41,6 @@ export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
     },
   },
 )
+
+// @ts-expect-error
+window.gameOneState = gameOneState

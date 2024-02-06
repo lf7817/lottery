@@ -20,7 +20,7 @@ const styles = stylex.create({
   }),
 })
 
-export default function GameOneAudio() {
+export default function BackgroundMusic() {
   const { audio: { enabled, index, volume } } = useSnapshot(gameOneState)
   const [listener] = useState(() => new AudioListener())
   const bufferOpen = useLoader(AudioLoader, AssetPaths.audioOpen)

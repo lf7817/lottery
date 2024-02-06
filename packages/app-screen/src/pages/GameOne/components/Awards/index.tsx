@@ -26,7 +26,9 @@ export default function Awards() {
                     content={(
                       <div
                         {...stylex.props(styles.item(award.id === currentAwardId))}
-                        onClick={() => gameOneAction.changeAward(award.id)}
+                        onClick={() => {
+                          gameOneAction.changeAward(award.id)
+                        }}
                       >
                         <div {...stylex.props(styles.image(award.prize[0].image))}></div>
                         <div {...stylex.props(styles.content)}>

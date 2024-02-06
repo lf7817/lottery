@@ -1,20 +1,36 @@
 import { useSnapshot } from 'valtio'
-import { useLayoutEffect, useRef } from 'react'
-import { Group, Vector3 } from 'three'
-import { useFrame } from '@react-three/fiber'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Audio, AudioListener, AudioLoader, Group, Vector3 } from 'three'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { gsap } from 'gsap'
 import { toast } from 'react-toastify'
 import { useMemoizedFn } from 'ahooks'
-import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
+import { gameOneAction, gameOneDerive, gameOneState } from '@/pages/GameOne/store'
 import { GameStatus } from '@/constants'
 import { celebrateFireworks, transformObjects } from '@/utils'
 import { objectData } from '@/pages/GameOne/components/PhotoWall/data.ts'
 import { Person } from '@/types'
+import { AssetPaths } from '@/pages/GameOne/config.ts'
 
 export default function usePhotoWall() {
+  const [listener] = useState(() => new AudioListener())
+  const bufferDraw = useLoader(AudioLoader, AssetPaths.audioDraw)
+  const audioDraw = useRef<Audio>(null)
   const elapsedTime = useRef(0)
   const cards = useRef<Group>(null)
   const { status, people, currentWinners } = useSnapshot(gameOneState)
+  const { prizeRemain, current, peopleRemain } = useSnapshot(gameOneDerive)
+
+  useEffect(() => {
+    if (bufferDraw && audioDraw.current) {
+      audioDraw.current.setBuffer(bufferDraw)
+      audioDraw.current.autoplay = false
+      audioDraw.current.setLoop(true)
+      audioDraw.current.setLoopStart(2)
+      audioDraw.current.setLoopEnd(4)
+      audioDraw.current.setVolume(5)
+    }
+  }, [bufferDraw])
 
   useLayoutEffect(() => {
     (async () => {
@@ -27,8 +43,10 @@ export default function usePhotoWall() {
         })
       }
       await transformObjects(cards.current!.children, status >= GameStatus.OPENING ? objectData.sphere : objectData.table)
-      if (status === GameStatus.OPENING)
-        await showWinners(undefined, 0)
+      if (status === GameStatus.DRAWING)
+        playDrawAudio()
+      // if (status === GameStatus.OPENING)
+      //   await showWinners(undefined, 0)
     })()
   }, [])
 
@@ -79,6 +97,7 @@ export default function usePhotoWall() {
 
     await new Promise((resolve) => {
       setTimeout(() => {
+        stopDrawAudio()
         let count = 0
         winnerCards.forEach((winner, index) => {
           const maxPerRow = Math.min(5, winners.length)
@@ -121,12 +140,49 @@ export default function usePhotoWall() {
     await celebrateFireworks()
   })
 
+  const playDrawAudio = () => {
+    if (gameOneState.audio.enabled) {
+      gameOneAction.setVolume(0.4)
+      audioDraw.current?.setLoop(true)
+      audioDraw.current?.setLoopStart(2)
+      audioDraw.current?.setLoopEnd(4)
+      audioDraw.current?.setVolume(5)
+      audioDraw.current?.play()
+    }
+  }
+
+  const stopDrawAudio = () => {
+    if (audioDraw.current) {
+      gameOneAction.setVolume(1)
+      audioDraw.current.setLoop(false)
+      audioDraw.current.offset = 4
+      audioDraw.current.play()
+    }
+  }
+
   /**
    * 抽奖&停止
    */
   const draw = (start: boolean) => {
     if (start) {
+      if (prizeRemain.length === 0) {
+        toast.info('全部奖品已抽完')
+        gameOneAction.changeStatus(GameStatus.END)
+        return
+      }
+
+      if (current.remain === 0) {
+        toast.info('当前奖项已抽完，请选择其他奖项')
+        return
+      }
+
+      if (peopleRemain.length === 0) {
+        toast.info('剩余抽奖人数不足')
+        return
+      }
+
       gameOneAction.draw(true)
+      playDrawAudio()
       transformObjects(cards.current!.children, objectData.sphere, { duration: 1, delay: 0 })
     } else {
       const w = gameOneAction.draw(false) ?? []
@@ -174,5 +230,5 @@ export default function usePhotoWall() {
     }
   })
 
-  return { startGame, status, people, cards, draw, currentWinners, backToSign }
+  return { startGame, status, people, cards, draw, currentWinners, backToSign, listener, audioDraw }
 }

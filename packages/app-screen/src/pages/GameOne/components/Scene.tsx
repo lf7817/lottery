@@ -10,7 +10,7 @@ import { GameStatus } from '@/constants'
 import PhotoWall from '@/pages/GameOne/components/PhotoWall'
 import Winners from '@/pages/GameOne/components/Winners'
 import Welcome from '@/pages/GameOne/components/Welcome.tsx'
-import GameOneAudio from '@/pages/GameOne/components/Audio.tsx'
+import BackgroundMusic from '@/pages/GameOne/components/BackgroundMusic.tsx'
 
 export default function GameOne() {
   const { debug } = useRouterParams()
@@ -44,7 +44,7 @@ export default function GameOne() {
 
         <Suspense fallback={null}>
           <group visible={sceneReady}>
-            <GameOneAudio />
+            <BackgroundMusic />
             <Welcome />
             <Decoration />
             {render()}

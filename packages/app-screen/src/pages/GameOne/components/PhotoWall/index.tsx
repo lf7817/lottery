@@ -11,10 +11,12 @@ import Qrcode from '@/pages/GameOne/components/PhotoWall/Qrcode.tsx'
 import Card from '@/pages/GameOne/components/PhotoWall/Card.tsx'
 
 export default function PhotoWall() {
-  const { currentWinners, backToSign, draw, startGame, status, cards, people } = usePhotoWall()
+  const { audioDraw, listener, currentWinners, backToSign, draw, startGame, status, cards, people } = usePhotoWall()
 
   return (
     <group>
+      {/* @ts-expect-error  */}
+      <audio ref={audioDraw} args={[listener]} />
       <group ref={cards} name="cards" position-z={-4}>
         {
           objectData.objects.map((item, index) => (

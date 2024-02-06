@@ -60,6 +60,7 @@ export const gameOneAction = {
       volume: 1,
       enabled: false,
     }
+    gameOneState.welcome = true
     localStorage.removeItem(cacheToken)
   },
   /**
@@ -201,3 +202,6 @@ export const gameOneAction = {
     gameOneState.welcome = show
   },
 }
+
+// @ts-expect-error
+window.gameOneAction = gameOneAction
