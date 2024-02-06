@@ -2,6 +2,7 @@ import path from 'node:path'
 import { defineConfig, normalizePath } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import pxtorem from 'postcss-pxtorem'
+import { stylexPlugin } from 'vite-plugin-stylex-dev'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,7 +26,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react()],
+  plugins: [react(), stylexPlugin()],
   resolve: {
     alias: {
       '@': pathResolve('src'),
