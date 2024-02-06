@@ -31,8 +31,9 @@ const styles = stylex.create({
 
 export default function Welcome() {
   const group = useRef<Group>(null)
-  const { welcome } = useSnapshot(gameOneState)
+  const { welcome, audio } = useSnapshot(gameOneState)
   const isFirst = useRef(true)
+  const lastMusic = useRef(audio.index)
 
   useLayoutEffect(() => {
     if (group.current) {
@@ -45,6 +46,14 @@ export default function Welcome() {
           y: welcome ? 0 : 20,
           ease: welcome ? 'bounce.out' : 'power4.in',
         })
+
+        if (welcome) {
+          lastMusic.current = audio.index
+          gameOneAction.changeMusic(0)
+        }
+        else {
+          gameOneAction.changeMusic(lastMusic.current as any)
+        }
       }
     }
   }, [welcome])
