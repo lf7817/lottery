@@ -57,6 +57,7 @@ export const gameOneAction = {
     gameOneState.audio = {
       index: 0,
       lastIndex: 0,
+      volume: 1,
       enabled: false,
     }
     localStorage.removeItem(cacheToken)
@@ -189,6 +190,12 @@ export const gameOneAction = {
   changeMusic(index: number) {
     gameOneState.audio.lastIndex = gameOneState.audio.index
     gameOneState.audio.index = index
+  },
+  playLastMusic() {
+    gameOneState.audio.index = gameOneState.audio.lastIndex
+  },
+  setVolume(volume: number) {
+    gameOneState.audio.volume = volume
   },
   showWelcome(show: boolean) {
     gameOneState.welcome = show

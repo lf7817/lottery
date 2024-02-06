@@ -281,6 +281,9 @@ importers:
 
   packages/shared:
     dependencies:
+      '@stylexjs/stylex':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@types/react':
         specifier: ^18.2.43
         version: 18.2.48

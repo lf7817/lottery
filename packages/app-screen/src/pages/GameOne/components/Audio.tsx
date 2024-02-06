@@ -21,7 +21,7 @@ const styles = stylex.create({
 })
 
 export default function GameOneAudio() {
-  const { audio: { enabled, index } } = useSnapshot(gameOneState)
+  const { audio: { enabled, index, volume } } = useSnapshot(gameOneState)
   const [listener] = useState(() => new AudioListener())
   const bufferOpen = useLoader(AudioLoader, AssetPaths.audioOpen)
   const bufferLottery = useLoader(AudioLoader, AssetPaths.audioLottery)
@@ -44,6 +44,10 @@ export default function GameOneAudio() {
       musics.forEach(music => music.current?.isPlaying && music.current.pause())
     }
   }, [index, enabled])
+
+  useEffect(() => {
+    musics[index].current?.setVolume(volume)
+  }, [volume, index])
 
   useEffect(() => {
     if (bufferLottery && audioLottery.current) {

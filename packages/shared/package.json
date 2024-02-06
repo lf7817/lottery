@@ -9,6 +9,7 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
+    "@stylexjs/stylex": "^0.5.1",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "axios": "^1.6.2",

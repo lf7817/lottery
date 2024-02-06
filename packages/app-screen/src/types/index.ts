@@ -37,4 +37,5 @@ export interface AudioState {
   enabled: boolean
   index: number
   lastIndex: number
+  volume: number
 }

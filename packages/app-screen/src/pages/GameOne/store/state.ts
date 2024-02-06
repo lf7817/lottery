@@ -37,6 +37,7 @@ export const gameOneState: GameOneStoreState = proxy<GameOneStoreState>(
       index: 0,
       enabled: false,
       lastIndex: 0,
+      volume: 1,
     },
   },
 )

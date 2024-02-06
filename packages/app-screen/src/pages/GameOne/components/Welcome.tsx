@@ -31,7 +31,7 @@ const styles = stylex.create({
 
 export default function Welcome() {
   const group = useRef<Group>(null)
-  const { welcome, audio } = useSnapshot(gameOneState)
+  const { welcome } = useSnapshot(gameOneState)
   const isFirst = useRef(true)
 
   useLayoutEffect(() => {
@@ -49,7 +49,7 @@ export default function Welcome() {
         if (welcome)
           gameOneAction.changeMusic(0)
         else
-          gameOneAction.changeMusic(audio.lastIndex)
+          gameOneAction.playLastMusic()
       }
     }
   }, [welcome])
