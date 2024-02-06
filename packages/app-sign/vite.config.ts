@@ -5,7 +5,7 @@ import pxtorem from 'postcss-pxtorem'
 import { stylexPlugin } from 'vite-plugin-stylex-dev'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   css: {
     postcss: {
       plugins: [
@@ -16,7 +16,7 @@ export default defineConfig({
       ],
     },
   },
-  base: './',
+  base: mode === 'development' ? '/' : '/lottery/sign/',
   server: {
     proxy: {
       '/lottery-api': {
@@ -34,7 +34,7 @@ export default defineConfig({
       '~@': pathResolve('src'),
     },
   },
-})
+}))
 
 function pathResolve(...args: string[]) {
   return normalizePath(path.resolve(__dirname, ...args))

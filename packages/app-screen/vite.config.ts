@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react-swc'
 import { stylexPlugin } from 'vite-plugin-stylex-dev'
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
   return {
-    base: './',
+    base: mode === 'development' ? '/' : '/lottery/screen/',
     server: {
       cors: true,
       host: '127.0.0.1',
