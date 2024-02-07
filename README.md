@@ -33,7 +33,7 @@ WECHAT_SECRET = xxxxxx
 *app-screen*目录下新建 ``.env.production``指定生产端环境变量
 ```
 # 签到端地址
-VITE_HOST = '替换成你的域名或 IP'
+VITE_SIGN_HOST = '替换成签到端地址'
 VITE_API_HOST = '/lottery/lottery-api'
 ```
 
