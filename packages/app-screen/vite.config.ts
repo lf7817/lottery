@@ -1,12 +1,15 @@
 import * as path from 'node:path'
-import { defineConfig, normalizePath } from 'vite'
+import * as process from 'node:process'
+import { defineConfig, loadEnv, normalizePath } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { stylexPlugin } from 'vite-plugin-stylex-dev'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+
   return {
-    base: mode === 'development' ? '/' : '/lottery/screen/',
+    base: env.PUBLIC_PATH,
     server: {
       cors: true,
       host: '127.0.0.1',
