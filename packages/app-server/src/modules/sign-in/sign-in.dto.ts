@@ -1,4 +1,4 @@
-import { IsMobilePhone, IsNotEmpty, IsString } from 'class-validator'
+import { IsMobilePhone, IsNotEmpty, IsOptional, IsString } from 'class-validator'
 
 export class SignInDto {
   @IsNotEmpty()
@@ -17,9 +17,9 @@ export class SignInDto {
   @IsString()
   openid: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  headimgurl: string
+  headimgurl?: string
 }
 
 export class HasSignInDto {

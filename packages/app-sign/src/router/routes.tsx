@@ -18,7 +18,7 @@ export default [
       },
       {
         path: '/',
-        element: <Navigate to="/auth" replace />,
+        element: <Navigate to="/sign-in" replace />,
       },
     ],
   },

@@ -11,15 +11,18 @@ export default function Auth() {
   const targetUrl = encodeURIComponent(`${window.location.href}`)
 
   useEffect(() => {
+    if (!isWechat())
+      return navigate('/sign-in', { replace: true })
+
     if (localStorage.getItem(CacheToken.USER_INFO)) {
-      navigate({ pathname: '/sign-in' })
+      navigate('/sign-in', { replace: true })
     } else if (code) {
       fetchWxUserInfo(code)
         .then(res => res.json())
         .then((res) => {
           if (res.code === 0) {
             localStorage.setItem(CacheToken.USER_INFO, JSON.stringify(res.data))
-            navigate({ pathname: '/sign-in' })
+            navigate('/sign-in', { replace: true })
           }
         })
     }

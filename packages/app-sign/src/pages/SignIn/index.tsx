@@ -30,20 +30,24 @@ export default function SignIn() {
   })
 
   useEffect(() => {
-    if (!userinfo.current)
-      navigate({ pathname: '/auth' })
+    if (isWechat() && !userinfo.current)
+      navigate('/auth', { replace: true })
     else
       queryHasSignIn()
   }, [])
 
   async function submit(data: FormData) {
+    const user = isWechat() ? userinfo.current : { openid: data.mobile, headimgurl: '' }
     const body: FetchSigninParams = {
       username: data.username,
       mobile: data.mobile,
       activityId: activityId!,
-      openid: userinfo.current!.openid,
-      headimgurl: userinfo.current!.headimgurl,
+      openid: user.openid,
+      headimgurl: user.headimgurl,
     }
+
+    if (!isWechat())
+      localStorage.setItem(CacheToken.USER_INFO, JSON.stringify(user))
 
     fetchSignin(body)
       .then(res => res.json())
@@ -53,9 +57,12 @@ export default function SignIn() {
   }
 
   async function queryHasSignIn() {
+    if (!userinfo.current)
+      return
+
     fetchHasSignin({
       activityId: activityId!,
-      openid: userinfo.current!.openid,
+      openid: userinfo.current.openid,
     })
       .then(res => res.json())
       .then((res) => {
@@ -65,9 +72,6 @@ export default function SignIn() {
           setSignin(false)
       })
   }
-
-  if (!isWechat())
-    return <div>请使用微信扫一扫</div>
 
   if (!activityId)
     return <div>路由参数错误</div>
