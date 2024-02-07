@@ -37,7 +37,8 @@
     "lint-staged": "^15.2.0",
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
-    "turbo": "^1.11.3"
+    "turbo": "^1.11.3",
+    "vercel": "^33.4.1"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

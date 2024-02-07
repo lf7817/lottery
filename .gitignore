@@ -40,3 +40,4 @@ coverage
 .env.production
 
 packages/app-server/db/db.json
+.vercel

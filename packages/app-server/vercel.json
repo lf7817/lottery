@@ -1,6 +1,11 @@
 {
   "version": 2,
-  "name": "lottery-server",
+  "installCommand": "pnpm install",
+  "devCommand": "pnpm run start:dev",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "public": true,
+  "framework": null,
   "builds": [
     {
       "src": "dist/main.js",
