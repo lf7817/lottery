@@ -5,8 +5,10 @@ import * as stylex from '@stylexjs/stylex'
 import { useSnapshot } from 'valtio'
 import { Group } from 'three'
 import { useRequest } from 'ahooks'
+import * as mockjs from 'mockjs'
 import { gameOneAction, gameOneState } from '@/pages/GameOne/store'
 import { fetchUserList } from '@/pages/GameOne/store/service.ts'
+import { Person } from '@/types'
 
 const styles = stylex.create({
   qrcode: {
@@ -36,6 +38,13 @@ const styles = stylex.create({
     fontSize: 36,
     marginTop: 30,
   },
+  mock: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 36,
+    marginTop: 40,
+    cursor: 'pointer',
+  },
 })
 
 export default function Qrcode() {
@@ -59,13 +68,25 @@ export default function Qrcode() {
   return (
     <group ref={ref} position={[27, 0, 4]}>
       <Html transform>
-        <div {...stylex.props(styles.qrcode)} onClick={onClick}>
-          <div {...stylex.props(styles.inner)}>
+        <div {...stylex.props(styles.qrcode)}>
+          <div {...stylex.props(styles.inner)}onClick={onClick}>
             <QRCodeSVG size={320} value={url} />
           </div>
           <div {...stylex.props(styles.text)}>微信扫一扫参与互动</div>
+          <div {...stylex.props(styles.mock)} onClick={mockPeople}>点击模拟</div>
         </div>
       </Html>
     </group>
   )
+}
+
+function mockPeople() {
+  const list: Person[] = Array.from({ length: 110 }, (_, i) => ({
+    openid: (i + Math.random()).toString(),
+    username: mockjs.mock('@cname'),
+    mobile: mockjs.mock(/1[3456789]\d{9}/),
+    headimgurl: `https://q2.qlogo.cn/headimg_dl?dst_uin=${mockjs.mock(/[1-9]\d{7,9}/)}&spec=100`,
+  }))
+
+  gameOneAction.updatePeople(list)
 }
